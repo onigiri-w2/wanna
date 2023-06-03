@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "usernamehw.errorlens",
+    "mkxml.vscode-filesize",
+    "shardulm94.trailing-spaces",
+    "gruntfuggly.todo-tree",
+    "xabikos.javascrip",
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "mhutchie.git-graph",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "formulahendry.code-runner"
+  ]
+}
