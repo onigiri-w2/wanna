@@ -1,8 +1,11 @@
 import 'react-native-get-random-values';
 import {BSON} from 'realm';
 
+import {TodoSerialized} from '@/domain/model/entity/todo';
+
 export class Todo extends Realm.Object<Todo> {
-  _id!: BSON.ObjectId;
+  _mongoId!: BSON.ObjectId;
+  id!: string;
   title!: string;
   isCompleted: boolean = false;
   createdAt!: Date;
@@ -10,13 +13,23 @@ export class Todo extends Realm.Object<Todo> {
 
   static schema: Realm.ObjectSchema = {
     name: 'Todo',
-    primaryKey: '_id',
+    primaryKey: 'id',
     properties: {
-      _id: {type: 'objectId', indexed: true, default: new BSON.ObjectId()},
+      _mongoId: {type: 'objectId', default: new BSON.ObjectId()},
+      id: {type: 'string', indexed: true},
       title: 'string',
       isCompleted: {type: 'bool', default: false},
       createdAt: 'date',
       completedAt: 'date?',
     },
   };
+  public serialize(): TodoSerialized {
+    return {
+      id: this.id,
+      title: this.title,
+      isCompleted: this.isCompleted,
+      createdAt: this.createdAt,
+      completedAt: this.completedAt,
+    };
+  }
 }

@@ -1,12 +1,17 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  NativeSyntheticEvent,
+  TextInputChangeEventData,
+} from 'react-native';
 
-import {Box, Flex, Input, Text} from 'native-base';
-import Icon from 'react-native-vector-icons/Entypo';
+import {Box, Flex, Input} from 'native-base';
 
-import {AddButton} from '@/components/AddButton';
+import {EmojiIcon} from '@/components/EmojiIcon';
 import {EmojiModal} from '@/components/EmojiModal';
-import {Wannado} from '@/domain/entity/wannado';
+import {MainButton} from '@/components/MainButton';
+import {createWannado} from '@/domain/usecase/wannado';
+import {useEmoji} from '@/hooks/useEmoji';
 import {useModal} from '@/hooks/useModal';
 import {
   ADD_FORM_HEIGHT,
@@ -16,47 +21,43 @@ import {
   MAIN_COLOR_VERY_LIGHT,
 } from '@/styles/const';
 
-import {useWannadoAllContext} from '../../providers/WannaDoAllProvider';
-
-import {useEmoji} from './hooks';
-
-export const AddWannaDoForm = () => {
+type Props = {
+  onSubmit?: () => void;
+};
+export const AddWannadoForm = ({onSubmit}: Props) => {
   const {emoji, updateEmoji} = useEmoji();
   const {isModalVisible, hideModal, showModal} = useModal();
-  const [value, setValue] = React.useState('');
-  const {addWannado} = useWannadoAllContext();
+  const [title, setTitle] = React.useState('');
 
   const handlePressAdd = () => {
-    addWannado(Wannado.new(value, emoji));
-    setValue('');
+    createWannado(title, emoji);
+    onSubmit?.();
+    setTitle('');
+    updateEmoji('');
+  };
+
+  const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    setTitle(e.nativeEvent.text);
   };
 
   return (
     <Box p={`${ADD_FORM_PADDING}px`} justifyContent="center">
       <Flex direction="row" alignItems="center">
         <Box mr={4}>
-          <TouchableOpacity onPress={showModal}>
-            {emoji === '' ? (
-              <Icon name="emoji-happy" size={28} color="black" />
-            ) : (
-              <Text fontSize={28}>{emoji}</Text>
-            )}
-          </TouchableOpacity>
+          <EmojiIcon onPress={showModal} emoji={emoji} size={28} />
         </Box>
-        <Box flex={1} bg="white" mr={4}>
+        <Box flex={1} mr={4}>
           <Input
-            value={value}
-            onChange={e => setValue(e.nativeEvent.text)}
+            bg="white"
+            value={title}
+            onChange={handleChange}
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
             fontSize={16}
-            _focus={{
-              backgroundColor: MAIN_COLOR_VERY_LIGHT,
-              borderColor: MAIN_COLOR,
-            }}
+            _focus={styles.inputFocused}
           />
         </Box>
-        <AddButton onPress={handlePressAdd} h={ADD_FORM_HEIGHT} />
+        <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />
       </Flex>
       <EmojiModal
         isModalVisible={isModalVisible}
@@ -66,3 +67,10 @@ export const AddWannaDoForm = () => {
     </Box>
   );
 };
+
+const styles = StyleSheet.create({
+  inputFocused: {
+    backgroundColor: MAIN_COLOR_VERY_LIGHT,
+    borderColor: MAIN_COLOR,
+  },
+});

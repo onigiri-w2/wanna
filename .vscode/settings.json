@@ -7,12 +7,19 @@
   "editor.codeLens": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": [
-    "source.addMissingImports",
+    // "source.addMissingImports",
     "source.fixAll.eslint"
   ],
 
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
+  // "files.watcherExclude": {
+  //   "**/__generated__/**": true,
+  //   "**/build/**": true,
+  //   "**/coverage/**": true,
+  //   "**/dist/**": true,
+  //   "**/node_modules/**": true
+  // },
 
   "typescript.tsdk": "./node_modules/typescript/lib",
   "eslint.validate": [

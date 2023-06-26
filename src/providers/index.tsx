@@ -3,9 +3,11 @@ import React from 'react';
 import {NativeBaseProvider} from 'native-base';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {WannaDoAllProvider} from '@/features/wannado/providers/WannaDoAllProvider';
-import {RealmContext} from '@/storage/realm/context';
+import {WannadoMemoryRepository} from '@/domain/repository/wannado';
 import {theme} from '@/styles/theme';
+
+import {WannadoRepositoryProvider} from './repository';
+import {WannadoAllProvider} from './wannadoAll';
 
 type Props = {
   children: React.ReactNode;
@@ -13,12 +15,12 @@ type Props = {
 
 export const AppProvider = ({children}: Props) => {
   return (
-    <RealmContext.RealmProvider>
-      <SafeAreaProvider>
-        <NativeBaseProvider theme={theme}>
-          <WannaDoAllProvider>{children}</WannaDoAllProvider>
-        </NativeBaseProvider>
-      </SafeAreaProvider>
-    </RealmContext.RealmProvider>
+    <WannadoRepositoryProvider value={new WannadoMemoryRepository()}>
+      <WannadoAllProvider>
+        <SafeAreaProvider>
+          <NativeBaseProvider theme={theme}>{children}</NativeBaseProvider>
+        </SafeAreaProvider>
+      </WannadoAllProvider>
+    </WannadoRepositoryProvider>
   );
 };

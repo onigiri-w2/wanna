@@ -1,20 +1,36 @@
 import 'react-native-get-random-values';
 import {BSON} from 'realm';
 
+import {MemoSerialized} from '@/domain/model/entity/memo';
+
 export class Memo extends Realm.Object<Memo> {
-  _id!: BSON.ObjectId;
+  _mongoId!: BSON.ObjectId;
+  id!: string;
+  title!: string;
   content!: string;
   createdAt!: Date;
   updatedAt!: Date;
 
   static schema: Realm.ObjectSchema = {
     name: 'Memo',
-    primaryKey: '_id',
+    primaryKey: 'id',
     properties: {
-      _id: {type: 'objectId', indexed: true, default: new BSON.ObjectId()},
+      _mongoId: {type: 'objectId', default: new BSON.ObjectId()},
+      id: {type: 'string', indexed: true},
+      title: 'string',
       content: 'string',
       createdAt: 'date',
       updatedAt: 'date',
     },
   };
+
+  public serialize(): MemoSerialized {
+    return {
+      id: this.id,
+      title: this.title,
+      content: this.content,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    };
+  }
 }
