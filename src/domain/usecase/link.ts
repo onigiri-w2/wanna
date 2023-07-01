@@ -13,6 +13,7 @@ export async function createLink(
 
   const link = Link.new(title, url);
   wannado.addLink(link);
+  repo.update(wannado);
   return link.serialize();
 }
 

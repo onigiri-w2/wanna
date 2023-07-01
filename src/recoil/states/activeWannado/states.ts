@@ -1,5 +1,6 @@
 import {atom, selector} from 'recoil';
 
+import {LinkSerialized} from '@/domain/model/entity/link';
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {TodoSerialized} from '@/domain/model/entity/todo';
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
@@ -56,5 +57,13 @@ export const activeWannadoMemosState = selector<MemoSerialized[]>({
   get: ({get}) => {
     const activeWannado = get(activeWannadoState);
     return activeWannado ? activeWannado.memos : [];
+  },
+});
+
+export const activeWannadoLinksState = selector<LinkSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoLinks,
+  get: ({get}) => {
+    const activeWannado = get(activeWannadoState);
+    return activeWannado ? activeWannado.links : [];
   },
 });

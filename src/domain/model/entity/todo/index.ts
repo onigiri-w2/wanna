@@ -28,6 +28,8 @@ export class Todo implements ITodo {
   }
 
   public updateTitle(title: string) {
+    if (this.isCompleted)
+      throw new Error('Cannot update title of completed todo');
     this.title = Title.new(title);
   }
 

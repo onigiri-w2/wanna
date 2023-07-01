@@ -3,17 +3,24 @@ import {Linking} from 'react-native';
 
 import {HStack, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useRecoilValue} from 'recoil';
 
 import {LinkSerialized} from '@/domain/model/entity/link';
+import * as usecase from '@/domain/usecase/link';
+import {
+  activeWannadoActions,
+  activeWannadoIdState,
+} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
 type Props = {
   link: LinkSerialized;
-  onPressDelete: (linkId: string) => void;
 };
-export const LinkItem = ({link, onPressDelete}: Props) => {
+export const LinkItem = ({link}: Props) => {
+  const wannadoId = useRecoilValue(activeWannadoIdState);
   const handlePressDelete = () => {
-    onPressDelete(link.id);
+    usecase.deleteLink(wannadoId, link.id);
+    activeWannadoActions.deleteLink(link.id);
   };
   return (
     <HStack p={4} bg="white" borderRadius={BORDER_RADIUS} alignItems="center">

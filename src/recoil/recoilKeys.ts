@@ -7,6 +7,7 @@ const recoilKeys = [
   'activeWannadoUncompletedTodos',
   'activeWannadoMemos',
   'activeWannadoMemo',
+  'activeWannadoLinks',
 ] as const;
 
 // Key: Keyのオブジェクト

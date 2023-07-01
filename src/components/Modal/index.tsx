@@ -1,4 +1,9 @@
-import {Modal as ModalRN, View, StyleSheet} from 'react-native';
+import {
+  Modal as ModalRN,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 type Props = {
   isOpen: boolean;
@@ -12,9 +17,11 @@ export const Modal = ({isOpen, close, children}: Props) => {
       transparent
       visible={isOpen}
       onRequestClose={close}>
-      <View style={styles.modalContainer}>
-        <View style={styles.modalContent}>{children}</View>
-      </View>
+      <TouchableOpacity style={{flex: 1}} onPress={close} activeOpacity={1}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>{children}</View>
+        </View>
+      </TouchableOpacity>
     </ModalRN>
   );
 };
