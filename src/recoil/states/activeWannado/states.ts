@@ -1,12 +1,9 @@
-import {atom} from 'recoil';
+import {atom, selector} from 'recoil';
 
+import {MemoSerialized} from '@/domain/model/entity/memo';
+import {TodoSerialized} from '@/domain/model/entity/todo';
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
 import {recoilKeyHashSet} from '@/recoil/recoilKeys';
-
-export const activeWannadoIdState = atom<string>({
-  key: recoilKeyHashSet.activeWannadoId,
-  default: '',
-});
 
 // export const activeWannadoState = selector<WannadoSerialized | undefined>({
 //   key: recoilKeyHashSet.activeWannado,
@@ -20,4 +17,44 @@ export const activeWannadoIdState = atom<string>({
 export const activeWannadoState = atom<WannadoSerialized>({
   key: recoilKeyHashSet.activeWannado,
   default: undefined,
+});
+
+export const activeWannadoIdState = selector<string>({
+  key: recoilKeyHashSet.activeWannadoId,
+  get: ({get}) => {
+    const activeWannado = get(activeWannadoState);
+    return activeWannado ? activeWannado.id : '';
+  },
+});
+
+export const activeWannadoTodosState = selector<TodoSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoTodos,
+  get: ({get}) => {
+    const activeWannado = get(activeWannadoState);
+    return activeWannado ? activeWannado.todos : [];
+  },
+});
+
+export const activeWannadoCompletedTodosState = selector<TodoSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoCompletedTodos,
+  get: ({get}) => {
+    const todos = get(activeWannadoTodosState);
+    return todos.filter(todo => todo.isCompleted);
+  },
+});
+
+export const activeWannadoUncompletedTodosState = selector<TodoSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoUncompletedTodos,
+  get: ({get}) => {
+    const todos = get(activeWannadoTodosState);
+    return todos.filter(todo => !todo.isCompleted);
+  },
+});
+
+export const activeWannadoMemosState = selector<MemoSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoMemos,
+  get: ({get}) => {
+    const activeWannado = get(activeWannadoState);
+    return activeWannado ? activeWannado.memos : [];
+  },
 });

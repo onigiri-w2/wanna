@@ -1,9 +1,7 @@
-import {useCallback, useState, useEffect, useRef} from 'react';
+import {useCallback, useState} from 'react';
 
-import {Todo} from '@/domain/model/entity/todo';
-import {Wannado} from '@/domain/model/entity/wannado';
-import {CharId} from '@/domain/model/valueobjects/charId';
-import {useWannadoRepository} from '@/providers/repository';
+import * as usecase from '@/domain/usecase/todo';
+import {activeWannadoActions} from '@/recoil/states/activeWannado';
 
 export const useTextInput = () => {
   const [value, setValue] = useState('');
@@ -17,28 +15,14 @@ export const useTextInput = () => {
   };
 };
 
-export const useTodoAddr = (wannadoId: CharId) => {
-  const wannadoRef = useRef<Wannado | undefined>(undefined);
-  const repo = useWannadoRepository();
-
+export const useTodoAddr = (wannadoId: string) => {
   const addTodo = useCallback(
-    (t: string) => {
-      if (wannadoRef.current) {
-        wannadoRef.current.addTodo(Todo.new(t));
-        repo.update(wannadoRef.current as Wannado);
-      }
+    async (t: string) => {
+      const todo = await usecase.createTodo(wannadoId, t);
+      if (todo) activeWannadoActions.addTodo(todo);
     },
     [wannadoId],
   );
-
-  const initialize = async () => {
-    const wannado = await repo.find(wannadoId);
-    wannadoRef.current = wannado;
-  };
-
-  useEffect(() => {
-    initialize();
-  }, [wannadoId]);
 
   return {
     addTodo,

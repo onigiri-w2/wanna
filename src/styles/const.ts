@@ -35,3 +35,6 @@ export const BORDER_CIRCLE_RADIUS = 100;
 // Addフォーム系
 export const ADD_FORM_HEIGHT = 40; // px: NativeBase -> 10
 export const ADD_FORM_PADDING = 16; // px: NativeBase -> 4
+
+// bottom sheet
+export const BOTTOM_SHEET_HANDLER_HEIGHT = 24; // px: NativeBase -> 6

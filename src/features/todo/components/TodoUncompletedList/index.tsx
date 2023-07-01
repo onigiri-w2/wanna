@@ -1,53 +1,45 @@
 import React, {useCallback} from 'react';
+import {FlatList, StyleSheet} from 'react-native';
 
-import {Box} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {TodoSerialized} from '@/domain/model/entity/todo';
+import {activeWannadoUncompletedTodosState} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
 import {TodoListItem} from './TodoListItem';
 
 type Props = {
-  todoList: TodoSerialized[];
-  onChangeComplete: (todoId: string, complete: boolean) => void;
   onPressTodo: (todo: TodoSerialized) => void;
-  onPressDelete: (todo: TodoSerialized) => void;
 };
 
-export const TodoUncompletedList = ({
-  todoList,
-  onChangeComplete,
-  onPressTodo,
-  onPressDelete,
-}: Props) => {
-  const onPressCheckbox = useCallback(
-    (complete: boolean, todo: TodoSerialized) => {
-      onChangeComplete(todo.id, complete);
-    },
-    [],
-  );
+export const TodoUncompletedList = ({onPressTodo}: Props) => {
+  const todos = useRecoilValue(activeWannadoUncompletedTodosState);
   const handlePressTodo = useCallback((todo: TodoSerialized) => {
     onPressTodo(todo);
   }, []);
   const onPressLongTodo = useCallback((todo: TodoSerialized) => {}, []);
-  const handlePressDelete = useCallback((todo: TodoSerialized) => {
-    onPressDelete(todo);
-  }, []);
 
   return (
-    <Box borderRadius={BORDER_RADIUS} bg="white">
-      {todoList
-        .filter(todo => !todo.isCompleted)
-        .map(todo => (
-          <TodoListItem
-            key={todo.id}
-            todo={todo}
-            onPressCheckbox={onPressCheckbox}
-            onPressTodo={handlePressTodo}
-            onLongPressTodo={onPressLongTodo}
-            onPressDelete={handlePressDelete}
-          />
-        ))}
-    </Box>
+    <FlatList
+      contentContainerStyle={styles.flatList}
+      data={todos}
+      renderItem={({item}) => (
+        <TodoListItem
+          todo={item}
+          onPressTodo={handlePressTodo}
+          onLongPressTodo={onPressLongTodo}
+        />
+      )}
+      keyExtractor={item => item.id}
+      keyboardShouldPersistTaps="always"
+    />
   );
 };
+
+const styles = StyleSheet.create({
+  flatList: {
+    backgroundColor: 'white',
+    borderRadius: BORDER_RADIUS,
+  },
+});

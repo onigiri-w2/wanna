@@ -3,7 +3,11 @@ import {StyleSheet} from 'react-native';
 
 import {BottomSheetModal as BottomSheetModalInner} from '@gorhom/bottom-sheet';
 
-import {MAIN_COLOR, BORDER_RADIUS} from '@/styles/const';
+import {
+  MAIN_COLOR,
+  BORDER_RADIUS,
+  BOTTOM_SHEET_HANDLER_HEIGHT,
+} from '@/styles/const';
 
 /**
  * Note:
@@ -49,5 +53,6 @@ const styles = StyleSheet.create({
     backgroundColor: MAIN_COLOR,
     borderTopLeftRadius: BORDER_RADIUS,
     borderTopRightRadius: BORDER_RADIUS,
+    height: BOTTOM_SHEET_HANDLER_HEIGHT,
   },
 });

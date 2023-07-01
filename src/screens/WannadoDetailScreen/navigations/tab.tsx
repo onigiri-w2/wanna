@@ -5,9 +5,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
-import {LinkPage} from '../components/LinkPage';
-import {MemoPage} from '../components/MemoPage';
-import {TodoPage} from '../components/TodoPage';
+import {LinkPage} from '../subpages/LinkPage';
+import {MemoPage} from '../subpages/MemoPage';
+import {TodoPage} from '../subpages/TodoPage';
 
 type WannadoNavParamList = {
   Todo: undefined;

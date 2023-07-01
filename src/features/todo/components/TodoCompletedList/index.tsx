@@ -1,24 +1,24 @@
 import React from 'react';
+import {FlatList} from 'react-native';
 
-import {Box} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
-import {TodoSerialized} from '@/domain/model/entity/todo';
+import {activeWannadoCompletedTodosState} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
 import {TodoListItem} from './TodoListItem';
 
-type Props = {
-  todoList: TodoSerialized[];
-};
-
-export const TodoCompletedList = ({todoList}: Props) => {
+export const TodoCompletedList = () => {
+  const todos = useRecoilValue(activeWannadoCompletedTodosState);
   return (
-    <Box borderRadius={BORDER_RADIUS}>
-      {todoList
-        .filter(todo => todo.isCompleted)
-        .map(todo => (
-          <TodoListItem key={todo.id} todo={todo} />
-        ))}
-    </Box>
+    <FlatList
+      contentContainerStyle={{
+        borderRadius: BORDER_RADIUS,
+      }}
+      // TODO: ここ完了日順に並べたい
+      data={todos}
+      renderItem={({item}) => <TodoListItem todo={item} />}
+      keyExtractor={item => item.id}
+    />
   );
 };

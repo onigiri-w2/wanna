@@ -1,8 +1,15 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
 
 import {Box, Flex, Input} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {MainButton} from '@/components/MainButton';
+import * as usecase from '@/domain/usecase/todo';
+import {
+  activeWannadoActions,
+  activeWannadoState,
+} from '@/recoil/states/activeWannado';
 import {
   ADD_FORM_PADDING,
   BORDER_RADIUS,
@@ -13,16 +20,15 @@ import {
 
 import {useTextInput} from './hooks';
 
-type Props = {
-  onAdd: (title: string) => void;
-};
-
-export const AddTodoForm = React.memo(({onAdd}: Props) => {
+export const AddTodoForm = React.memo(() => {
+  const wannado = useRecoilValue(activeWannadoState);
   const {value: title, updateValue: updateTitle} = useTextInput();
 
-  const handlePress = () => {
+  const handlePress = async () => {
     updateTitle('');
-    onAdd(title);
+    if (title === '') return;
+    const newTodo = await usecase.createTodo(wannado.id, title);
+    if (newTodo) activeWannadoActions.addTodo(newTodo);
   };
 
   return (
@@ -35,14 +41,19 @@ export const AddTodoForm = React.memo(({onAdd}: Props) => {
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
             fontSize={16}
-            _focus={{
-              backgroundColor: MAIN_COLOR_VERY_LIGHT,
-              borderColor: MAIN_COLOR,
-            }}
+            _focus={styles.focusedInput}
+            autoFocus
           />
         </Box>
-        <MainButton onPress={handlePress} h={ADD_FORM_HEIGHT} text="保存" />
+        <MainButton onPress={handlePress} text="保存" disabled={!title} />
       </Flex>
     </Box>
   );
+});
+
+const styles = StyleSheet.create({
+  focusedInput: {
+    backgroundColor: MAIN_COLOR_VERY_LIGHT,
+    borderColor: MAIN_COLOR,
+  },
 });

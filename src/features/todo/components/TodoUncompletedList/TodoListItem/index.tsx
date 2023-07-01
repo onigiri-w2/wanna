@@ -3,30 +3,37 @@ import {TouchableOpacity} from 'react-native';
 
 import {HStack, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {useRecoilValue} from 'recoil';
 
 import {Checkbox} from '@/components/Checkbox';
+import * as usecase from '@/domain//usecase/todo';
 import {TodoSerialized} from '@/domain/model/entity/todo';
+import {
+  activeWannadoActions,
+  activeWannadoIdState,
+} from '@/recoil/states/activeWannado';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
+
 type Props = {
   todo: TodoSerialized;
-  onPressCheckbox: (complete: boolean, todo: TodoSerialized) => void;
   onPressTodo: (todo: TodoSerialized) => void;
   onLongPressTodo: (todo: TodoSerialized) => void;
-  onPressDelete: (todo: TodoSerialized) => void;
 };
 export const TodoListItem = React.memo(
-  ({
-    todo,
-    onPressCheckbox,
-    onPressTodo,
-    onLongPressTodo,
-    onPressDelete,
-  }: Props) => {
+  ({todo, onPressTodo, onLongPressTodo}: Props) => {
+    const wannadoId = useRecoilValue(activeWannadoIdState);
     const [checked, setChecked] = React.useState(todo.isCompleted);
+
     const handlePressCheckbox = (c: boolean) => {
       setChecked(c);
       setTimeout(() => {
-        onPressCheckbox(c, todo);
+        if (c) {
+          activeWannadoActions.completeTodo(todo.id);
+          usecase.completeTodo(wannadoId, todo.id);
+        } else {
+          activeWannadoActions.uncompleteTodo(todo.id);
+          usecase.uncompleteTodo(wannadoId, todo.id);
+        }
       }, 300);
     };
 
@@ -39,7 +46,8 @@ export const TodoListItem = React.memo(
     };
 
     const handleDelete = () => {
-      onPressDelete(todo);
+      activeWannadoActions.deleteTodo(todo.id);
+      usecase.deleteTodo(wannadoId, todo.id);
     };
 
     return (

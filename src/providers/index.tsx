@@ -19,6 +19,7 @@ export const AppProvider = ({children}: Props) => {
       <RecoilNexus />
       <Suspense
         fallback={
+          // TODO: このローディング画面は別の場所に抜き出せ。
           <View
             style={{
               flex: 1,

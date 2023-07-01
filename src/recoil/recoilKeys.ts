@@ -1,5 +1,13 @@
 // Keyの配列
-const recoilKeys = ['activeWannadoId', 'activeWannado'] as const;
+const recoilKeys = [
+  'activeWannadoId',
+  'activeWannado',
+  'activeWannadoTodos',
+  'activeWannadoCompletedTodos',
+  'activeWannadoUncompletedTodos',
+  'activeWannadoMemos',
+  'activeWannadoMemo',
+] as const;
 
 // Key: Keyのオブジェクト
 export const recoilKeyHashSet = Object.fromEntries(

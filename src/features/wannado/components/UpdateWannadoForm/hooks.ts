@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {NativeSyntheticEvent, TextInputChangeEventData} from 'react-native';
 
-import {updateWannadoTitle, updateWannadoEmoji} from '@/domain/usecase/wannado';
+import * as usecase from '@/domain/usecase/wannado';
 import {wannadoActions} from '@/recoil/actions/wannado';
 
 export const useInput = (initialTtile: string, wannadoId: string) => {
@@ -11,8 +11,9 @@ export const useInput = (initialTtile: string, wannadoId: string) => {
     e: NativeSyntheticEvent<TextInputChangeEventData>,
   ) => {
     const text = e.nativeEvent.text;
-    updateWannadoTitle(wannadoId, text);
     setTitle(text);
+    if (text === '') return;
+    usecase.updateWannadoTitle(wannadoId, text);
     wannadoActions.updateTitle(wannadoId, text);
   };
 
@@ -27,8 +28,10 @@ export const useEmoji = (initialEmoji: string, wannadoId: string) => {
 
   const handleChangeEmoji = (emoji: string | null) => {
     const e = emoji ? emoji : '';
-    updateWannadoEmoji(wannadoId, e);
     setEmoji(e);
+    if (e === '') return;
+
+    usecase.updateWannadoEmoji(wannadoId, e);
     wannadoActions.updateEmoji(wannadoId, e);
   };
 

@@ -16,9 +16,13 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 import {PAGE_HEADER_HEIGHT} from '@/styles/const';
 
-export const KeyboardAvoidingView = (props: KeyboardAvoidingViewProps) => {
+type Props = {
+  plusOffset?: number;
+} & KeyboardAvoidingViewProps;
+export const KeyboardAvoidingView = (props: Props) => {
   const insets = useSafeAreaInsets();
-  const iosVerticalOffset = insets.top + PAGE_HEADER_HEIGHT;
+  const iosVerticalOffset =
+    insets.top + PAGE_HEADER_HEIGHT + (props.plusOffset ?? 0);
 
   return (
     <CommonKeyboardAvoidingView
