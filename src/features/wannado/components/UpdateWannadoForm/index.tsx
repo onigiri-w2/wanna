@@ -13,27 +13,15 @@ type Props = {
   wannadoId: string;
   initialTitle: string;
   initialEmoji: string;
-  onChangeTitle?: (title: string) => void;
-  onChangeEmoji?: (emoji: string) => void;
 };
 
 export const UpdateWannadoForm = ({
   wannadoId,
   initialTitle,
   initialEmoji,
-  onChangeTitle,
-  onChangeEmoji,
 }: Props) => {
-  const {title, handleInputChange} = useInput(
-    initialTitle,
-    wannadoId,
-    onChangeTitle,
-  );
-  const {emoji, handleChangeEmoji} = useEmoji(
-    initialEmoji,
-    wannadoId,
-    onChangeEmoji,
-  );
+  const {title, handleInputChange} = useInput(initialTitle, wannadoId);
+  const {emoji, handleChangeEmoji} = useEmoji(initialEmoji, wannadoId);
   const {isModalVisible, showModal, hideModal} = useModal();
 
   return (

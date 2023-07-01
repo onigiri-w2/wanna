@@ -3,18 +3,19 @@ import {ScrollView} from 'react-native';
 
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {View, VStack} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {BottomSheetModal} from '@/components/BottomSheetModal';
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {Editor} from '@/features/memo/components/Simple/Editor';
 import {MemoItem} from '@/features/memo/components/Simple/MemoItem';
 import {useMemoAll} from '@/features/memo/hooks/useMemoAll';
-import {useActiveWannadoContext} from '@/features/wannado/providers/ActiveWannadoProvider';
+import {activeWannadoState} from '@/recoil/states/activeWannado';
 
 import {Buttons} from './Buttons';
 
 export const MemoPage = () => {
-  const {wannado} = useActiveWannadoContext();
+  const wannado = useRecoilValue(activeWannadoState);
   const {memoList, updateTitle, updateContent, deleteMemo, getMemo, addMemo} =
     useMemoAll(wannado ? wannado.id : '', wannado ? wannado?.memos : []);
   const [activeMemo, setActiveMemo] = React.useState<MemoSerialized>();

@@ -3,11 +3,11 @@ import {TouchableOpacity} from 'react-native';
 
 import {Text, HStack} from 'native-base';
 
-import {WannadoSerialized} from '@/domain/model/entity/wannado';
+import {WannadoOverview} from '@/domain/types';
 
 type Props = {
-  onPress: (wannado: WannadoSerialized) => void;
-  wannado: WannadoSerialized;
+  onPress: (wannado: WannadoOverview) => void;
+  wannado: WannadoOverview;
 };
 export const WannadoListItem = ({onPress, wannado}: Props) => {
   const handlePress = () => {

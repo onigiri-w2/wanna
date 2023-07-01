@@ -8,7 +8,7 @@ export const wannadoOverviewAllState = atom<WannadoSerialized[]>({
   default: selector({
     key: 'wannadoOverviewAll/default',
     get: async () => {
-      return await getWannadoAll();
+      return getWannadoAll();
     },
   }),
 });

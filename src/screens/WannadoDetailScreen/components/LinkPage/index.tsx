@@ -2,18 +2,19 @@ import {useCallback} from 'react';
 import {ScrollView} from 'react-native';
 
 import {VStack, View} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {Modal} from '@/components/Modal';
 import {LinkAddr} from '@/features/link/components/LinkAddr';
 import {LinkItem} from '@/features/link/components/LinkItem';
 import {useLinkAll} from '@/features/link/hooks/useLinkAll';
-import {useActiveWannadoContext} from '@/features/wannado/providers/ActiveWannadoProvider';
 import {useModal} from '@/hooks/useModal';
+import {activeWannadoState} from '@/recoil/states/activeWannado';
 
 import {Buttons} from './Buttons';
 
 export const LinkPage = () => {
-  const {wannado} = useActiveWannadoContext();
+  const wannado = useRecoilValue(activeWannadoState);
   const {linkList, addLink, deleteLink} = useLinkAll(
     wannado ? wannado.id : '',
     wannado ? wannado.links : [],

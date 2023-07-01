@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {ScrollView, View} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {TodoSerialized} from '@/domain/model/entity/todo';
 import {TodoUncompletedList} from '@/features/todo/components/TodoUncompletedList';
 import {useTodoAll} from '@/features/todo/hooks/useTodoAll';
-import {useActiveWannadoContext} from '@/features/wannado/providers/ActiveWannadoProvider';
 import {useModal} from '@/hooks/useModal';
+import {activeWannadoState} from '@/recoil/states/activeWannado';
 
 import {AddTodoEditor} from './AddTodoEditor';
 import {Buttons} from './Buttons';
@@ -16,7 +17,7 @@ import {TodoCompletedBottomSheet} from './TodoCompletedBottomSheet';
 import {UpdateTodoEditor} from './UpdateTodoEditor';
 
 export const TodoPage = () => {
-  const {wannado} = useActiveWannadoContext();
+  const wannado = useRecoilValue(activeWannadoState);
   const {todoList, changeComplete, changeTitle, addTodo, deleteTodo} =
     useTodoAll(wannado ? wannado.id : '', wannado ? wannado.todos : []);
 

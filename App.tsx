@@ -1,6 +1,8 @@
 import React from 'react';
 
 import 'react-native-gesture-handler';
+// import {RootStacks} from '@/navigations/root';
+
 import {RootStacks} from '@/navigations/root';
 import {AppProvider} from '@/providers';
 

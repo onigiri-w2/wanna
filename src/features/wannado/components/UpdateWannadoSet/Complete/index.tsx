@@ -7,6 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Modal} from '@/components/Modal';
 import {completeWannado} from '@/domain/usecase/wannado';
 import {useModal} from '@/hooks/useModal';
+import {wannadoActions} from '@/recoil/actions/wannado';
 
 import {ModalContent} from '../ModalContent';
 
@@ -20,7 +21,8 @@ export const Complete = ({wannadoId, onComplete}: Props) => {
     showModal();
   };
   const handleComplete = async () => {
-    await completeWannado(wannadoId);
+    completeWannado(wannadoId);
+    wannadoActions.complete(wannadoId);
     onComplete();
     hideModal();
   };

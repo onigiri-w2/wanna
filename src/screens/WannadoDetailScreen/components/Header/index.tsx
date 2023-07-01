@@ -1,10 +1,11 @@
 import React from 'react';
 
 import {HStack, Box} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
 import {UpdateWannadoForm} from '@/features/wannado/components/UpdateWannadoForm';
 import {UpdateWannadoSet} from '@/features/wannado/components/UpdateWannadoSet';
-import {useActiveWannadoContext} from '@/features/wannado/providers/ActiveWannadoProvider';
+import {activeWannadoState} from '@/recoil/states/activeWannado';
 import {
   PAGE_HEADER_COLOR,
   PAGE_HEADER_HEIGHT,
@@ -13,15 +14,13 @@ import {
 } from '@/styles/const';
 
 import {Goback} from './GoBack';
-import {useTitle, useEmoji, useShow, useWannadoUpdate} from './hooks';
+import {useShow, useWannadoUpdate} from './hooks';
 import {Menu} from './Menu';
 import {styles} from './styles';
 import {Title} from './Title';
 
 export const Header = () => {
-  const {wannado} = useActiveWannadoContext();
-  const {title, handleChangeTitle} = useTitle(wannado?.title || '');
-  const {handleChangeEmoji} = useEmoji(wannado?.emoji || '');
+  const wannado = useRecoilValue(activeWannadoState);
   const {isShowEditor, isShowUpdator, handlePressMenu, handelPressTitle} =
     useShow();
   const {handleUpdate} = useWannadoUpdate();
@@ -36,7 +35,7 @@ export const Header = () => {
             alignItems="center"
             bg={PAGE_HEADER_COLOR}>
             <Goback />
-            <Title title={title} onPress={handelPressTitle} />
+            <Title title={wannado.title} onPress={handelPressTitle} />
             <Menu onPress={handlePressMenu} />
           </HStack>
           <Box
@@ -45,8 +44,6 @@ export const Header = () => {
               wannadoId={wannado.id}
               initialEmoji={wannado.emoji}
               initialTitle={wannado.title}
-              onChangeEmoji={handleChangeEmoji}
-              onChangeTitle={handleChangeTitle}
             />
           </Box>
           <Box

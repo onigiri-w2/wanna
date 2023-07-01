@@ -2,17 +2,19 @@ import React from 'react';
 import {FlatList} from 'react-native';
 
 import {Box} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
-import {WannadoSerialized} from '@/domain/model/entity/wannado';
+import {WannadoOverview} from '@/domain/types';
 import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
+import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
 
 type Props = {
-  onPress: (wannado: WannadoSerialized) => void;
-  wannadoList: WannadoSerialized[];
+  onPress: (wannado: WannadoOverview) => void;
 };
 
-export const WannadoCompletedList = ({onPress, wannadoList}: Props) => {
+export const WannadoCompletedList = ({onPress}: Props) => {
+  const wannadoList = useRecoilValue(wannadoOverviewAllState);
   return (
     <FlatList
       data={wannadoList.filter(value => value.isCompleted)}

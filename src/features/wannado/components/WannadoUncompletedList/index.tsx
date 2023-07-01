@@ -2,17 +2,20 @@ import React from 'react';
 import {FlatList, StyleSheet} from 'react-native';
 
 import {Box} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
-import {WannadoSerialized} from '@/domain/model/entity/wannado';
+import {WannadoOverview} from '@/domain/types';
 import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
+import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
 
 type Props = {
-  onPress: (wannado: WannadoSerialized) => void;
-  wannadoList: WannadoSerialized[];
+  onPressEl: (wannado: WannadoOverview) => void;
 };
 
-export const WannadoUncompletedList = ({onPress, wannadoList}: Props) => {
+export const WannadoUncompletedList = ({onPressEl}: Props) => {
+  const wannadoList = useRecoilValue(wannadoOverviewAllState);
+
   return (
     <FlatList
       style={styles.container}
@@ -22,7 +25,7 @@ export const WannadoUncompletedList = ({onPress, wannadoList}: Props) => {
           bg="white"
           borderBottomWidth={1}
           borderBottomColor={BORDER_GRAY_COLOR}>
-          <WannadoListItem onPress={onPress} wannado={item} />
+          <WannadoListItem onPress={onPressEl} wannado={item} />
         </Box>
       )}
       keyExtractor={item => item.id}

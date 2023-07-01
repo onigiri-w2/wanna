@@ -1,8 +1,7 @@
 import {atom} from 'recoil';
 
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
-
-import {recoilKeyHashSet} from '../recoilKeys';
+import {recoilKeyHashSet} from '@/recoil/recoilKeys';
 
 export const activeWannadoIdState = atom<string>({
   key: recoilKeyHashSet.activeWannadoId,

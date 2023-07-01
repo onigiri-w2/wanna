@@ -13,6 +13,7 @@ import {MainButton} from '@/components/MainButton';
 import {createWannado} from '@/domain/usecase/wannado';
 import {useEmoji} from '@/hooks/useEmoji';
 import {useModal} from '@/hooks/useModal';
+import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   ADD_FORM_HEIGHT,
   ADD_FORM_PADDING,
@@ -21,17 +22,14 @@ import {
   MAIN_COLOR_VERY_LIGHT,
 } from '@/styles/const';
 
-type Props = {
-  onSubmit?: () => void;
-};
-export const AddWannadoForm = ({onSubmit}: Props) => {
+export const AddWannadoForm = () => {
   const {emoji, updateEmoji} = useEmoji();
   const {isModalVisible, hideModal, showModal} = useModal();
   const [title, setTitle] = React.useState('');
 
-  const handlePressAdd = () => {
-    createWannado(title, emoji);
-    onSubmit?.();
+  const handlePressAdd = async () => {
+    const wannado = await createWannado(title, emoji);
+    wannadoOverviewAllActions.addWannado(wannado);
     setTitle('');
     updateEmoji('');
   };

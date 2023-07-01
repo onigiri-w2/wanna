@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {useRecoilValue} from 'recoil';
 
+import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {SettingsPage} from '@/screens/SettingsScreen';
 import {WannadoDetailPage} from '@/screens/WannadoDetailScreen';
 import {WannadoListScreen} from '@/screens/WannadoListScreen';
@@ -15,23 +16,25 @@ export type RootNavParamList = {
 const RootStack = createNativeStackNavigator<RootNavParamList>();
 
 export const RootStacks = () => {
+  // なんかNavigatorの中で初期値を非同期でロードするatomを使ってると画面が表示されなくなるバグある。
+  // 現状、根本的な解決策はわからないので、暫定対応としてNavigatorの中で利用するatomの初期ロードが終わるまでNavigatorを表示しないようにする
+  // そのために、ここでatomを参照している
+  // ここでatomを参照してたら、初期ロードが終わるまではNavigatorを表示しない
+  // 上位コンポーネントにSuspenseを置くことで、初期ロードが終わるまで表示しないようにできる
+  useRecoilValue(wannadoOverviewAllState);
+
   return (
-    <NavigationContainer>
-      <RootStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName="WannadoListPage">
-        <RootStack.Screen
-          name="WannadoListPage"
-          component={WannadoListScreen}
-        />
-        <RootStack.Screen
-          name="WannadoDetailPage"
-          component={WannadoDetailPage}
-        />
-        <RootStack.Screen name="SettingsPage" component={SettingsPage} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <RootStack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+      initialRouteName="WannadoListPage">
+      <RootStack.Screen name="WannadoListPage" component={WannadoListScreen} />
+      <RootStack.Screen
+        name="WannadoDetailPage"
+        component={WannadoDetailPage}
+      />
+      <RootStack.Screen name="SettingsPage" component={SettingsPage} />
+    </RootStack.Navigator>
   );
 };
