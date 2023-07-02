@@ -6,27 +6,19 @@ import {MemoSerialized} from '@/domain/model/entity/memo';
 import {activeWannadoMemosState} from '@/recoil/states/activeWannado';
 
 export const useEditable = () => {
-  const [focus, setFocus] = useState<'title' | 'content'>('title');
   const [editable, setEditable] = useState(false);
 
-  const setEditableTitle = () => {
-    setFocus('title');
-    setEditable(true);
-  };
-  const setEditableContent = () => {
-    setFocus('content');
-    setEditable(true);
-  };
   const setEditableFalse = () => {
     setEditable(false);
   };
+  const setEditableTrue = () => {
+    setEditable(true);
+  };
 
   return {
-    focus,
     editable,
-    setEditableTitle,
-    setEditableContent,
     setEditableFalse,
+    setEditableTrue,
   };
 };
 
@@ -46,13 +38,16 @@ export const useActiveMemo = (initialMemoId: string | undefined) => {
 };
 
 export const useRealtimeData = (activeMemo: MemoSerialized | undefined) => {
-  const [title, setTitle] = useState(activeMemo ? activeMemo.title : '');
-  const [content, setContent] = useState(activeMemo ? activeMemo.content : '');
+  const [data, setData] = useState<string>(
+    activeMemo ? activeMemo.title + '\n' + activeMemo.content : '',
+  );
+  const title = useMemo(() => data.split('\n')[0], [data]);
+  const content = useMemo(() => data.split('\n').slice(1).join('\n'), [data]);
 
   return {
     title,
-    setTitle,
     content,
-    setContent,
+    data,
+    setData,
   };
 };

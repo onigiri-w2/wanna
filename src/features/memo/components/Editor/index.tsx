@@ -9,8 +9,7 @@ import {
   activeWannadoIdState,
 } from '@/recoil/states/activeWannado';
 
-import {EditorContent} from './EditorContent';
-import {EditorTitle} from './EditorTitle';
+import {EditorData} from './EditorData';
 import {EditToolBar} from './EditorToolBar';
 import {useEditable, useActiveMemo, useRealtimeData} from './hooks';
 
@@ -21,14 +20,8 @@ type Props = {
 export const Editor = ({initialeMemoId, px = 1}: Props) => {
   const wannadoId = useRecoilValue(activeWannadoIdState);
   const {activeMemo, setActiveMemoId} = useActiveMemo(initialeMemoId);
-  const {title, setTitle, content, setContent} = useRealtimeData(activeMemo);
-  const {
-    editable,
-    focus,
-    setEditableTitle,
-    setEditableContent,
-    setEditableFalse,
-  } = useEditable();
+  const {title, content, data, setData} = useRealtimeData(activeMemo);
+  const {editable, setEditableFalse, setEditableTrue} = useEditable();
 
   const save = async () => {
     if (title === '') return;
@@ -51,21 +44,14 @@ export const Editor = ({initialeMemoId, px = 1}: Props) => {
   return (
     <View flex={1}>
       <ScrollView flex={1} px={px}>
-        <EditorTitle
-          isFocused={editable && focus === 'title'}
+        <EditorData
+          data={data}
           title={title}
-          editable={editable}
-          onTouchView={setEditableTitle}
-          onChangeTitle={setTitle}
-          px={px}
-        />
-        <EditorContent
           content={content}
-          editable={editable}
-          onTouchView={setEditableContent}
-          isFocused={editable && focus === 'content'}
-          onChangeContent={setContent}
           px={px}
+          editable={editable}
+          onTouchView={setEditableTrue}
+          onChangeContent={setData}
         />
       </ScrollView>
       <EditToolBar editable={editable} onPressDone={save} />
