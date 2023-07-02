@@ -7,7 +7,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import {SafeAreaView} from '@/components/SafeAreaView';
 import {RootNavParamList} from '@/navigations/root';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
-import {commonStyles} from '@/styles/commonStyles';
+import {commonStyles} from '@/styles/commonRNStyles';
 import {MAIN_COLOR} from '@/styles/const';
 
 import {Header} from './components/Header';

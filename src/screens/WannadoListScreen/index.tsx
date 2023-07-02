@@ -3,7 +3,7 @@ import React from 'react';
 import {VStack} from 'native-base';
 
 import {SafeAreaView} from '@/components/SafeAreaView';
-import {commonStyles} from '@/styles/commonStyles';
+import {commonStyles} from '@/styles/commonRNStyles';
 import {BACKGROUND_GRAY_COLOR, MAIN_COLOR} from '@/styles/const';
 
 import {Body} from './components/Body';

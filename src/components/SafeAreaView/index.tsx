@@ -2,7 +2,7 @@ import React from 'react';
 
 import SafeAreaViewCore from 'react-native-safe-area-view';
 
-import {commonStyles} from '@/styles/commonStyles';
+import {commonStyles} from '@/styles/commonRNStyles';
 
 type Props = {
   topColorCode?: string;
