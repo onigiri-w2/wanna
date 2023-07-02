@@ -1,4 +1,5 @@
 import 'react-native-get-random-values';
+import {Realm} from '@realm/react';
 import {BSON} from 'realm';
 
 import {MemoSerialized} from '@/domain/model/entity/memo';

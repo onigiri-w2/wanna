@@ -21,6 +21,7 @@ export const MAIN_COLOR_VERY_LIGHT = '#fefce8'; // NativeBase -> "yellow.100"
 export const ACCENT_COLOR = '#007AB7';
 export const ACCENT_COLOR_LIGHT = '#00A0E9';
 export const ACCENT_COLOR_VERY_LIGHT = '#E6F6FF';
+export const ACCENT_COLOR_HEAVY = '#005A8C';
 export const BACKGROUND_GRAY_COLOR = '#f5f5f4'; // NativeBase -> "gray.100"
 export const BORDER_GRAY_COLOR = '#e2e2e1'; // NativeBase -> "gray.200"
 export const BORDER_GRAY_HEAVY_COLOR = '#c8c8c7'; // NativeBase -> "gray.400"

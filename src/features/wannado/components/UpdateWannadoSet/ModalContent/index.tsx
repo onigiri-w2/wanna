@@ -1,6 +1,11 @@
 import {Text, HStack, Button} from 'native-base';
 
-import {FONT_SIZE_NORMAL} from '@/styles/const';
+import {
+  ACCENT_COLOR,
+  FONT_SIZE_NORMAL,
+  ACCENT_COLOR_HEAVY,
+  ACCENT_COLOR_VERY_LIGHT,
+} from '@/styles/const';
 
 type Props = {
   message: string;
@@ -15,8 +20,17 @@ export const ModalContent = ({message, onSubmit, close}: Props) => {
       </Text>
       <HStack justifyContent="center">
         <Button.Group>
-          <Button onPress={onSubmit}>はい</Button>
-          <Button onPress={close} variant="ghost">
+          <Button
+            onPress={onSubmit}
+            bgColor={ACCENT_COLOR}
+            _pressed={{bgColor: ACCENT_COLOR_HEAVY}}>
+            はい
+          </Button>
+          <Button
+            onPress={close}
+            bgColor="white"
+            _text={{color: ACCENT_COLOR}}
+            _pressed={{bgColor: ACCENT_COLOR_VERY_LIGHT}}>
             いいえ
           </Button>
         </Button.Group>
