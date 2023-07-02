@@ -1,12 +1,14 @@
 import React, {Suspense} from 'react';
-import {Text, View} from 'react-native';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {NativeBaseProvider} from 'native-base';
+import {ErrorBoundary} from 'react-error-boundary';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {RecoilRoot} from 'recoil';
 import RecoilNexus from 'recoil-nexus';
 
+import {RootErrorFallback} from '@/components/error/RootErrorFallback';
+import {RootSuspenseFallback} from '@/components/suspense/RootSuspenseFallback';
 import {theme} from '@/styles/theme';
 
 type Props = {
@@ -17,24 +19,15 @@ export const AppProvider = ({children}: Props) => {
   return (
     <RecoilRoot>
       <RecoilNexus />
-      <Suspense
-        fallback={
-          // TODO: このローディング画面は別の場所に抜き出せ。
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text>loading...</Text>
-          </View>
-        }>
-        <SafeAreaProvider>
-          <NativeBaseProvider theme={theme}>
-            <NavigationContainer>{children}</NavigationContainer>
-          </NativeBaseProvider>
-        </SafeAreaProvider>
-      </Suspense>
+      <ErrorBoundary FallbackComponent={RootErrorFallback}>
+        <Suspense fallback={<RootSuspenseFallback />}>
+          <SafeAreaProvider>
+            <NativeBaseProvider theme={theme}>
+              <NavigationContainer>{children}</NavigationContainer>
+            </NativeBaseProvider>
+          </SafeAreaProvider>
+        </Suspense>
+      </ErrorBoundary>
     </RecoilRoot>
   );
 };
