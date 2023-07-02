@@ -19,15 +19,15 @@ export const AppProvider = ({children}: Props) => {
   return (
     <RecoilRoot>
       <RecoilNexus />
-      <ErrorBoundary FallbackComponent={RootErrorFallback}>
-        <Suspense fallback={<RootSuspenseFallback />}>
-          <SafeAreaProvider>
-            <NativeBaseProvider theme={theme}>
+      <NativeBaseProvider theme={theme}>
+        <ErrorBoundary FallbackComponent={RootErrorFallback}>
+          <Suspense fallback={<RootSuspenseFallback />}>
+            <SafeAreaProvider>
               <NavigationContainer>{children}</NavigationContainer>
-            </NativeBaseProvider>
-          </SafeAreaProvider>
-        </Suspense>
-      </ErrorBoundary>
+            </SafeAreaProvider>
+          </Suspense>
+        </ErrorBoundary>
+      </NativeBaseProvider>
     </RecoilRoot>
   );
 };

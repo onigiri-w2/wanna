@@ -3,11 +3,12 @@ import React, {useEffect} from 'react';
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {VStack} from 'native-base';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
-import SafeAreaView from 'react-native-safe-area-view';
 
+import {SafeAreaView} from '@/components/SafeAreaView';
 import {RootNavParamList} from '@/navigations/root';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
-import {style} from '@/screens/WannadoDetailScreen/style';
+import {commonStyles} from '@/styles/commonStyles';
+import {MAIN_COLOR} from '@/styles/const';
 
 import {Header} from './components/Header';
 import {WannadoNavTab} from './navigations/tab';
@@ -22,17 +23,15 @@ export const WannadoDetailPage = () => {
   }, []);
 
   return (
-    <>
+    <SafeAreaView topColorCode={MAIN_COLOR} bottomColorCode="white">
       {!isLoading && (
-        <SafeAreaView style={style.container}>
-          <GestureHandlerRootView style={{flex: 1}}>
-            <VStack style={style.vstack}>
-              <Header />
-              <WannadoNavTab />
-            </VStack>
-          </GestureHandlerRootView>
-        </SafeAreaView>
+        <GestureHandlerRootView style={commonStyles.flex1}>
+          <VStack style={commonStyles.flex1}>
+            <Header />
+            <WannadoNavTab />
+          </VStack>
+        </GestureHandlerRootView>
       )}
-    </>
+    </SafeAreaView>
   );
 };
