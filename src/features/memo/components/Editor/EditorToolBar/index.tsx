@@ -8,6 +8,7 @@ import {
   BACKGROUND_GRAY_COLOR,
   ACCENT_COLOR,
   BOTTOM_SHEET_HANDLER_HEIGHT,
+  FONT_SIZE_NORMAL,
 } from '@/styles/const';
 
 type EditToolBarProps = {
@@ -31,7 +32,7 @@ export const EditToolBar = ({editable, onPressDone}: EditToolBarProps) => {
         <Text
           ml="auto"
           fontWeight="bold"
-          fontSize={18}
+          fontSize={FONT_SIZE_NORMAL}
           color={ACCENT_COLOR}
           onPress={onPressDone}>
           完了

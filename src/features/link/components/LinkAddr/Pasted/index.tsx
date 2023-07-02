@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 import {View, Text, HStack, Input} from 'native-base';
 
 import {MainButton} from '@/components/MainButton';
-import {ACCENT_COLOR} from '@/styles/const';
+import {ACCENT_COLOR, FONT_SIZE_NORMAL, FONT_SIZE_SMALL} from '@/styles/const';
 
 import {getUrlTitle} from '../functions/getUrlTitle';
 
@@ -38,12 +38,12 @@ export const Pasted = ({url, onAdd}: Props) => {
     <View>
       <View mb={4}>
         <HStack mb={2} alignItems="center">
-          <Text fontSize={16} fontWeight="bold">
+          <Text fontSize={FONT_SIZE_NORMAL} fontWeight="bold">
             タイトル
           </Text>
           <Text
             ml={3}
-            fontSize={14}
+            fontSize={FONT_SIZE_SMALL}
             underline
             onPress={handlePressEdit}
             color={ACCENT_COLOR}>
@@ -52,23 +52,23 @@ export const Pasted = ({url, onAdd}: Props) => {
         </HStack>
         {editable ? (
           <Input
-            fontSize={16}
+            fontSize={FONT_SIZE_NORMAL}
             ml={3}
             value={title}
             onChangeText={setTitle}
             multiline
           />
         ) : (
-          <Text fontSize={16} ml={3}>
+          <Text fontSize={FONT_SIZE_NORMAL} ml={3}>
             {title}
           </Text>
         )}
       </View>
       <View mb={8}>
-        <Text fontSize={16} mb={2} fontWeight="bold">
+        <Text fontSize={FONT_SIZE_NORMAL} mb={2} fontWeight="bold">
           URL
         </Text>
-        <Text fontSize={16} ml={3} numberOfLines={1}>
+        <Text fontSize={FONT_SIZE_NORMAL} ml={3} numberOfLines={1}>
           {url}
         </Text>
       </View>

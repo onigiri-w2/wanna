@@ -6,8 +6,9 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {Modal} from '@/components/Modal';
 import {deleteWannado} from '@/domain/usecase/wannado';
-import {useModal} from '@/hooks/useModal';
+import {useShow} from '@/hooks/useShow';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
+import {FONT_SIZE_NORMAL} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
 
@@ -16,15 +17,15 @@ type Props = {
   onDelete: () => void;
 };
 export const Delete = ({wannadoId, onDelete}: Props) => {
-  const {isModalVisible, showModal, hideModal} = useModal();
+  const {isShow, show, hide} = useShow();
   const handleDeleteButtonPress = () => {
-    showModal();
+    show();
   };
   const handleDelete = async () => {
     deleteWannado(wannadoId);
     wannadoOverviewAllActions.deleteWannado(wannadoId);
     onDelete();
-    hideModal();
+    hide();
   };
 
   return (
@@ -32,16 +33,16 @@ export const Delete = ({wannadoId, onDelete}: Props) => {
       <TouchableOpacity onPress={handleDeleteButtonPress}>
         <HStack py={1} alignItems="center">
           <MaterialCommunityIcons name="delete" size={24} />
-          <Text ml={2} fontSize={16} fontWeight="bold">
+          <Text ml={2} fontSize={FONT_SIZE_NORMAL} fontWeight="bold">
             削除する
           </Text>
         </HStack>
       </TouchableOpacity>
-      <Modal isOpen={isModalVisible} close={hideModal}>
+      <Modal isOpen={isShow} close={hide}>
         <ModalContent
           message="本当に削除しますか？"
           onSubmit={handleDelete}
-          close={hideModal}
+          close={hide}
         />
       </Modal>
     </>

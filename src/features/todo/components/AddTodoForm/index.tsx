@@ -16,6 +16,7 @@ import {
   ADD_FORM_HEIGHT,
   MAIN_COLOR_VERY_LIGHT,
   MAIN_COLOR,
+  FONT_SIZE_NORMAL,
 } from '@/styles/const';
 
 import {useTextInput} from './hooks';
@@ -40,7 +41,7 @@ export const AddTodoForm = React.memo(() => {
             onChange={e => updateTitle(e.nativeEvent.text)}
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
-            fontSize={16}
+            fontSize={FONT_SIZE_NORMAL}
             _focus={styles.focusedInput}
             autoFocus
           />

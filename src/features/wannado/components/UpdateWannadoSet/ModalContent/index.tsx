@@ -1,5 +1,7 @@
 import {Text, HStack, Button} from 'native-base';
 
+import {FONT_SIZE_NORMAL} from '@/styles/const';
+
 type Props = {
   message: string;
   onSubmit: () => void;
@@ -8,7 +10,7 @@ type Props = {
 export const ModalContent = ({message, onSubmit, close}: Props) => {
   return (
     <>
-      <Text textAlign="center" fontSize={16} mb={6}>
+      <Text textAlign="center" fontSize={FONT_SIZE_NORMAL} mb={6}>
         {message}
       </Text>
       <HStack justifyContent="center">

@@ -6,8 +6,9 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {Modal} from '@/components/Modal';
 import {completeWannado} from '@/domain/usecase/wannado';
-import {useModal} from '@/hooks/useModal';
+import {useShow} from '@/hooks/useShow';
 import {wannadoActions} from '@/recoil/actions/wannado';
+import {FONT_SIZE_NORMAL} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
 
@@ -16,15 +17,15 @@ type Props = {
   onComplete: () => void;
 };
 export const Complete = ({wannadoId, onComplete}: Props) => {
-  const {isModalVisible, showModal, hideModal} = useModal();
+  const {isShow, show, hide} = useShow();
   const handleCompleteButtonPress = () => {
-    showModal();
+    show();
   };
   const handleComplete = async () => {
     completeWannado(wannadoId);
     wannadoActions.complete(wannadoId);
     onComplete();
-    hideModal();
+    hide();
   };
 
   return (
@@ -32,16 +33,16 @@ export const Complete = ({wannadoId, onComplete}: Props) => {
       <TouchableOpacity onPress={handleCompleteButtonPress}>
         <HStack py={1} alignItems="center">
           <MaterialIcons name="done" size={24} />
-          <Text ml={2} fontSize={16} fontWeight="bold">
+          <Text ml={2} fontSize={FONT_SIZE_NORMAL} fontWeight="bold">
             完了する
           </Text>
         </HStack>
       </TouchableOpacity>
-      <Modal isOpen={isModalVisible} close={hideModal}>
+      <Modal isOpen={isShow} close={hide}>
         <ModalContent
           message="本当に完了にしますか？"
           onSubmit={handleComplete}
-          close={hideModal}
+          close={hide}
         />
       </Modal>
     </>

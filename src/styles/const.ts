@@ -1,10 +1,18 @@
 /**
- * サイズは全てpx指定
+ * 注意書き:
+ *   1. サイズは全てpx指定
  */
 
 // フォント定義
-export const FONT_SIZE_PAGE_HEADER = 20;
-export const FONT_WEIGHT_PAGE_HEADER = 'bold';
+export const FONT_SIZE_SMALL = 14;
+export const FONT_SIZE_NORMAL = 16;
+export const FONT_SIZE_LARGE = 20;
+export const FONT_COLOR_NORMAL = '#333'; // NativeBase -> "gray.700"
+export const FONT_COLOR_LIGHT = '#666'; // NativeBase -> "gray.500"
+export const FONT_COLOR_VERY_LIGHT = '#aaa'; // NativeBase -> "gray.400"
+
+// アイコン定義
+export const ICON_SIZE_NORMAL = 20;
 
 // 色定義
 export const MAIN_COLOR = '#facc15'; // NativeBase -> "yellow.400"
@@ -16,8 +24,11 @@ export const ACCENT_COLOR_VERY_LIGHT = '#E6F6FF';
 export const BACKGROUND_GRAY_COLOR = '#f5f5f4'; // NativeBase -> "gray.100"
 export const BORDER_GRAY_COLOR = '#e2e2e1'; // NativeBase -> "gray.200"
 export const BORDER_GRAY_HEAVY_COLOR = '#c8c8c7'; // NativeBase -> "gray.400"
+export const LINK_COLOR = '#007AB7'; // NativeBase -> "blue.500"
 
 // ページヘッダー定義
+export const PAGE_HEADER_FONT_SIZE = FONT_SIZE_LARGE;
+export const PAGE_HEADER_FONT_WEIGHT = 'bold';
 export const PAGE_HEADER_HEIGHT = 52; // px: NativeBase -> 13
 export const PAGE_HEADER_PADDING = 16; // px: NativeBase -> 4
 export const PAGE_HEADER_COLOR = MAIN_COLOR;

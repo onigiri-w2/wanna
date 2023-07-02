@@ -1,7 +1,6 @@
 import React from 'react';
-import {StyleSheet, FlatList} from 'react-native';
+import {StyleSheet, FlatList, View} from 'react-native';
 
-import {Box} from 'native-base';
 import {useRecoilValue} from 'recoil';
 
 import {activeWannadoLinksState} from '@/recoil/states/activeWannado';
@@ -16,9 +15,9 @@ export const LinkList = () => {
       contentContainerStyle={styles.flatList}
       data={links}
       renderItem={({item}) => (
-        <Box mb={4}>
+        <View style={styles.linkItem}>
           <LinkItem link={item} />
-        </Box>
+        </View>
       )}
       keyExtractor={item => item.id}
     />
@@ -29,5 +28,8 @@ const styles = StyleSheet.create({
   flatList: {
     borderRadius: BORDER_RADIUS,
     paddingBottom: 100,
+  },
+  linkItem: {
+    marginBottom: 16,
   },
 });

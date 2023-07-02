@@ -1,10 +1,10 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-import Entypo from 'react-native-vector-icons/Entypo';
 import {Box} from 'native-base';
+import Entypo from 'react-native-vector-icons/Entypo';
 
-import {MAIN_COLOR} from '@/styles/const';
+import {BORDER_CIRCLE_RADIUS, MAIN_COLOR} from '@/styles/const';
 
 type Props = {
   onPress: () => void;
@@ -15,7 +15,7 @@ export const AddIcon = ({onPress}: Props) => {
     <TouchableOpacity onPress={onPress}>
       <Box
         bg={MAIN_COLOR}
-        borderRadius={100}
+        borderRadius={BORDER_CIRCLE_RADIUS}
         w="60px"
         h="60px"
         justifyContent="center"

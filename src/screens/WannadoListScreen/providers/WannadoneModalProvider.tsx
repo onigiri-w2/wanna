@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react';
 
-import {useModal} from '@/hooks/useModal';
+import {useShow} from '@/hooks/useShow';
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -16,7 +16,7 @@ export const WannadoneModalContext = createContext<ContextProps>({
   hideModal: () => {},
 });
 export const WannadoneModalProvider = ({children}: ProviderProps) => {
-  const {isModalVisible, showModal, hideModal} = useModal();
+  const {isShow: isModalVisible, show: showModal, hide: hideModal} = useShow();
   return (
     <WannadoneModalContext.Provider
       value={{isModalVisible, showModal, hideModal}}>

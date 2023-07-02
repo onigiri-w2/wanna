@@ -3,10 +3,16 @@ import {StyleSheet} from 'react-native';
 
 import {Input, Text} from 'native-base';
 
-const FONT_SIZE = 16;
+import {
+  FONT_COLOR_LIGHT,
+  FONT_COLOR_NORMAL,
+  FONT_SIZE_NORMAL,
+} from '@/styles/const';
+
+const FONT_SIZE = FONT_SIZE_NORMAL;
 const LINE_HEIGHT = FONT_SIZE * 1.5;
-const FONT_COLOR = '#333';
-const PLACEHOLDER_COLOR = '#888';
+const FONT_COLOR = FONT_COLOR_NORMAL;
+const PLACEHOLDER_COLOR = FONT_COLOR_LIGHT;
 
 type ContentProps = {
   content?: string;

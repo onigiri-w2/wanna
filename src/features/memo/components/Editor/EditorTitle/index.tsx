@@ -3,10 +3,16 @@ import {StyleSheet} from 'react-native';
 
 import {Input, Text} from 'native-base';
 
+import {
+  FONT_COLOR_NORMAL,
+  FONT_COLOR_VERY_LIGHT,
+  FONT_SIZE_LARGE,
+} from '@/styles/const';
+
 const FONT_WEIGHT = 'bold';
-const FONT_COLOR = '#333';
-const FONT_SIZE = 20;
-const PLACEHOLDER_COLOR = '#aaa';
+const FONT_COLOR = FONT_COLOR_NORMAL;
+const FONT_SIZE = FONT_SIZE_LARGE;
+const PLACEHOLDER_COLOR = FONT_COLOR_VERY_LIGHT;
 const PLACEHOLDER = 'タイトル（必須）';
 
 type TitleProps = {

@@ -1,7 +1,6 @@
-import {useCallback, useEffect} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {useCallback} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 
-import {Box} from 'native-base';
 import {useRecoilValue} from 'recoil';
 
 import {activeWannadoMemosState} from '@/recoil/states/activeWannado';
@@ -19,18 +18,14 @@ export const MemoList = ({onPressMemo}: Props) => {
     onPressMemo(memoId);
   }, []);
 
-  useEffect(() => {
-    console.log('memos', memos.length);
-  }, [memos]);
-
   return (
     <FlatList
       contentContainerStyle={styles.flatList}
       data={memos}
       renderItem={({item}) => (
-        <Box mb={4}>
+        <View style={styles.memoItem}>
           <MemoItem memo={item} onPressEdit={handlePressMemo} />
-        </Box>
+        </View>
       )}
       keyExtractor={item => item.id}
     />
@@ -41,5 +36,8 @@ const styles = StyleSheet.create({
   flatList: {
     borderRadius: BORDER_RADIUS,
     paddingBottom: 100,
+  },
+  memoItem: {
+    marginBottom: 16,
   },
 });

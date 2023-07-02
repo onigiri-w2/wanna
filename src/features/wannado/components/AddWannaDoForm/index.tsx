@@ -11,20 +11,22 @@ import {EmojiIcon} from '@/components/EmojiIcon';
 import {EmojiModal} from '@/components/EmojiModal';
 import {MainButton} from '@/components/MainButton';
 import {createWannado} from '@/domain/usecase/wannado';
-import {useEmoji} from '@/hooks/useEmoji';
-import {useModal} from '@/hooks/useModal';
+import {useShow} from '@/hooks/useShow';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   ADD_FORM_HEIGHT,
   ADD_FORM_PADDING,
   BORDER_RADIUS,
+  FONT_SIZE_NORMAL,
   MAIN_COLOR,
   MAIN_COLOR_VERY_LIGHT,
 } from '@/styles/const';
 
+import {useEmoji} from './hooks';
+
 export const AddWannadoForm = () => {
   const {emoji, updateEmoji} = useEmoji();
-  const {isModalVisible, hideModal, showModal} = useModal();
+  const {isShow, hide, show} = useShow();
   const [title, setTitle] = React.useState('');
 
   const handlePressAdd = async () => {
@@ -42,7 +44,7 @@ export const AddWannadoForm = () => {
     <Box p={`${ADD_FORM_PADDING}px`} justifyContent="center">
       <Flex direction="row" alignItems="center">
         <Box mr={4}>
-          <EmojiIcon onPress={showModal} emoji={emoji} size={28} />
+          <EmojiIcon onPress={show} emoji={emoji} size={28} />
         </Box>
         <Box flex={1} mr={4}>
           <Input
@@ -51,16 +53,16 @@ export const AddWannadoForm = () => {
             onChange={handleChange}
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
-            fontSize={16}
+            fontSize={FONT_SIZE_NORMAL}
             _focus={styles.inputFocused}
           />
         </Box>
         <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />
       </Flex>
       <EmojiModal
-        isModalVisible={isModalVisible}
+        isModalVisible={isShow}
         onPressEmoji={updateEmoji}
-        onPressOutside={hideModal}
+        onPressOutside={hide}
       />
     </Box>
   );

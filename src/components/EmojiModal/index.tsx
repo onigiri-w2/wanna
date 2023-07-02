@@ -1,7 +1,7 @@
-import React, { memo } from "react";
-import { Modal } from "react-native";
+import React, {memo} from 'react';
+import {Modal} from 'react-native';
 
-import ExternalEmojiModal from "react-native-emoji-modal";
+import ExternalEmojiModal from 'react-native-emoji-modal';
 
 type Props = {
   isModalVisible: boolean;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const EmojiModal = memo(
-  ({ isModalVisible, onPressEmoji, onPressOutside }: Props) => {
+  ({isModalVisible, onPressEmoji, onPressOutside}: Props) => {
     return (
       <Modal visible={isModalVisible} transparent>
         <ExternalEmojiModal
@@ -19,5 +19,5 @@ export const EmojiModal = memo(
         />
       </Modal>
     );
-  }
+  },
 );

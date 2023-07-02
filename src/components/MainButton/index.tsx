@@ -3,7 +3,12 @@ import {StyleSheet, TouchableOpacity} from 'react-native';
 
 import {Text} from 'native-base';
 
-import {BORDER_RADIUS, MAIN_COLOR, MAIN_COLOR_VERY_LIGHT} from '@/styles/const';
+import {
+  BORDER_RADIUS,
+  FONT_SIZE_NORMAL,
+  MAIN_COLOR,
+  MAIN_COLOR_VERY_LIGHT,
+} from '@/styles/const';
 
 type Props = {
   onPress: () => void;
@@ -30,7 +35,7 @@ export const MainButton = ({
         textAlign="center"
         color={disabled ? 'gray.400' : 'black'}
         fontWeight="bold"
-        fontSize={16}>
+        fontSize={FONT_SIZE_NORMAL}>
         {text}
       </Text>
     </TouchableOpacity>

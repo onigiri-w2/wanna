@@ -12,7 +12,11 @@ import {
   activeWannadoActions,
   activeWannadoIdState,
 } from '@/recoil/states/activeWannado';
-import {BORDER_GRAY_COLOR} from '@/styles/const';
+import {
+  BORDER_GRAY_COLOR,
+  FONT_SIZE_NORMAL,
+  ICON_SIZE_NORMAL,
+} from '@/styles/const';
 
 type Props = {
   todo: TodoSerialized;
@@ -59,12 +63,12 @@ export const TodoListItem = React.memo(
           borderBottomWidth={1}
           borderBottomColor={BORDER_GRAY_COLOR}>
           <Checkbox checked={checked} onPress={handlePressCheckbox} />
-          <Text flex={1} fontSize={16} px={4}>
+          <Text flex={1} fontSize={FONT_SIZE_NORMAL} px={4}>
             {todo.title}
           </Text>
           <AntDesign
             name="close"
-            size={20}
+            size={ICON_SIZE_NORMAL}
             onPress={handleDelete}
             color="#999"
           />

@@ -3,8 +3,8 @@ import React from 'react';
 import {HStack, Text} from 'native-base';
 
 import {
-  FONT_SIZE_PAGE_HEADER,
-  FONT_WEIGHT_PAGE_HEADER,
+  PAGE_HEADER_FONT_SIZE,
+  PAGE_HEADER_FONT_WEIGHT,
   PAGE_HEADER_COLOR,
   PAGE_HEADER_HEIGHT,
   PAGE_HEADER_PADDING,
@@ -27,8 +27,8 @@ export const Header = () => {
       <DoneIcon />
       <Text
         marginX="auto"
-        fontSize={FONT_SIZE_PAGE_HEADER}
-        fontWeight={FONT_WEIGHT_PAGE_HEADER}>
+        fontSize={PAGE_HEADER_FONT_SIZE}
+        fontWeight={PAGE_HEADER_FONT_WEIGHT}>
         {isModalVisible ? 'やったこと' : 'やりたいこと'}
       </Text>
       <SettingsIcon />

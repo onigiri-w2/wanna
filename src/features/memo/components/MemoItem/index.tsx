@@ -13,7 +13,13 @@ import {
   activeWannadoIdState,
   activeWannadoActions,
 } from '@/recoil/states/activeWannado';
-import {ACCENT_COLOR, BORDER_RADIUS} from '@/styles/const';
+import {
+  ACCENT_COLOR,
+  BORDER_RADIUS,
+  FONT_COLOR_NORMAL,
+  FONT_SIZE_NORMAL,
+  FONT_SIZE_SMALL,
+} from '@/styles/const';
 
 type MemoItemProps = {
   memo: MemoSerialized;
@@ -76,13 +82,17 @@ const Body = ({memo, onPressBody, isMemoWide}: BodyProps) => {
       activeOpacity={1}
       onPress={onPressBody}
       style={styles.body}>
-      <Text fontSize={16} mb={2} fontWeight="bold" color="#333">
+      <Text
+        fontSize={FONT_SIZE_NORMAL}
+        mb={2}
+        fontWeight="bold"
+        color={FONT_COLOR_NORMAL}>
         {memo.title}
       </Text>
       <Text
-        fontSize={14}
+        fontSize={FONT_SIZE_SMALL}
         fontWeight="normal"
-        color="#333"
+        color={FONT_COLOR_NORMAL}
         numberOfLines={isMemoWide ? undefined : 3}>
         {memo.content}
       </Text>

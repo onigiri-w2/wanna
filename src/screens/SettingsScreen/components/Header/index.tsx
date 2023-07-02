@@ -5,8 +5,8 @@ import {Text, Box} from 'native-base';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
 import {
-  FONT_SIZE_PAGE_HEADER,
-  FONT_WEIGHT_PAGE_HEADER,
+  PAGE_HEADER_FONT_SIZE,
+  PAGE_HEADER_FONT_WEIGHT,
   PAGE_HEADER_COLOR,
   PAGE_HEADER_HEIGHT,
   PAGE_HEADER_PADDING,
@@ -33,8 +33,8 @@ export const Header = ({title, goTo}: Props) => {
       </TouchableOpacity>
       <Text
         mx="auto"
-        fontSize={FONT_SIZE_PAGE_HEADER}
-        fontWeight={FONT_WEIGHT_PAGE_HEADER}
+        fontSize={PAGE_HEADER_FONT_SIZE}
+        fontWeight={PAGE_HEADER_FONT_WEIGHT}
         numberOfLines={1}
         ellipsizeMode="tail">
         {title}

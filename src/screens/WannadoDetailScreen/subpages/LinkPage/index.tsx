@@ -3,21 +3,21 @@ import {View} from 'native-base';
 import {Modal} from '@/components/Modal';
 import {LinkAddr} from '@/features/link/components/LinkAddr';
 import {LinkList} from '@/features/link/components/LinkList';
-import {useModal} from '@/hooks/useModal';
+import {useShow} from '@/hooks/useShow';
 
 import {Buttons} from './Buttons';
 
 export const LinkPage = () => {
-  const {isModalVisible, showModal, hideModal} = useModal();
+  const {isShow, show, hide} = useShow();
   const handleAdd = async (title: string, url: string) => {
-    hideModal();
+    hide();
   };
 
   return (
     <View flex={1} px={4} pt={4}>
       <LinkList />
-      <Buttons onPressAdd={showModal} />
-      <Modal isOpen={isModalVisible} close={hideModal}>
+      <Buttons onPressAdd={show} />
+      <Modal isOpen={isShow} close={hide}>
         <LinkAddr onAdd={handleAdd} />
       </Modal>
     </View>
