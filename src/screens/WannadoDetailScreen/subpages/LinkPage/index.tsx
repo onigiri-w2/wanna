@@ -1,4 +1,4 @@
-import {View} from 'native-base';
+import {View, StyleSheet} from 'react-native';
 
 import {Modal} from '@/components/Modal';
 import {LinkAddr} from '@/features/link/components/LinkAddr';
@@ -14,7 +14,7 @@ export const LinkPage = () => {
   };
 
   return (
-    <View flex={1} px={4} pt={4}>
+    <View style={styles.container}>
       <LinkList />
       <Buttons onPressAdd={show} />
       <Modal isOpen={isShow} close={hide}>
@@ -23,3 +23,10 @@ export const LinkPage = () => {
     </View>
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    position: 'relative',
+    paddingHorizontal: 16,
+  },
+});

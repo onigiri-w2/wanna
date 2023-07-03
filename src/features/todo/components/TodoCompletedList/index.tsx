@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 
 import {useRecoilValue} from 'recoil';
 
@@ -12,9 +12,7 @@ export const TodoCompletedList = () => {
   const todos = useRecoilValue(activeWannadoCompletedTodosState);
   return (
     <FlatList
-      contentContainerStyle={{
-        borderRadius: BORDER_RADIUS,
-      }}
+      contentContainerStyle={styles.flatList}
       // TODO: ここ完了日順に並べたい
       data={todos}
       renderItem={({item}) => <TodoListItem todo={item} />}
@@ -22,3 +20,11 @@ export const TodoCompletedList = () => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  flatList: {
+    paddingTop: 16,
+    paddingBottom: 200,
+    borderRadius: BORDER_RADIUS,
+  },
+});

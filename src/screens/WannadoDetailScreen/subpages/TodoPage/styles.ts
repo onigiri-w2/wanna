@@ -7,8 +7,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   todolist: {
-    padding: PAGE_BODY_PADDING,
-    paddingBottom: 0,
+    paddingHorizontal: PAGE_BODY_PADDING,
   },
   buttonView: {
     position: 'absolute',

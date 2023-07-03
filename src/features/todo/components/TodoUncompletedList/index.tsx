@@ -39,7 +39,8 @@ export const TodoUncompletedList = ({onPressTodo}: Props) => {
 
 const styles = StyleSheet.create({
   flatList: {
-    backgroundColor: 'white',
     borderRadius: BORDER_RADIUS,
+    paddingTop: 16,
+    paddingBottom: 200,
   },
 });

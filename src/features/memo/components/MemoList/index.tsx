@@ -35,7 +35,8 @@ export const MemoList = ({onPressMemo}: Props) => {
 const styles = StyleSheet.create({
   flatList: {
     borderRadius: BORDER_RADIUS,
-    paddingBottom: 100,
+    paddingBottom: 200,
+    paddingTop: 16,
   },
   memoItem: {
     marginBottom: 16,

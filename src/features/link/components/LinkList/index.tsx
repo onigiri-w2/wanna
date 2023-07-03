@@ -27,7 +27,8 @@ export const LinkList = () => {
 const styles = StyleSheet.create({
   flatList: {
     borderRadius: BORDER_RADIUS,
-    paddingBottom: 100,
+    paddingTop: 16,
+    paddingBottom: 200,
   },
   linkItem: {
     marginBottom: 16,

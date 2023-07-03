@@ -58,6 +58,7 @@ export const TodoListItem = React.memo(
       <TouchableOpacity onPress={handlePress} onLongPress={handleLongPress}>
         <HStack
           alignItems="center"
+          bg="white"
           px={4}
           py={3}
           borderBottomWidth={1}
