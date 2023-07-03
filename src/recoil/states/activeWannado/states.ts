@@ -3,6 +3,7 @@ import {atom, selector} from 'recoil';
 import {LinkSerialized} from '@/domain/model/entity/link';
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {TodoSerialized} from '@/domain/model/entity/todo';
+import {TodoListSerialized} from '@/domain/model/entity/todoLIst';
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
 import {recoilKeyHashSet} from '@/recoil/recoilKeys';
 
@@ -28,19 +29,22 @@ export const activeWannadoIdState = selector<string>({
   },
 });
 
-export const activeWannadoTodosState = selector<TodoSerialized[]>({
+const activeWannadoTodoListState = selector<TodoListSerialized>({
   key: recoilKeyHashSet.activeWannadoTodos,
   get: ({get}) => {
     const activeWannado = get(activeWannadoState);
-    return activeWannado ? activeWannado.todos : [];
+    return activeWannado && activeWannado.todoList;
   },
 });
 
 export const activeWannadoCompletedTodosState = selector<TodoSerialized[]>({
   key: recoilKeyHashSet.activeWannadoCompletedTodos,
   get: ({get}) => {
-    const todos = get(activeWannadoTodosState);
-    return todos
+    const todoList = get(activeWannadoTodoListState);
+    if (!todoList) {
+      return [];
+    }
+    return todoList.todos
       .filter(todo => todo.isCompleted)
       .sort((a, b) => {
         if (a.completedAt && b.completedAt) {
@@ -54,8 +58,19 @@ export const activeWannadoCompletedTodosState = selector<TodoSerialized[]>({
 export const activeWannadoUncompletedTodosState = selector<TodoSerialized[]>({
   key: recoilKeyHashSet.activeWannadoUncompletedTodos,
   get: ({get}) => {
-    const todos = get(activeWannadoTodosState);
-    return todos.filter(todo => !todo.isCompleted);
+    const todoList = get(activeWannadoTodoListState);
+    if (!todoList) {
+      return [];
+    }
+    return todoList.uncompletedTodoOrder
+      .map(id => {
+        const todo = todoList.todos.find(todo => todo.id === id);
+        if (todo) {
+          return todo;
+        }
+        return undefined;
+      })
+      .filter(todo => todo !== undefined) as TodoSerialized[];
   },
 });
 

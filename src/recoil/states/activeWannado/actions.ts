@@ -36,7 +36,10 @@ export const activeWannadoActions = {
     if (!todo) return;
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
-      return {...prev, todos: [...prev.todos, todo]};
+      return produce(prev, draft => {
+        draft.todoList.todos.push(todo);
+        draft.todoList.uncompletedTodoOrder.unshift(todo.id);
+      });
     });
   },
   deleteTodo: (todoId: string) => {
@@ -45,7 +48,11 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        draft.todos = draft.todos.filter(t => t.id !== todoId);
+        draft.todoList.todos = draft.todoList.todos.filter(
+          t => t.id !== todoId,
+        );
+        draft.todoList.uncompletedTodoOrder =
+          draft.todoList.uncompletedTodoOrder.filter(id => id !== todoId);
       });
     });
   },
@@ -55,7 +62,7 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const todo = draft.todos.find(t => t.id === todoId);
+        const todo = draft.todoList.todos.find(t => t.id === todoId);
         if (!todo) return;
         todo.title = title;
       });
@@ -69,10 +76,12 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const todo = draft.todos.find(t => t.id === todoId);
+        const todo = draft.todoList.todos.find(t => t.id === todoId);
         if (!todo) return;
         todo.isCompleted = true;
         todo.completedAt = uT.completedAt;
+        draft.todoList.uncompletedTodoOrder =
+          draft.todoList.uncompletedTodoOrder.filter(id => id !== todoId);
       });
     });
   },
@@ -84,10 +93,11 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const todo = draft.todos.find(t => t.id === todoId);
+        const todo = draft.todoList.todos.find(t => t.id === todoId);
         if (!todo) return;
         todo.isCompleted = false;
         todo.completedAt = uT.completedAt;
+        draft.todoList.uncompletedTodoOrder.unshift(todoId);
       });
     });
   },

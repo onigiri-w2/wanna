@@ -12,7 +12,7 @@ export async function createTodo(
   if (!wannado) throw new NotFoundWannado();
 
   const todo = Todo.new(title);
-  wannado.addTodo(todo);
+  wannado.todoList.addTodo(todo);
   repo.update(wannado);
   return todo.serialize();
 }
@@ -25,7 +25,7 @@ export async function updateTodoTitle(
   const wannado = await repo.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
 
-  const todo = wannado.todos.find(todo => todo.id.id === todoId);
+  const todo = wannado.todoList.todos.find(todo => todo.id.id === todoId);
   if (!todo) throw new NotFoundTodo();
 
   todo.updateTitle(title);
@@ -36,10 +36,9 @@ export async function completeTodo(wannadoId: string, todoId: string) {
   const wannado = await repo.find(new CharId(wannadoId));
   if (!wannado) throw new NotFoundWannado();
 
-  const todo = wannado.todos.find(todo => todo.id.id === todoId);
+  const todo = wannado.todoList.complementTodoById(new CharId(todoId));
   if (!todo) throw new NotFoundTodo();
 
-  todo.complete();
   repo.update(wannado);
   return todo.serialize();
 }
@@ -48,10 +47,9 @@ export async function uncompleteTodo(wanandoId: string, todoId: string) {
   const wannado = await repo.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
 
-  const todo = wannado.todos.find(todo => todo.id.id === todoId);
+  const todo = wannado.todoList.uncomplementTodoById(new CharId(todoId));
   if (!todo) throw new NotFoundTodo();
 
-  todo.uncomplete();
   repo.update(wannado);
   return todo.serialize();
 }
@@ -63,6 +61,6 @@ export async function deleteTodo(
   const wannado = await repo.find(new CharId(wannadoId));
   if (!wannado) throw new NotFoundWannado();
 
-  wannado.removeTodo(new CharId(todoId));
+  wannado.todoList.removeTodo(new CharId(todoId));
   repo.update(wannado);
 }

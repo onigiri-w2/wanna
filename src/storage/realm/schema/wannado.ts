@@ -6,7 +6,7 @@ import {Wannado as WannadoEntity} from '@/domain/model/entity/wannado';
 
 import {Link} from './link';
 import {Memo} from './memo';
-import {Todo} from './todo';
+import {TodoList} from './todoList';
 
 export class Wannado extends Realm.Object<Wannado> {
   _mongoId!: BSON.ObjectId;
@@ -16,8 +16,7 @@ export class Wannado extends Realm.Object<Wannado> {
   isCompleted!: boolean;
   createdAt!: Date;
   completedAt?: Date;
-  todos!: Realm.List<Todo>;
-  todoOrder!: string[];
+  todoList!: TodoList;
   memos!: Realm.List<Memo>;
   memoOrder!: string[];
   links!: Realm.List<Link>;
@@ -34,8 +33,7 @@ export class Wannado extends Realm.Object<Wannado> {
       isCompleted: {type: 'bool', default: false},
       createdAt: 'date',
       completedAt: 'date?',
-      todos: 'Todo[]',
-      todoOrder: 'string[]',
+      todoList: 'TodoList',
       memos: 'Memo[]',
       memoOrder: 'string[]',
       links: 'Link[]',
@@ -51,8 +49,7 @@ export class Wannado extends Realm.Object<Wannado> {
       isCompleted: this.isCompleted,
       createdAt: this.createdAt,
       completedAt: this.completedAt,
-      todos: this.todos.map(todo => todo.serialize()),
-      todoOrder: this.todoOrder,
+      todoList: this.todoList.serialize(),
       memos: this.memos.map(memo => memo.serialize()),
       memoOrder: this.memoOrder,
       links: this.links.map(link => link.serialize()),
