@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   },
   view: {
     flex: 1,
-    padding: PAGE_BODY_PADDING,
+    paddingHorizontal: PAGE_BODY_PADDING,
   },
 });

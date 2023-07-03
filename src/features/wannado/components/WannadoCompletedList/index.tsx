@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 
 import {Box} from 'native-base';
 import {useRecoilValue} from 'recoil';
@@ -18,6 +18,7 @@ export const WannadoCompletedList = ({onPress}: Props) => {
   return (
     <FlatList
       data={wannadoList.filter(value => value.isCompleted)}
+      contentContainerStyle={styles.flatList}
       renderItem={({item}) => (
         <Box
           bg="white"
@@ -30,3 +31,10 @@ export const WannadoCompletedList = ({onPress}: Props) => {
     />
   );
 };
+
+const styles = StyleSheet.create({
+  flatList: {
+    paddingTop: 16,
+    paddingBottom: 200,
+  },
+});

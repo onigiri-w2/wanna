@@ -5,6 +5,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
+import {ACCENT_COLOR, FONT_COLOR_VERY_LIGHT} from '@/styles/const';
+
 import {LinkPage} from '../subpages/LinkPage';
 import {MemoPage} from '../subpages/MemoPage';
 import {TodoPage} from '../subpages/TodoPage';
@@ -21,6 +23,8 @@ export const WannadoNavTab = React.memo(() => {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
+        tabBarInactiveTintColor: FONT_COLOR_VERY_LIGHT,
+        tabBarActiveTintColor: ACCENT_COLOR,
       }}>
       <Tab.Screen
         name="Todo"

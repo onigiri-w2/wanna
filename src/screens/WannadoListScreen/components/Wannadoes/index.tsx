@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     backgroundColor: BACKGROUND_GRAY_COLOR,
   },
   view: {
-    padding: PAGE_BODY_PADDING,
+    paddingHorizontal: PAGE_BODY_PADDING,
     flex: 1,
   },
 });

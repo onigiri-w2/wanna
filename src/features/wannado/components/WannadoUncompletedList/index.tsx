@@ -18,7 +18,7 @@ export const WannadoUncompletedList = ({onPressEl}: Props) => {
 
   return (
     <FlatList
-      style={styles.container}
+      contentContainerStyle={styles.flatList}
       data={wannadoList.filter(value => !value.isCompleted)}
       renderItem={({item}) => (
         <Box
@@ -34,7 +34,8 @@ export const WannadoUncompletedList = ({onPressEl}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  flatList: {
+    paddingTop: 16,
+    paddingBottom: 200,
   },
 });
