@@ -85,8 +85,8 @@ export class Wannado implements IWannado {
     this.todos = this.todos.filter(todo => todo.id.id !== todoId.id);
     this.todoOrder = this.todoOrder.remove(todoId);
   }
-  public reorderTodo(todoId: CharId, order: number) {
-    this.todoOrder = this.todoOrder.reorder(todoId, order);
+  public reorderTodo(todoId: CharId, newOrder: number) {
+    this.todoOrder = this.todoOrder.reorder(todoId, newOrder);
   }
 
   public addMemo(memo: Memo) {
@@ -97,8 +97,8 @@ export class Wannado implements IWannado {
     this.memos = this.memos.filter(memo => memo.id.id !== memoId.id);
     this.memoOrder = this.memoOrder.remove(memoId);
   }
-  public reorderMemo(memoId: CharId, order: number) {
-    this.memoOrder = this.memoOrder.reorder(memoId, order);
+  public reorderMemo(memoId: CharId, newOrder: number) {
+    this.memoOrder = this.memoOrder.reorder(memoId, newOrder);
   }
 
   public addLink(link: Link) {
@@ -109,8 +109,8 @@ export class Wannado implements IWannado {
     this.links = this.links.filter(link => link.id.id !== linkId.id);
     this.linkOrder = this.linkOrder.remove(linkId);
   }
-  public reorderLink(linkId: CharId, order: number) {
-    this.linkOrder = this.linkOrder.reorder(linkId, order);
+  public reorderLink(linkId: CharId, newOrder: number) {
+    this.linkOrder = this.linkOrder.reorder(linkId, newOrder);
   }
 
   public serialize() {
