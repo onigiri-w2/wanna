@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 
 import {RouteProp, useRoute} from '@react-navigation/native';
 import {VStack} from 'native-base';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 import {SafeAreaView} from '@/components/SafeAreaView';
 import {RootNavParamList} from '@/navigations/root';
@@ -25,12 +24,10 @@ export const WannadoDetailPage = () => {
   return (
     <SafeAreaView topColorCode={MAIN_COLOR} bottomColorCode="white">
       {!isLoading && (
-        <GestureHandlerRootView style={commonStyles.flex1}>
-          <VStack style={commonStyles.flex1}>
-            <Header />
-            <WannadoNavTab />
-          </VStack>
-        </GestureHandlerRootView>
+        <VStack style={commonStyles.flex1}>
+          <Header />
+          <WannadoNavTab />
+        </VStack>
       )}
     </SafeAreaView>
   );

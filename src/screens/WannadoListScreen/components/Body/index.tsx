@@ -1,25 +1,20 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
-import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {View} from 'native-base';
+
+import {commonStyles} from '@/styles/commonRNStyles';
 
 import {Wannadoes} from '../Wannadoes';
 import {Wannadones} from '../Wannadones';
 
 export const Body = () => {
   return (
-    <GestureHandlerRootView style={styles.container}>
+    <View style={commonStyles.flex1}>
       <BottomSheetModalProvider>
         <Wannadoes />
         <Wannadones />
       </BottomSheetModalProvider>
-    </GestureHandlerRootView>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
