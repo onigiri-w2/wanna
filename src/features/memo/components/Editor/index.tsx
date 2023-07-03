@@ -1,13 +1,8 @@
 import React from 'react';
 
 import {View, ScrollView} from 'native-base';
-import {useRecoilValue} from 'recoil';
 
-import * as usecase from '@/domain/usecase/memo';
-import {
-  activeWannadoActions,
-  activeWannadoIdState,
-} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/states/activeWannado';
 
 import {EditorData} from './EditorData';
 import {EditToolBar} from './EditorToolBar';
@@ -18,8 +13,7 @@ type Props = {
   px?: number;
 };
 export const Editor = ({initialeMemoId, px = 1}: Props) => {
-  const wannadoId = useRecoilValue(activeWannadoIdState);
-  const {activeMemo, setActiveMemoId} = useActiveMemo(initialeMemoId);
+  const {activeMemo} = useActiveMemo(initialeMemoId);
   const {title, content, data, setData} = useRealtimeData(activeMemo);
   const {editable, setEditableFalse, setEditableTrue} = useEditable();
 
@@ -28,16 +22,13 @@ export const Editor = ({initialeMemoId, px = 1}: Props) => {
 
     setEditableFalse();
     if (!activeMemo) {
-      const newMemo = await usecase.createMemo(wannadoId, title, content);
-      if (newMemo) {
-        setActiveMemoId(newMemo.id);
-        activeWannadoActions.addMemo(newMemo);
-      }
+      activeWannadoActions.addMemo(title, content);
     } else {
-      activeWannadoActions.updateMemoTitle(activeMemo.id, title);
-      activeWannadoActions.updateMemoContent(activeMemo.id, content);
-      usecase.updateMemoTitle(wannadoId, activeMemo.id, title);
-      usecase.updateMemoContent(wannadoId, activeMemo.id, content);
+      activeWannadoActions.updateMemoTitleAndContent(
+        activeMemo.id,
+        title,
+        content,
+      );
     }
   };
 

@@ -1,41 +1,25 @@
 import {produce} from 'immer';
 import {setRecoil} from 'recoil-nexus';
 
-import {WannadoSerialized} from '@/domain/model/entity/wannado';
+import * as usecase from '@/domain/usecase/wannado';
 
 import {wannadoOverviewAllState} from './states';
 
 export const wannadoOverviewAllActions = {
-  addWannado: async (wannado: WannadoSerialized) => {
+  addWannado: async (title: string, emoji: string) => {
+    const wannado = await usecase.createWannado(title, emoji);
+    if (!wannado) return;
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;
       return [...prev, wannado];
     });
   },
   deleteWannado: (wannadoId: string) => {
+    // TODO: 削除失敗したらどうするか
+    usecase.deleteWannado(wannadoId);
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;
       return prev.filter(w => w.id !== wannadoId);
-    });
-  },
-  updateWannadoTitle: (wannadoId: string, title: string) => {
-    setRecoil(wannadoOverviewAllState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const wannado = draft.find(w => w.id === wannadoId);
-        if (!wannado) return;
-        wannado.title = title;
-      });
-    });
-  },
-  updateWannadoEmoji: (wannadoId: string, emoji: string) => {
-    setRecoil(wannadoOverviewAllState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const wannado = draft.find(w => w.id === wannadoId);
-        if (!wannado) return;
-        wannado.emoji = emoji;
-      });
     });
   },
   completeWannado: (wannadoId: string) => {

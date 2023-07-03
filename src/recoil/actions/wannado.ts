@@ -1,11 +1,14 @@
 import {produce} from 'immer';
 import {setRecoil} from 'recoil-nexus';
 
+import * as usecase from '@/domain/usecase/wannado';
+
 import {activeWannadoState} from '../states/activeWannado';
 import {wannadoOverviewAllState} from '../states/wannadoOverview';
 
 export const wannadoActions = {
   updateTitle: (wannadoId: string, title: string) => {
+    usecase.updateWannadoTitle(wannadoId, title);
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return {
@@ -22,6 +25,7 @@ export const wannadoActions = {
     });
   },
   updateEmoji: (wannadoId: string, emoji: string) => {
+    usecase.updateWannadoEmoji(wannadoId, emoji);
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return {
@@ -38,6 +42,7 @@ export const wannadoActions = {
     });
   },
   complete: (wannadoId: string) => {
+    usecase.completeWannado(wannadoId);
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return {
@@ -54,6 +59,7 @@ export const wannadoActions = {
     });
   },
   uncomplete: (wannadoId: string) => {
+    usecase.uncompleteWannado(wannadoId);
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return {

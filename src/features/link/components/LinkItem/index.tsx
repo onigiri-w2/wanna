@@ -3,14 +3,9 @@ import {Linking} from 'react-native';
 
 import {HStack, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useRecoilValue} from 'recoil';
 
 import {LinkSerialized} from '@/domain/model/entity/link';
-import * as usecase from '@/domain/usecase/link';
-import {
-  activeWannadoActions,
-  activeWannadoIdState,
-} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/states/activeWannado';
 import {
   BORDER_RADIUS,
   FONT_SIZE_NORMAL,
@@ -22,9 +17,7 @@ type Props = {
   link: LinkSerialized;
 };
 export const LinkItem = React.memo(({link}: Props) => {
-  const wannadoId = useRecoilValue(activeWannadoIdState);
   const handlePressDelete = () => {
-    usecase.deleteLink(wannadoId, link.id);
     activeWannadoActions.deleteLink(link.id);
   };
   const hanldePressText = () => {

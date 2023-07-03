@@ -10,7 +10,6 @@ import {Box, Flex, Input} from 'native-base';
 import {EmojiIcon} from '@/components/EmojiIcon';
 import {EmojiModal} from '@/components/EmojiModal';
 import {MainButton} from '@/components/MainButton';
-import {createWannado} from '@/domain/usecase/wannado';
 import {useShow} from '@/hooks/useShow';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
@@ -30,8 +29,7 @@ export const AddWannadoForm = () => {
   const [title, setTitle] = React.useState('');
 
   const handlePressAdd = async () => {
-    const wannado = await createWannado(title, emoji);
-    wannadoOverviewAllActions.addWannado(wannado);
+    wannadoOverviewAllActions.addWannado(title, emoji);
     setTitle('');
     updateEmoji('');
   };

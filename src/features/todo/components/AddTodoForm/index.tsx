@@ -2,14 +2,9 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 
 import {Box, Flex, Input} from 'native-base';
-import {useRecoilValue} from 'recoil';
 
 import {MainButton} from '@/components/MainButton';
-import * as usecase from '@/domain/usecase/todo';
-import {
-  activeWannadoActions,
-  activeWannadoState,
-} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/states/activeWannado';
 import {
   ADD_FORM_PADDING,
   BORDER_RADIUS,
@@ -22,14 +17,12 @@ import {
 import {useTextInput} from './hooks';
 
 export const AddTodoForm = React.memo(() => {
-  const wannado = useRecoilValue(activeWannadoState);
   const {value: title, updateValue: updateTitle} = useTextInput();
 
   const handlePress = async () => {
     updateTitle('');
     if (title === '') return;
-    const newTodo = await usecase.createTodo(wannado.id, title);
-    if (newTodo) activeWannadoActions.addTodo(newTodo);
+    activeWannadoActions.addTodo(title);
   };
 
   return (

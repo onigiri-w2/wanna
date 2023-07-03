@@ -29,14 +29,13 @@ export const TodoListItem = React.memo(
     const [checked, setChecked] = React.useState(todo.isCompleted);
 
     const handlePressCheckbox = (c: boolean) => {
+      //TODO: もしドメイン側が失敗したら、チェックしないもしくは戻す的な実装にするかも
       setChecked(c);
       setTimeout(() => {
         if (c) {
           activeWannadoActions.completeTodo(todo.id);
-          usecase.completeTodo(wannadoId, todo.id);
         } else {
           activeWannadoActions.uncompleteTodo(todo.id);
-          usecase.uncompleteTodo(wannadoId, todo.id);
         }
       }, 300);
     };
