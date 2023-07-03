@@ -40,7 +40,14 @@ export const activeWannadoCompletedTodosState = selector<TodoSerialized[]>({
   key: recoilKeyHashSet.activeWannadoCompletedTodos,
   get: ({get}) => {
     const todos = get(activeWannadoTodosState);
-    return todos.filter(todo => todo.isCompleted);
+    return todos
+      .filter(todo => todo.isCompleted)
+      .sort((a, b) => {
+        if (a.completedAt && b.completedAt) {
+          return a.completedAt.getTime() - b.completedAt.getTime();
+        }
+        return 0;
+      });
   },
 });
 

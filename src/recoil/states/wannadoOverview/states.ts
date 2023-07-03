@@ -32,7 +32,14 @@ export const compWannadoOverviewAllState = selector({
   key: 'compWannadoOverviewAll',
   get: ({get}) => {
     const wannadoAll = get(wannadoOverviewAllState);
-    const filtered = wannadoAll.filter(w => w.isCompleted);
+    const filtered = wannadoAll
+      .filter(w => w.isCompleted)
+      .sort((a, b) => {
+        if (a.completedAt && b.completedAt) {
+          return a.completedAt.getTime() - b.completedAt.getTime();
+        }
+        return 0;
+      });
     return filtered.map(w => ({
       id: w.id,
       title: w.title,
