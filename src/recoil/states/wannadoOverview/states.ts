@@ -1,14 +1,14 @@
 import {atom, selector} from 'recoil';
 
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
-import {getWannadoAll} from '@/domain/usecase/wannado';
+import * as usecase from '@/domain/usecase/wannado';
 
 export const wannadoOverviewAllState = atom<WannadoSerialized[]>({
   key: 'wannadoOverviewAll',
   default: selector({
     key: 'wannadoOverviewAll/default',
     get: async () => {
-      return getWannadoAll();
+      return usecase.getWannadoAll();
     },
   }),
 });

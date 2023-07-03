@@ -6,7 +6,7 @@ import {useRecoilValue} from 'recoil';
 
 import {WannadoOverview} from '@/domain/types';
 import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
-import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
+import {uncompWannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 };
 
 export const WannadoUncompletedList = ({onPressEl}: Props) => {
-  const wannadoList = useRecoilValue(wannadoOverviewAllState);
+  const wannadoList = useRecoilValue(uncompWannadoOverviewAllState);
 
   return (
     <FlatList

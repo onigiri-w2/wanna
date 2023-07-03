@@ -1,4 +1,3 @@
-import {produce} from 'immer';
 import {setRecoil} from 'recoil-nexus';
 
 import * as usecase from '@/domain/usecase/wannado';
@@ -20,26 +19,6 @@ export const wannadoOverviewAllActions = {
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;
       return prev.filter(w => w.id !== wannadoId);
-    });
-  },
-  completeWannado: (wannadoId: string) => {
-    setRecoil(wannadoOverviewAllState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const wannado = draft.find(w => w.id === wannadoId);
-        if (!wannado) return;
-        wannado.isCompleted = true;
-      });
-    });
-  },
-  uncompleteWannado: (wannadoId: string) => {
-    setRecoil(wannadoOverviewAllState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const wannado = draft.find(w => w.id === wannadoId);
-        if (!wannado) return;
-        wannado.isCompleted = false;
-      });
     });
   },
 };

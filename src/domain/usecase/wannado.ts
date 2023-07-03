@@ -63,17 +63,23 @@ export async function deleteWannado(wannadoId: string): Promise<void> {
 
   repo.delete(data.id);
 }
-export async function completeWannado(wannadoId: string): Promise<void> {
+export async function completeWannado(
+  wannadoId: string,
+): Promise<WannadoSerialized> {
   const data = await repo.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
   data.complete();
   repo.update(data);
+  return data.serialize();
 }
-export async function uncompleteWannado(wannadoId: string): Promise<void> {
+export async function uncompleteWannado(
+  wannadoId: string,
+): Promise<WannadoSerialized> {
   const data = await repo.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
   data.uncomplete();
   repo.update(data);
+  return data.serialize();
 }

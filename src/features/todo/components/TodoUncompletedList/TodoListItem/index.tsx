@@ -6,7 +6,6 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useRecoilValue} from 'recoil';
 
 import {Checkbox} from '@/components/Checkbox';
-import * as usecase from '@/domain//usecase/todo';
 import {TodoSerialized} from '@/domain/model/entity/todo';
 import {
   activeWannadoActions,
@@ -50,7 +49,6 @@ export const TodoListItem = React.memo(
 
     const handleDelete = () => {
       activeWannadoActions.deleteTodo(todo.id);
-      usecase.deleteTodo(wannadoId, todo.id);
     };
 
     return (

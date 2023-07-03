@@ -6,7 +6,7 @@ import {useRecoilValue} from 'recoil';
 
 import {WannadoOverview} from '@/domain/types';
 import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
-import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
+import {compWannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
 
 type Props = {
@@ -14,10 +14,10 @@ type Props = {
 };
 
 export const WannadoCompletedList = ({onPress}: Props) => {
-  const wannadoList = useRecoilValue(wannadoOverviewAllState);
+  const wannadoList = useRecoilValue(compWannadoOverviewAllState);
   return (
     <FlatList
-      data={wannadoList.filter(value => value.isCompleted)}
+      data={wannadoList.filter(value => value)}
       contentContainerStyle={styles.flatList}
       renderItem={({item}) => (
         <Box

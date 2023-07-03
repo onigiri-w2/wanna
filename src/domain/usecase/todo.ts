@@ -40,7 +40,8 @@ export async function completeTodo(wannadoId: string, todoId: string) {
   if (!todo) throw new NotFoundTodo();
 
   todo.complete();
-  await repo.update(wannado);
+  repo.update(wannado);
+  return todo.serialize();
 }
 
 export async function uncompleteTodo(wanandoId: string, todoId: string) {
@@ -51,7 +52,8 @@ export async function uncompleteTodo(wanandoId: string, todoId: string) {
   if (!todo) throw new NotFoundTodo();
 
   todo.uncomplete();
-  await repo.update(wannado);
+  repo.update(wannado);
+  return todo.serialize();
 }
 
 export async function deleteTodo(

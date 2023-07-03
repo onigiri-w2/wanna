@@ -61,29 +61,33 @@ export const activeWannadoActions = {
       });
     });
   },
-  completeTodo: (todoId: string) => {
+  completeTodo: async (todoId: string) => {
     // TODO: 完了失敗したらどうするか考える
     const wannadoId = getRecoil(activeWannadoState)?.id;
-    todoUsecase.completeTodo(wannadoId, todoId);
+    const uT = await todoUsecase.completeTodo(wannadoId, todoId);
+    if (!uT) return;
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
         const todo = draft.todos.find(t => t.id === todoId);
         if (!todo) return;
         todo.isCompleted = true;
+        todo.completedAt = uT.completedAt;
       });
     });
   },
-  uncompleteTodo: (todoId: string) => {
+  uncompleteTodo: async (todoId: string) => {
     // TODO: 完了失敗したらどうするか考える
     const wannadoId = getRecoil(activeWannadoState)?.id;
-    todoUsecase.uncompleteTodo(wannadoId, todoId);
+    const uT = await todoUsecase.uncompleteTodo(wannadoId, todoId);
+    if (!uT) return;
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
         const todo = draft.todos.find(t => t.id === todoId);
         if (!todo) return;
         todo.isCompleted = false;
+        todo.completedAt = uT.completedAt;
       });
     });
   },
