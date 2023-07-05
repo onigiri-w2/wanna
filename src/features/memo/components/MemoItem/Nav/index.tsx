@@ -8,19 +8,23 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import {
+  editMemoShowActions,
+  editTargetMemoActions,
+} from '@/recoil/states/editTargetMemo';
 import {ACCENT_COLOR, BORDER_RADIUS, ICON_SIZE_NORMAL} from '@/styles/const';
 
 type NavProps = {
   isMemoWide: boolean;
   memo: MemoSerialized;
-  onPressEdit: (memoId: string) => void;
 };
-export const Nav = ({isMemoWide, memo, onPressEdit}: NavProps) => {
+export const Nav = ({isMemoWide, memo}: NavProps) => {
   const handlePressDelete = () => {
     activeWannadoActions.deleteMemo(memo.id);
   };
   const handlePressEdit = () => {
-    onPressEdit(memo.id);
+    editTargetMemoActions.setEditTarget(memo);
+    editMemoShowActions.setShowTrue();
   };
 
   return (

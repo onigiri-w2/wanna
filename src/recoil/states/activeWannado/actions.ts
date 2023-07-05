@@ -101,7 +101,7 @@ export const activeWannadoActions = {
       });
     });
   },
-  setTodoOrder: (todoOrder: string[]) => {
+  updateTodoOrder: (todoOrder: string[]) => {
     const wannadoId = getRecoil(activeWannadoState)?.id;
     todoUsecase.reorder(wannadoId, todoOrder);
     setRecoil(activeWannadoState, prev => {
@@ -117,7 +117,11 @@ export const activeWannadoActions = {
     if (!memo) return;
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
-      return {...prev, memos: [...prev.memos, memo]};
+      return produce(prev, draft => {
+        // TODO: ここいけてないかもかぁ...DDD側とロジックが二重になってる。DDD側に寄せないといけないかも
+        draft.memoList.memos.push(memo);
+        draft.memoList.order.unshift(memo.id);
+      });
     });
   },
   deleteMemo: (memoId: string) => {
@@ -127,7 +131,22 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        draft.memos = draft.memos.filter(m => m.id !== memoId);
+        draft.memoList.memos = draft.memoList.memos.filter(
+          m => m.id !== memoId,
+        );
+      });
+    });
+  },
+  updateMemoOrder: (memoOrder: string[]) => {
+    // TODO: ユースケース失敗したら状態の変更はしないかも
+    const wannadoId = getRecoil(activeWannadoState)?.id;
+    memoUsecase.updateMemoOrder(wannadoId, memoOrder);
+    console.log('memoOrder', memoOrder);
+    setRecoil(activeWannadoState, prev => {
+      console.log('memoOrder2');
+      if (!prev) return prev;
+      return produce(prev, draft => {
+        draft.memoList.order = memoOrder;
       });
     });
   },
@@ -135,7 +154,7 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const memo = draft.memos.find(m => m.id === memoId);
+        const memo = draft.memoList.memos.find(m => m.id === memoId);
         if (!memo) return;
         memo.title = title;
       });
@@ -145,7 +164,7 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const memo = draft.memos.find(m => m.id === memoId);
+        const memo = draft.memoList.memos.find(m => m.id === memoId);
         if (!memo) return;
         memo.content = content;
       });
@@ -163,7 +182,7 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        const memo = draft.memos.find(m => m.id === memoId);
+        const memo = draft.memoList.memos.find(m => m.id === memoId);
         if (!memo) return;
         memo.title = title;
         memo.content = content;

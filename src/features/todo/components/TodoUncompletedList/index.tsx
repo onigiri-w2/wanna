@@ -22,7 +22,7 @@ export const TodoUncompletedList = React.memo(() => {
       renderItem={TodoListItem}
       keyExtractor={item => `draggable-item-${item.id}`}
       onDragEnd={({data}) => {
-        activeWannadoActions.setTodoOrder(data.map(d => d.id));
+        activeWannadoActions.updateTodoOrder(data.map(d => d.id));
       }}
       keyboardShouldPersistTaps="always"
     />

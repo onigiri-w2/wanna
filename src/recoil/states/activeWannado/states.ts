@@ -2,6 +2,7 @@ import {atom, selector} from 'recoil';
 
 import {LinkSerialized} from '@/domain/model/entity/link';
 import {MemoSerialized} from '@/domain/model/entity/memo';
+import {MemoListSerialized} from '@/domain/model/entity/memoList';
 import {TodoSerialized} from '@/domain/model/entity/todo';
 import {TodoListSerialized} from '@/domain/model/entity/todoLIst';
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
@@ -30,7 +31,7 @@ export const activeWannadoIdState = selector<string>({
 });
 
 const activeWannadoTodoListState = selector<TodoListSerialized>({
-  key: recoilKeyHashSet.activeWannadoTodos,
+  key: recoilKeyHashSet.activeWannadoTodoList,
   get: ({get}) => {
     const activeWannado = get(activeWannadoState);
     return activeWannado && activeWannado.todoList;
@@ -74,11 +75,30 @@ export const activeWannadoUncompletedTodosState = selector<TodoSerialized[]>({
   },
 });
 
+const activeWannadoMemoListState = selector<MemoListSerialized>({
+  key: recoilKeyHashSet.activeWannadoMemoList,
+  get: ({get}) => {
+    const activeWannado = get(activeWannadoState);
+    return activeWannado && activeWannado.memoList;
+  },
+});
+
 export const activeWannadoMemosState = selector<MemoSerialized[]>({
   key: recoilKeyHashSet.activeWannadoMemos,
   get: ({get}) => {
-    const activeWannado = get(activeWannadoState);
-    return activeWannado ? activeWannado.memos : [];
+    const memoList = get(activeWannadoMemoListState);
+    if (!memoList) {
+      return [];
+    }
+    return memoList.order
+      .map(id => {
+        const memo = memoList.memos.find(memo => memo.id === id);
+        if (memo) {
+          return memo;
+        }
+        return undefined;
+      })
+      .filter(memo => memo !== undefined) as MemoSerialized[];
   },
 });
 

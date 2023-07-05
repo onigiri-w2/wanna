@@ -2,14 +2,17 @@
 const recoilKeys = [
   'activeWannadoId',
   'activeWannado',
-  'activeWannadoTodos',
+  'activeWannadoTodoList',
   'activeWannadoCompletedTodos',
   'activeWannadoUncompletedTodos',
   'activeWannadoMemos',
   'activeWannadoMemo',
   'activeWannadoLinks',
+  'activeWannadoMemoList',
   'editTargetTodo',
   'editTodoShow',
+  'editTargetMemo',
+  'editMemoShow',
 ] as const;
 
 // Key: Keyのオブジェクト

@@ -3,35 +3,40 @@ import {StyleSheet} from 'react-native';
 
 import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import {View} from 'native-base';
+import {useRecoilValue, useResetRecoilState} from 'recoil';
 
 import {BottomSheetModal} from '@/components/BottomSheetModal';
 import {Editor} from '@/features/memo/components/Editor';
 import {MemoList} from '@/features/memo/components/MemoList';
-import {useShow} from '@/hooks/useShow';
+import {
+  editMemoShowActions,
+  editMemoShowState,
+  editTargetMemoState,
+} from '@/recoil/states/editTargetMemo';
 
 import {Buttons} from './Buttons';
 
 export const MemoPage = () => {
-  const {isShow, show, hide} = useShow();
-  const [activeMemoId, setActiveMemoId] = React.useState<string | undefined>();
-
-  const handlePressEdit = (memoId: string) => {
-    show();
-    setActiveMemoId(memoId);
-  };
+  const reset = useResetRecoilState(editTargetMemoState);
+  const isEditMemoShow = useRecoilValue(editMemoShowState);
+  const editTargetMemo = useRecoilValue(editTargetMemoState);
 
   const handleCloseModal = () => {
-    hide();
-    setActiveMemoId(undefined);
+    editMemoShowActions.setShowFalse();
+    reset();
+  };
+
+  const handlePressAddButton = () => {
+    editMemoShowActions.setShowTrue();
   };
 
   return (
     <BottomSheetModalProvider>
       <View style={styles.container}>
-        <MemoList onPressMemo={handlePressEdit} />
-        <Buttons onPressAdd={show} />
-        <BottomSheetModal isShow={isShow} onClose={handleCloseModal}>
-          {isShow && <Editor initialeMemoId={activeMemoId} />}
+        <MemoList />
+        <Buttons onPressAdd={handlePressAddButton} />
+        <BottomSheetModal isShow={isEditMemoShow} onClose={handleCloseModal}>
+          {isEditMemoShow && <Editor initialeMemoId={editTargetMemo?.id} />}
         </BottomSheetModal>
       </View>
     </BottomSheetModalProvider>

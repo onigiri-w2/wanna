@@ -13,7 +13,7 @@ export async function createMemo(
   if (!wannado) throw new NotFoundWannado();
 
   const memo = Memo.new(title, content);
-  wannado.addMemo(memo);
+  wannado.memoList.addMemo(memo);
   repo.update(wannado);
   return memo.serialize();
 }
@@ -26,7 +26,7 @@ export async function updateMemoTitle(
   const wannado = await repo.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
 
-  const memo = wannado.memos.find(memo => memo.id.id === memoId);
+  const memo = wannado.memoList.memos.find(memo => memo.id.id === memoId);
   if (!memo) throw new NotFoundMemo();
 
   memo.updateTitle(title);
@@ -40,7 +40,7 @@ export async function updateMemoContent(
 ) {
   const wannado = await repo.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
-  const memo = wannado.memos.find(memo => memo.id.id === memoId);
+  const memo = wannado.memoList.memos.find(memo => memo.id.id === memoId);
   if (!memo) throw new NotFoundMemo();
 
   memo.updateContent(content);
@@ -51,9 +51,20 @@ export async function deleteMemo(wanandoId: string, memoId: string) {
   const wannado = await repo.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
 
-  const memo = wannado.memos.find(memo => memo.id.id === memoId);
+  const memo = wannado.memoList.memos.find(memo => memo.id.id === memoId);
   if (!memo) throw new NotFoundMemo();
 
-  wannado.removeMemo(memo.id);
+  wannado.memoList.removeMemo(memo.id);
+  repo.update(wannado);
+}
+
+export async function updateMemoOrder(
+  wanandoId: string,
+  order: string[],
+): Promise<void> {
+  const wannado = await repo.find(new CharId(wanandoId));
+  if (!wannado) throw new NotFoundWannado();
+
+  wannado.memoList.reorder(order.map(id => new CharId(id)));
   repo.update(wannado);
 }

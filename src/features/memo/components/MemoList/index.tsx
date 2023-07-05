@@ -1,33 +1,32 @@
-import {useCallback} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import {useRecoilValue} from 'recoil';
 
-import {activeWannadoMemosState} from '@/recoil/states/activeWannado';
+import {
+  activeWannadoMemosState,
+  activeWannadoActions,
+} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
-import {MemoItem} from '../MemoItem';
+import {MemoItem2} from '../MemoItem';
 
-type Props = {
-  onPressMemo: (memoId: string) => void;
-};
-export const MemoList = ({onPressMemo}: Props) => {
+export const MemoList = () => {
   const memos = useRecoilValue(activeWannadoMemosState);
-
-  const handlePressMemo = useCallback((memoId: string) => {
-    onPressMemo(memoId);
-  }, []);
+  console.log(
+    'MemoList',
+    memos.map(m => m.id),
+  );
 
   return (
-    <FlatList
+    <DraggableFlatList
       contentContainerStyle={styles.flatList}
       data={memos}
-      renderItem={({item}) => (
-        <View style={styles.memoItem}>
-          <MemoItem memo={item} onPressEdit={handlePressMemo} />
-        </View>
-      )}
-      keyExtractor={item => item.id}
+      renderItem={MemoItem2}
+      keyExtractor={item => `draggable-item-${item.id}`}
+      onDragEnd={({data}) => {
+        activeWannadoActions.updateMemoOrder(data.map(d => d.id));
+      }}
     />
   );
 };
@@ -37,8 +36,5 @@ const styles = StyleSheet.create({
     borderRadius: BORDER_RADIUS,
     paddingBottom: 200,
     paddingTop: 16,
-  },
-  memoItem: {
-    marginBottom: 16,
   },
 });

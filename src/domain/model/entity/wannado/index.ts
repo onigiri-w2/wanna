@@ -2,12 +2,11 @@ import * as zod from 'zod';
 
 import {CharId, CharIdSchema} from '../../valueobjects/charId';
 import {Link, LinkSchema} from '../link';
-import {Memo, MemoSchema} from '../memo';
+import {MemoListSchema, MemoList} from '../memoList';
 import {TodoList, TodoListSchema} from '../todoLIst';
 
 import {Emoji, EmojiSchema} from './valueobject/emoji';
 import {LinkOrder} from './valueobject/linkOrder';
-import {MemoOrder, MemoOrderSchema} from './valueobject/memoOrder';
 import {Title, TitleSchema} from './valueobject/title';
 
 export type WannadoSerialized = ReturnType<Wannado['serialize']>;
@@ -19,8 +18,7 @@ export const WannadoSchema = zod.z.object({
   completedAt: zod.z.date().optional(),
   isCompleted: zod.z.boolean(),
   todoList: TodoListSchema,
-  memos: zod.z.array(MemoSchema),
-  memoOrder: MemoOrderSchema,
+  memoList: MemoListSchema,
   links: zod.z.array(LinkSchema),
 });
 export type IWannado = zod.infer<typeof WannadoSchema>;
@@ -34,8 +32,7 @@ export class Wannado implements IWannado {
     public completedAt: Date | undefined,
     public isCompleted: boolean,
     public todoList: TodoList,
-    public memos: Memo[],
-    public memoOrder: MemoOrder,
+    public memoList: MemoList,
     public links: Link[],
     public linkOrder: LinkOrder,
   ) {}
@@ -50,8 +47,7 @@ export class Wannado implements IWannado {
       undefined,
       false,
       TodoList.new(),
-      [],
-      MemoOrder.new(),
+      MemoList.new(),
       [],
       LinkOrder.new(),
     );
@@ -71,18 +67,6 @@ export class Wannado implements IWannado {
   public uncomplete() {
     this.completedAt = undefined;
     this.isCompleted = false;
-  }
-
-  public addMemo(memo: Memo) {
-    this.memos.push(memo);
-    this.memoOrder = this.memoOrder.push(memo.id);
-  }
-  public removeMemo(memoId: CharId) {
-    this.memos = this.memos.filter(memo => memo.id.id !== memoId.id);
-    this.memoOrder = this.memoOrder.remove(memoId);
-  }
-  public reorderMemo(memoId: CharId, newOrder: number) {
-    this.memoOrder = this.memoOrder.reorder(memoId, newOrder);
   }
 
   public addLink(link: Link) {
@@ -106,8 +90,7 @@ export class Wannado implements IWannado {
       completedAt: this.completedAt,
       isCompleted: this.isCompleted,
       todoList: this.todoList.serialize(),
-      memos: this.memos.map(memo => memo.serialize()),
-      memoOrder: this.memoOrder.serialize(),
+      memoList: this.memoList.serialize(),
       links: this.links.map(link => link.serialize()),
       linkOrder: this.linkOrder.serialize(),
     };
@@ -122,8 +105,7 @@ export class Wannado implements IWannado {
       data.completedAt,
       data.isCompleted,
       TodoList.deserialize(data.todoList),
-      data.memos.map(memo => Memo.deserialize(memo)),
-      MemoOrder.deserialize(data.memoOrder),
+      MemoList.deserialize(data.memoList),
       data.links.map(link => Link.deserialize(link)),
       LinkOrder.deserialize(data.linkOrder),
     );
