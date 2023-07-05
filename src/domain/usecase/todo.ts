@@ -64,3 +64,15 @@ export async function deleteTodo(
   wannado.todoList.removeTodo(new CharId(todoId));
   repo.update(wannado);
 }
+
+export async function reorder(
+  wannadoId: string,
+  todoOrder: string[],
+): Promise<void> {
+  const wannado = await repo.find(new CharId(wannadoId));
+  if (!wannado) throw new NotFoundWannado();
+
+  const todoList = wannado.todoList;
+  todoList.reorderUncomplementedTodoOrder(todoOrder.map(id => new CharId(id)));
+  repo.update(wannado);
+}

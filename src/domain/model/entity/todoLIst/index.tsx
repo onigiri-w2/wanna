@@ -24,18 +24,12 @@ export class TodoList implements ITodoList {
     return new TodoList(id, [], []);
   }
 
-  public reorderUncomplementedTodoOrder(
-    todoId: CharId,
-    newOrder: number,
-  ): void {
-    const newUncomplementedTodoOrder = this.uncompletedTodoOrder.filter(
-      id => id.id !== todoId.id,
-    );
-    newUncomplementedTodoOrder.splice(newOrder, 0, todoId);
-    this.uncompletedTodoOrder = newUncomplementedTodoOrder;
+  public reorderUncomplementedTodoOrder(todoOrder: CharId[]): void {
+    this.uncompletedTodoOrder = todoOrder;
   }
 
   public getTodoById(todoId: CharId): Todo | undefined {
+    // TODO: ここ何かしらの制約がいるはず...。存在しないIdを渡されたらどうするかとか
     return this.todos.find(todo => todo.id.id === todoId.id);
   }
 

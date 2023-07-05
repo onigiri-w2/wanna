@@ -1,41 +1,33 @@
-import React, {useCallback} from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import React from 'react';
+import {StyleSheet} from 'react-native';
 
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import {useRecoilValue} from 'recoil';
 
-import {TodoSerialized} from '@/domain/model/entity/todo';
-import {activeWannadoUncompletedTodosState} from '@/recoil/states/activeWannado';
+import {
+  activeWannadoUncompletedTodosState,
+  activeWannadoActions,
+} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
 import {TodoListItem} from './TodoListItem';
 
-type Props = {
-  onPressTodo: (todo: TodoSerialized) => void;
-};
-
-export const TodoUncompletedList = ({onPressTodo}: Props) => {
+export const TodoUncompletedList = React.memo(() => {
   const todos = useRecoilValue(activeWannadoUncompletedTodosState);
-  const handlePressTodo = useCallback((todo: TodoSerialized) => {
-    onPressTodo(todo);
-  }, []);
-  const onPressLongTodo = useCallback((todo: TodoSerialized) => {}, []);
 
   return (
-    <FlatList
+    <DraggableFlatList
       contentContainerStyle={styles.flatList}
       data={todos}
-      renderItem={({item}) => (
-        <TodoListItem
-          todo={item}
-          onPressTodo={handlePressTodo}
-          onLongPressTodo={onPressLongTodo}
-        />
-      )}
-      keyExtractor={item => item.id}
+      renderItem={TodoListItem}
+      keyExtractor={item => `draggable-item-${item.id}`}
+      onDragEnd={({data}) => {
+        activeWannadoActions.setTodoOrder(data.map(d => d.id));
+      }}
       keyboardShouldPersistTaps="always"
     />
   );
-};
+});
 
 const styles = StyleSheet.create({
   flatList: {

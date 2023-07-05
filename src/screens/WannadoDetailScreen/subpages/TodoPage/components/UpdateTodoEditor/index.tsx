@@ -1,29 +1,35 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
+import {useRecoilValue} from 'recoil';
+
 import {KeyboardAvoidingView} from '@/components/KeyboardAvoidingView';
 import {TodoSerialized} from '@/domain/model/entity/todo';
 import {UpdateTodoForm} from '@/features/todo/components/UpdateTodoForm';
+import {
+  editTargetTodoState,
+  editTodoShowActions,
+  editTodoShowState,
+} from '@/recoil/states/editTargetTodo';
 
-import {useUpdateEditorShowContext} from '../../providers/UpdateEditorShowProvider';
-
-type Props = {
-  todo: TodoSerialized | undefined;
-};
-export const UpdateTodoEditor = ({todo}: Props) => {
-  const {isModalVisible, hideModal} = useUpdateEditorShowContext();
+export const UpdateTodoEditor = React.memo(() => {
+  const todo = useRecoilValue<TodoSerialized | null>(editTargetTodoState);
+  const isEditShow = useRecoilValue(editTodoShowState);
   return (
     <>
-      {isModalVisible && todo && (
+      {isEditShow && todo && (
         <>
           <KeyboardAvoidingView style={styles.content}>
-            <UpdateTodoForm todo={todo} onClose={hideModal} />
+            <UpdateTodoForm
+              todo={todo}
+              onClose={() => editTodoShowActions.setShowFalse()}
+            />
           </KeyboardAvoidingView>
         </>
       )}
     </>
   );
-};
+});
 
 const styles = StyleSheet.create({
   backLayer: {

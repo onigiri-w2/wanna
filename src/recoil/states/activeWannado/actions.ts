@@ -101,6 +101,16 @@ export const activeWannadoActions = {
       });
     });
   },
+  setTodoOrder: (todoOrder: string[]) => {
+    const wannadoId = getRecoil(activeWannadoState)?.id;
+    todoUsecase.reorder(wannadoId, todoOrder);
+    setRecoil(activeWannadoState, prev => {
+      if (!prev) return prev;
+      return produce(prev, draft => {
+        draft.todoList.uncompletedTodoOrder = todoOrder;
+      });
+    });
+  },
   addMemo: async (title: string, content: string) => {
     const wannadoId = getRecoil(activeWannadoState)?.id;
     const memo = await memoUsecase.createMemo(wannadoId, title, content);

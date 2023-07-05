@@ -8,6 +8,8 @@ const recoilKeys = [
   'activeWannadoMemos',
   'activeWannadoMemo',
   'activeWannadoLinks',
+  'editTargetTodo',
+  'editTodoShow',
 ] as const;
 
 // Key: Keyのオブジェクト
