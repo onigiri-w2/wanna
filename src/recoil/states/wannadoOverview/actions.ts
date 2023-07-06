@@ -2,7 +2,7 @@ import {setRecoil} from 'recoil-nexus';
 
 import * as usecase from '@/domain/usecase/wannado';
 
-import {wannadoOverviewAllState} from './states';
+import {wannadoOrderState, wannadoOverviewAllState} from './states';
 
 export const wannadoOverviewAllActions = {
   addWannado: async (title: string, emoji: string) => {
@@ -12,6 +12,13 @@ export const wannadoOverviewAllActions = {
       if (!prev) return prev;
       return [...prev, wannado];
     });
+    setRecoil(wannadoOrderState, prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        order: [wannado.id, ...prev.order],
+      };
+    });
   },
   deleteWannado: (wannadoId: string) => {
     // TODO: 削除失敗したらどうするか
@@ -19,6 +26,22 @@ export const wannadoOverviewAllActions = {
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;
       return prev.filter(w => w.id !== wannadoId);
+    });
+    setRecoil(wannadoOrderState, prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        order: prev.order.filter(id => id !== wannadoId),
+      };
+    });
+  },
+  setOrderWannado: (order: string[]) => {
+    setRecoil(wannadoOrderState, prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        order,
+      };
     });
   },
 };

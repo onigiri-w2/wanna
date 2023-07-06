@@ -1,34 +1,28 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import {Box} from 'native-base';
+import DraggableFlatList from 'react-native-draggable-flatlist';
 import {useRecoilValue} from 'recoil';
 
-import {WannadoOverview} from '@/domain/types';
-import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
-import {uncompWannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
-import {BORDER_GRAY_COLOR} from '@/styles/const';
+import {
+  uncompWannadoOverviewAllState,
+  wannadoOverviewAllActions,
+} from '@/recoil/states/wannadoOverview';
 
-type Props = {
-  onPressEl: (wannado: WannadoOverview) => void;
-};
+import {WannadoListItem} from './Item';
 
-export const WannadoUncompletedList = ({onPressEl}: Props) => {
+export const WannadoUncompletedList = () => {
   const wannadoList = useRecoilValue(uncompWannadoOverviewAllState);
 
   return (
-    <FlatList
+    <DraggableFlatList
       contentContainerStyle={styles.flatList}
-      data={wannadoList.filter(value => !value.isCompleted)}
-      renderItem={({item}) => (
-        <Box
-          bg="white"
-          borderBottomWidth={1}
-          borderBottomColor={BORDER_GRAY_COLOR}>
-          <WannadoListItem onPress={onPressEl} wannado={item} />
-        </Box>
-      )}
+      data={wannadoList}
+      renderItem={WannadoListItem}
       keyExtractor={item => item.id}
+      onDragEnd={({data}) => {
+        wannadoOverviewAllActions.setOrderWannado(data.map(d => d.id));
+      }}
     />
   );
 };

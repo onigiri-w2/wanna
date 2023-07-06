@@ -4,7 +4,10 @@ import {setRecoil} from 'recoil-nexus';
 import * as usecase from '@/domain/usecase/wannado';
 
 import {activeWannadoState} from '../states/activeWannado';
-import {wannadoOverviewAllState} from '../states/wannadoOverview';
+import {
+  wannadoOrderState,
+  wannadoOverviewAllState,
+} from '../states/wannadoOverview';
 
 export const wannadoActions = {
   updateTitle: (wannadoId: string, title: string) => {
@@ -60,6 +63,13 @@ export const wannadoActions = {
         target.completedAt = wannado.completedAt;
       });
     });
+    setRecoil(wannadoOrderState, prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        order: prev.order.filter(id => id !== wannadoId),
+      };
+    });
   },
   uncomplete: async (wannadoId: string) => {
     const wannado = await usecase.uncompleteWannado(wannadoId);
@@ -79,6 +89,13 @@ export const wannadoActions = {
         target.isCompleted = false;
         target.completedAt = wannado.completedAt;
       });
+    });
+    setRecoil(wannadoOrderState, prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        order: [wannadoId, ...prev.order],
+      };
     });
   },
 };

@@ -4,29 +4,6 @@ import {Wannado as WannadoRealm} from '@/storage/realm/schema/wannado';
 
 import {Wannado} from '../model/entity/wannado';
 
-export class WannadoMemoryRepository {
-  // javascriptではMapを使うときにkeyにオブジェクトを使うときは注意が必要
-  // この場合はCharIdをstringに変換して使うべき
-  // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Map#Objects_as_keys
-  private readonly wannadoMap: Map<string, Wannado> = new Map();
-
-  public async create(wannado: Wannado): Promise<void> {
-    this.wannadoMap.set(wannado.id.id, wannado);
-  }
-  public async update(wannado: Wannado): Promise<void> {
-    this.wannadoMap.set(wannado.id.id, wannado);
-  }
-  public async delete(id: CharId): Promise<void> {
-    this.wannadoMap.delete(id.id);
-  }
-  public async find(id: CharId): Promise<Wannado | undefined> {
-    return this.wannadoMap.get(id.id);
-  }
-  public async findAll(): Promise<Wannado[]> {
-    return Array.from(this.wannadoMap.values());
-  }
-}
-
 export class WannadoRealmRepository {
   private readonly realm = initializeRealm();
 
@@ -50,13 +27,19 @@ export class WannadoRealmRepository {
       'Wannado',
       id.id,
     );
-    const todos = wannado?.todos;
-    const memos = wannado?.memos;
-    const links = wannado?.links;
+    const todos = wannado?.todoList.todos;
+    const memos = wannado?.memoList.memos;
+    const links = wannado?.linkList.links;
+    const todoList = wannado?.todoList;
+    const memoList = wannado?.memoList;
+    const linkList = wannado?.linkList;
     this.realm.write(() => {
       this.realm.delete(todos);
       this.realm.delete(memos);
       this.realm.delete(links);
+      this.realm.delete(todoList);
+      this.realm.delete(memoList);
+      this.realm.delete(linkList);
       this.realm.delete(wannado);
     });
   }

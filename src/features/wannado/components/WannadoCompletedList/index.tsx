@@ -5,7 +5,7 @@ import {Box} from 'native-base';
 import {useRecoilValue} from 'recoil';
 
 import {WannadoOverview} from '@/domain/types';
-import {WannadoListItem} from '@/features/wannado/components/WannadoListItem';
+import {WannadoListItem} from '@/features/wannado/components/WannadoCompletedList/Item';
 import {compWannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {BORDER_GRAY_COLOR} from '@/styles/const';
 

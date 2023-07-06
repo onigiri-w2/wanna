@@ -142,9 +142,7 @@ export const activeWannadoActions = {
     // TODO: ユースケース失敗したら状態の変更はしないかも
     const wannadoId = getRecoil(activeWannadoState)?.id;
     memoUsecase.updateMemoOrder(wannadoId, memoOrder);
-    console.log('memoOrder', memoOrder);
     setRecoil(activeWannadoState, prev => {
-      console.log('memoOrder2');
       if (!prev) return prev;
       return produce(prev, draft => {
         draft.memoList.order = memoOrder;

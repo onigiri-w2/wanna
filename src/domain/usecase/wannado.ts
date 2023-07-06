@@ -1,17 +1,18 @@
-import {repo} from '../config';
+import {repoWannado, repoWannadoOrder} from '../config';
 import {Wannado, WannadoSerialized} from '../model/entity/wannado';
+import {WannadoOrderSerialized} from '../model/entity/wannadoOrder';
 import {CharId} from '../model/valueobjects/charId';
 import {NotFoundWannado} from '../utlis/exception';
 
 export async function getWannadoAll(): Promise<WannadoSerialized[]> {
-  const data = await repo.findAll();
+  const data = await repoWannado.findAll();
   return data.map(d => d.serialize());
 }
 
 export async function getWannado(
   wannadoId: string,
 ): Promise<WannadoSerialized | undefined> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
   return data.serialize();
@@ -22,7 +23,13 @@ export async function createWannado(
   emoji: string,
 ): Promise<WannadoSerialized> {
   const wannado = Wannado.new(title, emoji);
-  repo.create(wannado);
+  const wannadoOrder = await repoWannadoOrder.one();
+  if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
+
+  wannadoOrder?.addWannadoId(wannado.id);
+
+  repoWannado.create(wannado);
+  repoWannadoOrder.update(wannadoOrder);
   return wannado.serialize();
 }
 
@@ -36,11 +43,11 @@ export async function updateWannadoTitle(
   wannadoId: string,
   title: string,
 ): Promise<void> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
   data.updateTitle(title);
-  repo.update(data);
+  repoWannado.update(data);
 }
 
 /**
@@ -50,36 +57,58 @@ export async function updateWannadoEmoji(
   wannadoId: string,
   emoji: string,
 ): Promise<void> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
   data.updateEmoji(emoji);
-  repo.update(data);
+  repoWannado.update(data);
 }
 
 export async function deleteWannado(wannadoId: string): Promise<void> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
-  repo.delete(data.id);
+  const wannadoOrder = await repoWannadoOrder.one();
+  if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
+  wannadoOrder?.removeWannadoId(data.id);
+
+  repoWannado.delete(data.id);
+  repoWannadoOrder.update(wannadoOrder);
 }
+
 export async function completeWannado(
   wannadoId: string,
 ): Promise<WannadoSerialized> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
+  const wannadoOrder = await repoWannadoOrder.one();
+  wannadoOrder?.removeWannadoId(data.id);
+  if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
+
   data.complete();
-  repo.update(data);
+  repoWannado.update(data);
+  repoWannadoOrder.update(wannadoOrder);
   return data.serialize();
 }
+
 export async function uncompleteWannado(
   wannadoId: string,
 ): Promise<WannadoSerialized> {
-  const data = await repo.find(new CharId(wannadoId));
+  const data = await repoWannado.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
+  const wannadoOrder = await repoWannadoOrder.one();
+  if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
+  wannadoOrder?.addWannadoId(data.id);
+
   data.uncomplete();
-  repo.update(data);
+  repoWannado.update(data);
+  return data.serialize();
+}
+
+export async function getWannadoOrder(): Promise<WannadoOrderSerialized> {
+  const data = await repoWannadoOrder.one();
+  if (!data) throw new Error('wannadoOrder is undefined');
   return data.serialize();
 }

@@ -1,9 +1,7 @@
-import {
-  WannadoMemoryRepository,
-  WannadoRealmRepository,
-} from './repository/wannado';
+import {WannadoRealmRepository} from './repository/wannado';
+import {WannadoOrderRealmRepository} from './repository/wannadoOrder';
 
 // TODO: Repositoryをこういう風にシングルトンで管理するのは適切だろうか
 // まあエラー出たら考えるか...
-export const repo2 = new WannadoMemoryRepository();
-export const repo = new WannadoRealmRepository();
+export const repoWannado = new WannadoRealmRepository();
+export const repoWannadoOrder = new WannadoOrderRealmRepository();
