@@ -1,7 +1,11 @@
 import React from 'react';
-import {Linking} from 'react-native';
+import {Linking, TouchableOpacity, StyleSheet} from 'react-native';
 
 import {HStack, Text} from 'native-base';
+import {
+  ScaleDecorator,
+  RenderItemParams,
+} from 'react-native-draggable-flatlist';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {LinkSerialized} from '@/domain/model/entity/link';
@@ -13,37 +17,57 @@ import {
   LINK_COLOR,
 } from '@/styles/const';
 
-type Props = {
-  link: LinkSerialized;
-};
-export const LinkItem = React.memo(({link}: Props) => {
+export const LinkItem = ({
+  item,
+  drag,
+  getIndex,
+  isActive,
+}: RenderItemParams<LinkSerialized>) => {
   const handlePressDelete = () => {
-    activeWannadoActions.deleteLink(link.id);
+    activeWannadoActions.deleteLink(item.id);
   };
   const hanldePressText = () => {
-    Linking.openURL(link.url);
+    Linking.openURL(item.url);
   };
 
   return (
-    <HStack p={4} bg="white" borderRadius={BORDER_RADIUS} alignItems="center">
-      <Text
+    <ScaleDecorator>
+      <TouchableOpacity
+        style={styles.linkItem}
+        delayLongPress={200}
+        onLongPress={drag}
         onPress={hanldePressText}
-        flex={1}
-        mr="auto"
-        pr={2}
-        fontSize={FONT_SIZE_NORMAL}
-        fontWeight="bold"
-        color={LINK_COLOR}
-        underline>
-        {link.title}
-      </Text>
+        disabled={isActive}>
+        <HStack
+          p={4}
+          bg="white"
+          borderRadius={BORDER_RADIUS}
+          alignItems="center">
+          <Text
+            flex={1}
+            mr="auto"
+            pr={2}
+            fontSize={FONT_SIZE_NORMAL}
+            fontWeight="bold"
+            color={LINK_COLOR}
+            underline>
+            {item.title}
+          </Text>
 
-      <AntDesign
-        name="close"
-        size={ICON_SIZE_NORMAL}
-        onPress={handlePressDelete}
-        color="#999"
-      />
-    </HStack>
+          <AntDesign
+            name="close"
+            size={ICON_SIZE_NORMAL}
+            onPress={handlePressDelete}
+            color="#999"
+          />
+        </HStack>
+      </TouchableOpacity>
+    </ScaleDecorator>
   );
+};
+
+const styles = StyleSheet.create({
+  linkItem: {
+    marginBottom: 16,
+  },
 });

@@ -4,7 +4,7 @@ import {BSON} from 'realm';
 
 import {Wannado as WannadoEntity} from '@/domain/model/entity/wannado';
 
-import {Link} from './link';
+import {LinkList} from './linkList';
 import {MemoList} from './memoList';
 import {TodoList} from './todoList';
 
@@ -18,8 +18,7 @@ export class Wannado extends Realm.Object<Wannado> {
   completedAt?: Date;
   todoList!: TodoList;
   memoList!: MemoList;
-  links!: Realm.List<Link>;
-  linkOrder!: string[];
+  linkList!: LinkList;
 
   static schema: Realm.ObjectSchema = {
     name: 'Wannado',
@@ -34,8 +33,7 @@ export class Wannado extends Realm.Object<Wannado> {
       completedAt: 'date?',
       todoList: 'TodoList',
       memoList: 'MemoList',
-      links: 'Link[]',
-      linkOrder: 'string[]',
+      linkList: 'LinkList',
     },
   };
 
@@ -49,8 +47,7 @@ export class Wannado extends Realm.Object<Wannado> {
       completedAt: this.completedAt,
       todoList: this.todoList.serialize(),
       memoList: this.memoList.serialize(),
-      links: this.links.map(link => link.serialize()),
-      linkOrder: this.linkOrder,
+      linkList: this.linkList.serialize(),
     });
   }
 }

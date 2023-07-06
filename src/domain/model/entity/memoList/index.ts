@@ -28,7 +28,7 @@ export class MemoList implements IMemoList {
     this.order = order;
   }
 
-  public getTodoById(memoId: CharId): Memo | undefined {
+  public getLinkById(memoId: CharId): Memo | undefined {
     // TODO: ここ何かしらの制約がいるはず...。存在しないIdを渡されたらどうするかとか
     return this.memos.find(memo => memo.id.id === memoId.id);
   }

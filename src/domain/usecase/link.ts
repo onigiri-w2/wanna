@@ -12,7 +12,7 @@ export async function createLink(
   if (!wannado) throw new NotFoundWannado();
 
   const link = Link.new(title, url);
-  wannado.addLink(link);
+  wannado.linkList.addLink(link);
   repo.update(wannado);
   return link.serialize();
 }
@@ -24,6 +24,17 @@ export async function deleteLink(
   const data = await repo.find(new CharId(wannadoId));
   if (!data) throw new NotFoundWannado();
 
-  data.removeLink(new CharId(linkId));
+  data.linkList.removeLink(new CharId(linkId));
+  repo.update(data);
+}
+
+export async function reorder(
+  wannadoId: string,
+  order: string[],
+): Promise<void> {
+  const data = await repo.find(new CharId(wannadoId));
+  if (!data) throw new NotFoundWannado();
+
+  data.linkList.reorder(order.map(id => new CharId(id)));
   repo.update(data);
 }

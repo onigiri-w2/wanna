@@ -134,6 +134,7 @@ export const activeWannadoActions = {
         draft.memoList.memos = draft.memoList.memos.filter(
           m => m.id !== memoId,
         );
+        draft.memoList.order = draft.memoList.order.filter(id => id !== memoId);
       });
     });
   },
@@ -195,7 +196,10 @@ export const activeWannadoActions = {
     if (!newLink) return;
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
-      return {...prev, links: [...prev.links, newLink]};
+      return produce(prev, draft => {
+        draft.linkList.links.push(newLink);
+        draft.linkList.order.unshift(newLink.id);
+      });
     });
   },
   deleteLink: (linkId: string) => {
@@ -205,7 +209,20 @@ export const activeWannadoActions = {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
-        draft.links = draft.links.filter(l => l.id !== linkId);
+        draft.linkList.links = draft.linkList.links.filter(
+          l => l.id !== linkId,
+        );
+        draft.linkList.order = draft.linkList.order.filter(l => l !== linkId);
+      });
+    });
+  },
+  updateLinkOrder: (linkOrder: string[]) => {
+    const wannadoId = getRecoil(activeWannadoState)?.id;
+    linkUsecase.reorder(wannadoId, linkOrder);
+    setRecoil(activeWannadoState, prev => {
+      if (!prev) return prev;
+      return produce(prev, draft => {
+        draft.linkList.order = linkOrder;
       });
     });
   },

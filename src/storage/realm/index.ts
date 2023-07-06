@@ -1,4 +1,5 @@
 import {Link} from './schema/link';
+import {LinkList} from './schema/linkList';
 import {Memo} from './schema/memo';
 import {MemoList} from './schema/memoList';
 import {Todo} from './schema/todo';
@@ -10,8 +11,8 @@ export const initializeRealm = () => {
 };
 
 const realmConfig = {
-  schema: [Wannado, TodoList, Todo, MemoList, Memo, Link],
-  schemaVersion: 8,
+  schema: [Wannado, TodoList, Todo, MemoList, Memo, LinkList, Link],
+  schemaVersion: 10,
   // TODO: 本番環境では必ずfalseにする
   // というかconfigで環境別に設定できるようにしたいな
   deleteRealmIfMigrationNeeded: true,

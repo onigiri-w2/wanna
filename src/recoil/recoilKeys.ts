@@ -9,6 +9,7 @@ const recoilKeys = [
   'activeWannadoMemo',
   'activeWannadoLinks',
   'activeWannadoMemoList',
+  'activeWannadoLinkList',
   'editTargetTodo',
   'editTodoShow',
   'editTargetMemo',
