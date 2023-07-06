@@ -3,23 +3,16 @@ import {StyleSheet, View, ScrollView} from 'react-native';
 
 import {Text} from 'native-base';
 
-import {useRootNavigator} from '@/navigations/hooks/useNavigator';
 import {BACKGROUND_GRAY_COLOR, BORDER_RADIUS, MAIN_COLOR} from '@/styles/const';
 
-import {Header} from '../../components/Header';
-import {Inquiry} from '../../components/Links/Inquiry';
-import {PrivacyPolicy} from '../../components/Links/PrivacyPolicy';
-import {Review} from '../../components/Links/Review';
-import {TermsOfUse} from '../../components/Links/TermsOfUse';
+import {Inquiry} from '../Links/Inquiry';
+import {PrivacyPolicy} from '../Links/PrivacyPolicy';
+import {Review} from '../Links/Review';
+import {TermsOfUse} from '../Links/TermsOfUse';
 
-export const Home = () => {
-  const {navigateToWannadoList} = useRootNavigator();
-  const goTo = () => {
-    navigateToWannadoList();
-  };
+export const Body = () => {
   return (
     <>
-      <Header goTo={goTo} title="設定" />
       <ScrollView style={styles.body}>
         <Section title="利用に関して" mtPx={20}>
           <Inquiry />

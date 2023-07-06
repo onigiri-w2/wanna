@@ -6,7 +6,8 @@ import {VStack} from 'native-base';
 import {SafeAreaView} from '@/components/SafeAreaView';
 import {BACKGROUND_GRAY_COLOR, MAIN_COLOR} from '@/styles/const';
 
-import {SettingsStacks} from './navigations/stack';
+import {Body} from './components/Body';
+import {Header} from './components/Header';
 
 // TODO: 全体的に何かしら修正、リファクタリングできるはずです...
 // TODO: この設定部分は今後のアプリ開発時に使いまわせる状態にしておきたいですね。
@@ -16,7 +17,8 @@ export const SettingsPage = () => {
       topColorCode={MAIN_COLOR}
       bottomColorCode={BACKGROUND_GRAY_COLOR}>
       <VStack style={styles.container}>
-        <SettingsStacks />
+        <Header />
+        <Body />
       </VStack>
     </SafeAreaView>
   );

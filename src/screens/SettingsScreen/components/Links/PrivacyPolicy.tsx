@@ -1,12 +1,13 @@
 import React from 'react';
-
-import {useSettingsNavigator} from '../../navigations/hooks/useNavigator';
+import {Linking} from 'react-native';
 
 import {BaseLink} from './base';
 
+export const URL =
+  'https://649879e894f5d82ca6ebe4eb--spiffy-cobbler-0ed406.netlify.app/privacypolicy';
 export const PrivacyPolicy = () => {
-  const {navigateToPrivacyPolicy} = useSettingsNavigator();
-  return (
-    <BaseLink text="プライバシーポリシー" onPress={navigateToPrivacyPolicy} />
-  );
+  const handlePress = () => {
+    Linking.openURL(URL);
+  };
+  return <BaseLink text="プライバシーポリシー" onPress={handlePress} />;
 };

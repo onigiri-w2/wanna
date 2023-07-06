@@ -4,6 +4,7 @@ import {TouchableOpacity} from 'react-native';
 import {Text, Box} from 'native-base';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
+import {useRootNavigator} from '@/navigations/hooks/useNavigator';
 import {
   PAGE_HEADER_FONT_SIZE,
   PAGE_HEADER_FONT_WEIGHT,
@@ -12,13 +13,11 @@ import {
   PAGE_HEADER_PADDING,
 } from '@/styles/const';
 
-type Props = {
-  title: string;
-  goTo: () => void;
-};
-export const Header = ({title, goTo}: Props) => {
+const HEADER_TITLE = '設定';
+export const Header = () => {
+  const {navigateToWannadoList} = useRootNavigator();
   const handlePressBack = () => {
-    goTo();
+    navigateToWannadoList();
   };
   return (
     <Box
@@ -37,7 +36,7 @@ export const Header = ({title, goTo}: Props) => {
         fontWeight={PAGE_HEADER_FONT_WEIGHT}
         numberOfLines={1}
         ellipsizeMode="tail">
-        {title}
+        {HEADER_TITLE}
       </Text>
       <Box size="20px" />
     </Box>
