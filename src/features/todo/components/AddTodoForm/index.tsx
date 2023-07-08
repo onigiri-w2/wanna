@@ -1,5 +1,9 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
+import {
+  NativeSyntheticEvent,
+  StyleSheet,
+  TextInputChangeEventData,
+} from 'react-native';
 
 import {Box, Flex, Input} from 'native-base';
 
@@ -25,18 +29,25 @@ export const AddTodoForm = React.memo(() => {
     activeWannadoActions.addTodo(title);
   };
 
+  const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
+    updateTitle(e.nativeEvent.text);
+  };
+
   return (
     <Box p={`${ADD_FORM_PADDING}px`} justifyContent="center">
       <Flex direction="row" alignItems="center">
         <Box flex={1} bg="white" mr={4}>
           <Input
             value={title}
-            onChange={e => updateTitle(e.nativeEvent.text)}
+            onChange={handleChange}
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
             fontSize={FONT_SIZE_NORMAL}
             _focus={styles.focusedInput}
+            blurOnSubmit={false}
+            onSubmitEditing={handlePress}
             autoFocus
+            returnKeyType="done"
           />
         </Box>
         <MainButton onPress={handlePress} text="保存" disabled={!title} />
