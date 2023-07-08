@@ -8,6 +8,7 @@ import {TodoUncompletedList} from '@/features/todo/components/TodoUncompletedLis
 import {AddTodoEditor} from './components/AddTodoEditor';
 import {AddButton, DoneButton} from './components/Buttons';
 import {TodoCompletedBottomSheet} from './components/TodoCompletedBottomSheet';
+import {UpdateTodoEditor} from './components/UpdateTodoEditor';
 import {AddEditorShowProvider} from './providers/AddEditorShowProvider';
 import {CompletedShowProvider} from './providers/CompletedShowProvider';
 import {styles} from './styles';
@@ -35,6 +36,7 @@ const Content = () => {
       <TodoCompletedBottomSheet />
       <AddButton />
       <AddTodoEditor />
+      <UpdateTodoEditor />
     </View>
   );
 };
