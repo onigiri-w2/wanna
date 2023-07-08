@@ -6,9 +6,8 @@ import {View} from 'native-base';
 import {TodoUncompletedList} from '@/features/todo/components/TodoUncompletedList';
 
 import {AddTodoEditor} from './components/AddTodoEditor';
-import {Buttons} from './components/Buttons';
+import {AddButton, DoneButton} from './components/Buttons';
 import {TodoCompletedBottomSheet} from './components/TodoCompletedBottomSheet';
-import {UpdateTodoEditor} from './components/UpdateTodoEditor';
 import {AddEditorShowProvider} from './providers/AddEditorShowProvider';
 import {CompletedShowProvider} from './providers/CompletedShowProvider';
 import {styles} from './styles';
@@ -19,6 +18,7 @@ export const TodoPage = () => {
       <AddEditorShowProvider>
         <CompletedShowProvider>
           <Content />
+          <DoneButton />
         </CompletedShowProvider>
       </AddEditorShowProvider>
     </BottomSheetModalProvider>
@@ -31,10 +31,10 @@ const Content = () => {
       <View style={styles.todolist}>
         <TodoUncompletedList />
       </View>
-      <Buttons />
       <AddTodoEditor />
       <TodoCompletedBottomSheet />
-      <UpdateTodoEditor />
+      <AddButton />
+      <AddTodoEditor />
     </View>
   );
 };
