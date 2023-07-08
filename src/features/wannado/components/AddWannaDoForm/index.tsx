@@ -22,6 +22,7 @@ export const AddWannadoForm = () => {
   const [title, setTitle] = React.useState('');
 
   const handlePressAdd = async () => {
+    if (!title) return;
     wannadoOverviewAllActions.addWannado(title);
     setTitle('');
   };
@@ -42,6 +43,9 @@ export const AddWannadoForm = () => {
             h={`${ADD_FORM_HEIGHT}px`}
             fontSize={FONT_SIZE_NORMAL}
             _focus={styles.inputFocused}
+            blurOnSubmit={false}
+            onSubmitEditing={handlePressAdd}
+            returnKeyType="done"
           />
         </Box>
         <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />
