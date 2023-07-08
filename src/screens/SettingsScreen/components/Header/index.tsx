@@ -28,7 +28,9 @@ export const Header = () => {
       alignItems="center"
       bg={PAGE_HEADER_COLOR}>
       <TouchableOpacity onPress={handlePressBack}>
-        <SimpleLineIcons name="arrow-left" size={20} color="black" />
+        <Box py="12px" pr="32px">
+          <SimpleLineIcons name="arrow-left" size={20} color="black" />
+        </Box>
       </TouchableOpacity>
       <Text
         mx="auto"
@@ -38,7 +40,7 @@ export const Header = () => {
         ellipsizeMode="tail">
         {HEADER_TITLE}
       </Text>
-      <Box size="20px" />
+      <Box size={`${20 + 32}px`} />
     </Box>
   );
 };

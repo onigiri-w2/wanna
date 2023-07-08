@@ -2,6 +2,7 @@ import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
+import {Box} from 'native-base';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {useResetRecoilState} from 'recoil';
 
@@ -20,7 +21,9 @@ export const Goback = () => {
 
   return (
     <TouchableOpacity onPress={handlePressBack}>
-      <SimpleLineIcons name="arrow-left" size={20} color="black" />
+      <Box py="12px" pr="12px">
+        <SimpleLineIcons name="arrow-left" size={20} color="black" />
+      </Box>
     </TouchableOpacity>
   );
 };
