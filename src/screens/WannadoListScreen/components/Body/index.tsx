@@ -5,6 +5,7 @@ import {View} from 'native-base';
 
 import {commonStyles} from '@/styles/commonRNStyles';
 
+import {Buttons} from '../Buttons';
 import {Wannadoes} from '../Wannadoes';
 import {Wannadones} from '../Wannadones';
 
@@ -14,6 +15,7 @@ export const Body = () => {
       <BottomSheetModalProvider>
         <Wannadoes />
         <Wannadones />
+        <Buttons />
       </BottomSheetModalProvider>
     </View>
   );
