@@ -2,6 +2,7 @@ import React from 'react';
 
 import 'react-native-gesture-handler';
 // import {RootStacks} from '@/navigations/root';
+import '@/domain/config'; // 初期化
 
 import {RootStacks} from '@/navigations/root';
 import {AppProvider} from '@/providers';
