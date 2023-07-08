@@ -13,10 +13,6 @@ export const styles = StyleSheet.create({
     paddingBottom: 12,
     paddingHorizontal: 16,
     backgroundColor: MAIN_COLOR,
-    display: 'none',
-  },
-  showTitleEmoji: {
-    display: 'flex',
   },
   updator: {
     position: 'absolute',

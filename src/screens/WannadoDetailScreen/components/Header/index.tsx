@@ -38,14 +38,15 @@ export const Header = () => {
             <Title title={wannado.title} onPress={handelPressTitle} />
             <Menu onPress={handlePressMenu} />
           </HStack>
-          <Box
-            style={[styles.titleEmoji, isShowEditor && styles.showTitleEmoji]}>
-            <UpdateWannadoForm
-              wannadoId={wannado.id}
-              initialEmoji={wannado.emoji}
-              initialTitle={wannado.title}
-            />
-          </Box>
+          {isShowEditor && (
+            <Box style={styles.titleEmoji}>
+              <UpdateWannadoForm
+                wannadoId={wannado.id}
+                initialEmoji={wannado.emoji}
+                initialTitle={wannado.title}
+              />
+            </Box>
+          )}
           <Box
             style={[styles.updator, isShowUpdator && styles.showUpdator]}
             bg={MAIN_COLOR}>

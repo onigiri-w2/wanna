@@ -1,7 +1,7 @@
 import React from 'react';
-import {TouchableOpacity, TextInput, StyleSheet} from 'react-native';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 
-import {Text, Box, Flex} from 'native-base';
+import {Text, Box, Flex, Input} from 'native-base';
 
 import {EmojiModal} from '@/components/EmojiModal';
 import {useShow} from '@/hooks/useShow';
@@ -41,12 +41,13 @@ export const UpdateWannadoForm = ({
           </TouchableOpacity>
         </Box>
         <Box flex={1}>
-          <TextInput
+          <Input
             value={title}
             onChange={handleInputChange}
             numberOfLines={1}
             multiline
             blurOnSubmit
+            autoFocus
             style={styles.input}
           />
         </Box>
