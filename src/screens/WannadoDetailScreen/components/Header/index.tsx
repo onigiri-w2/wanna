@@ -39,10 +39,9 @@ export const Header = () => {
             <Menu onPress={handlePressMenu} />
           </HStack>
           {isShowEditor && (
-            <Box style={styles.titleEmoji}>
+            <Box style={styles.title}>
               <UpdateWannadoForm
                 wannadoId={wannado.id}
-                initialEmoji={wannado.emoji}
                 initialTitle={wannado.title}
               />
             </Box>

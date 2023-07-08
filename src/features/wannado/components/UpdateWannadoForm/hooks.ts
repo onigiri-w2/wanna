@@ -20,20 +20,3 @@ export const useInput = (initialTtile: string, wannadoId: string) => {
     handleInputChange,
   };
 };
-
-export const useEmoji = (initialEmoji: string, wannadoId: string) => {
-  const [emoji, setEmoji] = useState(initialEmoji);
-
-  const handleChangeEmoji = (emoji: string | null) => {
-    const e = emoji ? emoji : '';
-    setEmoji(e);
-    if (e === '') return;
-
-    wannadoActions.updateEmoji(wannadoId, e);
-  };
-
-  return {
-    emoji,
-    handleChangeEmoji,
-  };
-};

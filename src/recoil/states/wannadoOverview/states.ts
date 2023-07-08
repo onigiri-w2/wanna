@@ -49,7 +49,6 @@ export const uncompWannadoOverviewAllState = selector({
         return {
           id: w.id,
           title: w.title,
-          emoji: w.emoji,
           isCompleted: w.isCompleted,
           completedAt: w.completedAt,
         };
@@ -73,7 +72,6 @@ export const compWannadoOverviewAllState = selector({
     return filtered.map(w => ({
       id: w.id,
       title: w.title,
-      emoji: w.emoji,
       isCompleted: w.isCompleted,
       completedAt: w.completedAt,
     }));

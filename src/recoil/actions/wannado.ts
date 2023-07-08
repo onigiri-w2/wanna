@@ -27,23 +27,6 @@ export const wannadoActions = {
       });
     });
   },
-  updateEmoji: (wannadoId: string, emoji: string) => {
-    usecase.updateWannadoEmoji(wannadoId, emoji);
-    setRecoil(activeWannadoState, prev => {
-      if (!prev) return prev;
-      return {
-        ...prev,
-        emoji,
-      };
-    });
-    setRecoil(wannadoOverviewAllState, prev => {
-      return produce(prev, draft => {
-        const target = draft.find(w => w.id === wannadoId);
-        if (!target) return;
-        target.emoji = emoji;
-      });
-    });
-  },
   complete: async (wannadoId: string) => {
     const wannado = await usecase.completeWannado(wannadoId);
     if (!wannado) return;

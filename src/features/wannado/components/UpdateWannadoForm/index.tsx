@@ -1,45 +1,27 @@
 import React from 'react';
-import {TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import {Text, Box, Flex, Input} from 'native-base';
+import {Box, Flex, Input} from 'native-base';
 
-import {EmojiModal} from '@/components/EmojiModal';
-import {useShow} from '@/hooks/useShow';
 import {
   BORDER_RADIUS,
   ACCENT_COLOR_VERY_LIGHT,
   FONT_SIZE_LARGE,
 } from '@/styles/const';
 
-import {useInput, useEmoji} from './hooks';
+import {useInput} from './hooks';
 
 type Props = {
   wannadoId: string;
   initialTitle: string;
-  initialEmoji: string;
 };
 
-export const UpdateWannadoForm = ({
-  wannadoId,
-  initialTitle,
-  initialEmoji,
-}: Props) => {
+export const UpdateWannadoForm = ({wannadoId, initialTitle}: Props) => {
   const {title, handleInputChange} = useInput(initialTitle, wannadoId);
-  const {emoji, handleChangeEmoji} = useEmoji(initialEmoji, wannadoId);
-  const {isShow, show, hide} = useShow();
 
   return (
     <Box justifyContent="center">
       <Flex direction="row" alignItems="flex-start">
-        <Box
-          px={1}
-          mr={3}
-          bg={ACCENT_COLOR_VERY_LIGHT}
-          borderRadius={BORDER_RADIUS}>
-          <TouchableOpacity onPress={show}>
-            <Text fontSize={24}>{emoji}</Text>
-          </TouchableOpacity>
-        </Box>
         <Box flex={1}>
           <Input
             value={title}
@@ -52,11 +34,6 @@ export const UpdateWannadoForm = ({
           />
         </Box>
       </Flex>
-      <EmojiModal
-        isModalVisible={isShow}
-        onPressEmoji={handleChangeEmoji}
-        onPressOutside={hide}
-      />
     </Box>
   );
 };

@@ -5,8 +5,8 @@ import * as usecase from '@/domain/usecase/wannado';
 import {wannadoOrderState, wannadoOverviewAllState} from './states';
 
 export const wannadoOverviewAllActions = {
-  addWannado: async (title: string, emoji: string) => {
-    const wannado = await usecase.createWannado(title, emoji);
+  addWannado: async (title: string) => {
+    const wannado = await usecase.createWannado(title);
     if (!wannado) return;
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;

@@ -18,11 +18,8 @@ export async function getWannado(
   return data.serialize();
 }
 
-export async function createWannado(
-  title: string,
-  emoji: string,
-): Promise<WannadoSerialized> {
-  const wannado = Wannado.new(title, emoji);
+export async function createWannado(title: string): Promise<WannadoSerialized> {
+  const wannado = Wannado.new(title);
   const wannadoOrder = await repoWannadoOrder.one();
   if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
 
@@ -47,20 +44,6 @@ export async function updateWannadoTitle(
   if (!data) throw new NotFoundWannado();
 
   data.updateTitle(title);
-  repoWannado.update(data);
-}
-
-/**
- * TODO: updateWannadoTitleと同様のTODO
- */
-export async function updateWannadoEmoji(
-  wannadoId: string,
-  emoji: string,
-): Promise<void> {
-  const data = await repoWannado.find(new CharId(wannadoId));
-  if (!data) throw new NotFoundWannado();
-
-  data.updateEmoji(emoji);
   repoWannado.update(data);
 }
 

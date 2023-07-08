@@ -12,7 +12,6 @@ export class Wannado extends Realm.Object<Wannado> {
   _mongoId!: BSON.ObjectId;
   id!: string;
   title!: string;
-  emoji!: string;
   isCompleted!: boolean;
   createdAt!: Date;
   completedAt?: Date;
@@ -27,7 +26,6 @@ export class Wannado extends Realm.Object<Wannado> {
       _mongoId: {type: 'objectId', default: new BSON.ObjectId()},
       id: {type: 'string', indexed: true},
       title: 'string',
-      emoji: 'string',
       isCompleted: {type: 'bool', default: false},
       createdAt: 'date',
       completedAt: 'date?',
@@ -41,7 +39,6 @@ export class Wannado extends Realm.Object<Wannado> {
     return WannadoEntity.deserialize({
       id: this.id,
       title: this.title,
-      emoji: this.emoji,
       isCompleted: this.isCompleted,
       createdAt: this.createdAt,
       completedAt: this.completedAt,

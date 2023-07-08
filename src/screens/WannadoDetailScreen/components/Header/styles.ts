@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {MAIN_COLOR, PAGE_HEADER_HEIGHT} from '@/styles/const';
 
 export const styles = StyleSheet.create({
-  titleEmoji: {
+  title: {
     position: 'absolute',
     top: PAGE_HEADER_HEIGHT,
     left: 0,

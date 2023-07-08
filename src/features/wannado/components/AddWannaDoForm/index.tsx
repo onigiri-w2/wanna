@@ -7,10 +7,7 @@ import {
 
 import {Box, Flex, Input} from 'native-base';
 
-import {EmojiIcon} from '@/components/EmojiIcon';
-import {EmojiModal} from '@/components/EmojiModal';
 import {MainButton} from '@/components/MainButton';
-import {useShow} from '@/hooks/useShow';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   ADD_FORM_HEIGHT,
@@ -21,17 +18,12 @@ import {
   MAIN_COLOR_VERY_LIGHT,
 } from '@/styles/const';
 
-import {useEmoji} from './hooks';
-
 export const AddWannadoForm = () => {
-  const {emoji, updateEmoji} = useEmoji();
-  const {isShow, hide, show} = useShow();
   const [title, setTitle] = React.useState('');
 
   const handlePressAdd = async () => {
-    wannadoOverviewAllActions.addWannado(title, emoji);
+    wannadoOverviewAllActions.addWannado(title);
     setTitle('');
-    updateEmoji('');
   };
 
   const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {
@@ -41,9 +33,6 @@ export const AddWannadoForm = () => {
   return (
     <Box p={`${ADD_FORM_PADDING}px`} justifyContent="center">
       <Flex direction="row" alignItems="center">
-        <Box mr={4}>
-          <EmojiIcon onPress={show} emoji={emoji} size={28} />
-        </Box>
         <Box flex={1} mr={4}>
           <Input
             bg="white"
@@ -57,11 +46,6 @@ export const AddWannadoForm = () => {
         </Box>
         <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />
       </Flex>
-      <EmojiModal
-        isModalVisible={isShow}
-        onPressEmoji={updateEmoji}
-        onPressOutside={hide}
-      />
     </Box>
   );
 };
