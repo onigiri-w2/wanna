@@ -42,7 +42,7 @@ export const Buttons = () => {
 const styles = StyleSheet.create({
   buttonView: {
     position: 'absolute',
-    bottom: 70,
+    bottom: 100,
     right: 20,
     zIndex: 2,
   },
