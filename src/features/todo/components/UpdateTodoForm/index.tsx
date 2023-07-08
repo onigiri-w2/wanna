@@ -33,8 +33,11 @@ export const UpdateTodoForm = React.memo(({todo, onClose}: Props) => {
             borderRadius={BORDER_RADIUS}
             h={`${ADD_FORM_HEIGHT}px`}
             fontSize={FONT_SIZE_NORMAL}
+            blurOnSubmit={false}
             _focus={styles.focusedInput}
             autoFocus
+            onSubmitEditing={onClose}
+            returnKeyType="done"
           />
         </Box>
         <MainButton onPress={onClose} text="閉じる" />
