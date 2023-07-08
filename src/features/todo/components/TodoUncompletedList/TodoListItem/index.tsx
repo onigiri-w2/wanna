@@ -15,6 +15,7 @@ import {
   editTargetTodoActions,
   editTodoShowActions,
 } from '@/recoil/states/editTargetTodo';
+import {commonStyles} from '@/styles/commonRNStyles';
 import {
   BORDER_GRAY_COLOR,
   FONT_SIZE_NORMAL,
@@ -51,30 +52,34 @@ export const TodoListItem = ({
 
   return (
     <ScaleDecorator>
-      <TouchableOpacity
-        delayLongPress={200}
-        onLongPress={drag}
-        onPress={handlePress}
-        disabled={isActive}>
-        <HStack
-          alignItems="center"
-          bg="white"
-          px={4}
-          py={3}
-          borderBottomWidth={1}
-          borderBottomColor={BORDER_GRAY_COLOR}>
-          <Checkbox checked={checked} onPress={handlePressCheckbox} />
-          <Text flex={1} fontSize={FONT_SIZE_NORMAL} px={4}>
-            {item.title}
-          </Text>
-          <AntDesign
-            name="close"
-            size={ICON_SIZE_NORMAL}
-            onPress={handleDelete}
-            color="#999"
-          />
-        </HStack>
-      </TouchableOpacity>
+      <HStack
+        alignItems="center"
+        bg="white"
+        px={4}
+        borderBottomWidth={1}
+        borderBottomColor={BORDER_GRAY_COLOR}>
+        <Checkbox checked={checked} onPress={handlePressCheckbox} />
+        <TouchableOpacity
+          style={[
+            commonStyles.flex1,
+            {
+              paddingVertical: 12,
+              marginHorizontal: 12,
+            },
+          ]}
+          delayLongPress={200}
+          onLongPress={drag}
+          onPress={handlePress}
+          disabled={isActive}>
+          <Text fontSize={FONT_SIZE_NORMAL}>{item.title}</Text>
+        </TouchableOpacity>
+        <AntDesign
+          name="close"
+          size={ICON_SIZE_NORMAL + 4}
+          onPress={handleDelete}
+          color="#ccc"
+        />
+      </HStack>
     </ScaleDecorator>
   );
 };
