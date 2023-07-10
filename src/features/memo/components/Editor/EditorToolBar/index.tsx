@@ -1,58 +1,47 @@
-import {StyleSheet, Keyboard} from 'react-native';
+import React from 'react';
 
-import {HStack, Text} from 'native-base';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {HStack, Box} from 'native-base';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {KeyboardAvoidingView} from '@/components/KeyboardAvoidingView';
-import {
-  BACKGROUND_GRAY_COLOR,
-  ACCENT_COLOR,
-  BOTTOM_SHEET_HANDLER_HEIGHT,
-  FONT_SIZE_NORMAL,
-} from '@/styles/const';
+import {ACCENT_COLOR, BORDER_RADIUS} from '@/styles/const';
 
-type EditToolBarProps = {
-  editable: boolean;
-  onPressDone: () => void;
+type Props = {
+  onBack: () => void;
+  onPressEdit: () => void;
+  isEditable: boolean;
 };
-export const EditToolBar = ({editable, onPressDone}: EditToolBarProps) => {
-  const handlePressHideKeyboard = () => {
-    Keyboard.dismiss();
-  };
+export const EditorToolBar = ({onBack, onPressEdit, isEditable}: Props) => {
   return (
-    <KeyboardAvoidingView
-      style={editable ? styles.editable : styles.notEditable}
-      plusOffset={BOTTOM_SHEET_HANDLER_HEIGHT}>
+    <KeyboardAvoidingView>
       <HStack
-        bg={BACKGROUND_GRAY_COLOR}
-        px={4}
-        py={1}
-        space={4}
-        alignItems="center">
-        <Text
-          ml="auto"
-          fontWeight="bold"
-          fontSize={FONT_SIZE_NORMAL}
-          color={ACCENT_COLOR}
-          onPress={onPressDone}>
-          完了
-        </Text>
-        <MaterialCommunityIcons
-          name="keyboard-close"
-          size={24}
-          color="#555"
-          onPress={handlePressHideKeyboard}
-        />
+        p={2}
+        justifyContent="space-between"
+        alignItems="center"
+        borderTopWidth={1}
+        borderBottomWidth={1}
+        borderColor="gray.500"
+        bg="white">
+        <TouchableOpacity onPress={onBack}>
+          <Ionicons name="arrow-back-circle-sharp" size={32} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPressEdit}>
+          <Box
+            bg={isEditable ? ACCENT_COLOR : 'white'}
+            p={1}
+            borderRadius={BORDER_RADIUS}
+            borderWidth={1}
+            borderColor={isEditable ? ACCENT_COLOR : 'black'}>
+            <MaterialIcons
+              name="edit"
+              size={20}
+              color={isEditable ? 'white' : 'black'}
+            />
+          </Box>
+        </TouchableOpacity>
       </HStack>
     </KeyboardAvoidingView>
   );
 };
-
-const styles = StyleSheet.create({
-  editable: {
-    display: 'flex',
-  },
-  notEditable: {
-    display: 'none',
-  },
-});

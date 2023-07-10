@@ -13,6 +13,8 @@ const recoilKeys = [
   'editTargetTodo',
   'editTodoShow',
   'editTargetMemo',
+  'editTargetMemo2',
+  'editTargetMemoId',
   'editMemoShow',
 ] as const;
 

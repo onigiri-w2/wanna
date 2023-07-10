@@ -18,10 +18,11 @@ export async function createMemo(
   return memo.serialize();
 }
 
-export async function updateMemoTitle(
+export async function updateMemoTitleAndContent(
   wanandoId: string,
   memoId: string,
   title: string,
+  content: string,
 ) {
   const wannado = await repoWannado.find(new CharId(wanandoId));
   if (!wannado) throw new NotFoundWannado();
@@ -30,19 +31,6 @@ export async function updateMemoTitle(
   if (!memo) throw new NotFoundMemo();
 
   memo.updateTitle(title);
-  repoWannado.update(wannado);
-}
-
-export async function updateMemoContent(
-  wanandoId: string,
-  memoId: string,
-  content: string,
-) {
-  const wannado = await repoWannado.find(new CharId(wanandoId));
-  if (!wannado) throw new NotFoundWannado();
-  const memo = wannado.memoList.memos.find(memo => memo.id.id === memoId);
-  if (!memo) throw new NotFoundMemo();
-
   memo.updateContent(content);
   repoWannado.update(wannado);
 }

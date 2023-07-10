@@ -8,10 +8,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
-import {
-  editMemoShowActions,
-  editTargetMemoActions,
-} from '@/recoil/states/editTargetMemo';
+import {editTargetMemoIdActions} from '@/recoil/states/editTargetMemo';
+import {useNavigator} from '@/screens/WannadoDetailScreen/subpages/MemoPage/navigations/hooks/useNavigator';
 import {ACCENT_COLOR, BORDER_RADIUS, ICON_SIZE_NORMAL} from '@/styles/const';
 
 type NavProps = {
@@ -19,12 +17,15 @@ type NavProps = {
   memo: MemoSerialized;
 };
 export const Nav = ({isMemoWide, memo}: NavProps) => {
+  const {navigateToMemoEditor} = useNavigator();
   const handlePressDelete = () => {
     activeWannadoActions.deleteMemo(memo.id);
   };
   const handlePressEdit = () => {
-    editTargetMemoActions.setEditTarget(memo);
-    editMemoShowActions.setShowTrue();
+    editTargetMemoIdActions.setEditTargetId(memo.id);
+    // このコンポーネントでこれ実行するのは...
+    // 依存性が高過ぎる...。ただ、DraggableListのMemo化制約を乗り越えるために仕方なく...
+    navigateToMemoEditor();
   };
 
   return (

@@ -1,29 +1,57 @@
-import React from 'react';
+import React, {useCallback, useState} from 'react';
 
-import {View, ScrollView} from 'native-base';
+import {View} from 'native-base';
+import {useRecoilValue} from 'recoil';
 
-import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import * as memoUsecase from '@/domain/usecase/memo';
+import {
+  activeWannadoActions,
+  activeWannadoIdState,
+} from '@/recoil/states/activeWannado';
+import {
+  ediTaargetMemoState2,
+  editTargetMemoIdActions,
+} from '@/recoil/states/editTargetMemo';
 
-import {EditorData} from './EditorData';
-import {EditToolBar} from './EditorToolBar';
-import {useEditable, useActiveMemo, useRealtimeData} from './hooks';
+import {EditorBody} from './EditorBody';
+import {EditorToolBar} from './EditorToolBar';
 
 type Props = {
-  initialeMemoId: string | undefined;
-  px?: number;
+  onBack: () => void;
 };
-export const Editor = ({initialeMemoId, px = 1}: Props) => {
-  const {activeMemo} = useActiveMemo(initialeMemoId);
-  const {title, content, data, setData} = useRealtimeData(activeMemo);
-  const {editable, setEditableFalse, setEditableTrue} = useEditable();
+export const Editor = ({onBack}: Props) => {
+  const [isEditable, setIsEditable] = useState(false);
+  const wannadoId = useRecoilValue(activeWannadoIdState);
+  const activeMemo = useRecoilValue(ediTaargetMemoState2);
+  const [data, setData] = useState<string>(
+    activeMemo ? `${activeMemo.title}\n${activeMemo.content}` : '',
+  );
+  const isNew = !activeMemo;
+  const handlePressEdit = useCallback(() => {
+    setIsEditable(!isEditable);
+  }, [isEditable]);
+  const handleTouchText = () => {
+    setIsEditable(true);
+  };
+  const handleBack = () => {
+    editTargetMemoIdActions.resetTargetId();
+    onBack();
+  };
 
-  const save = async () => {
-    if (title === '') return;
+  const handleChangeText = async (text: string) => {
+    setData(text);
+    const title = text.split('\n')[0];
+    const content = text.split('\n').slice(1).join('\n');
+    if (!title) return;
 
-    setEditableFalse();
-    if (!activeMemo) {
-      activeWannadoActions.addMemo(title, content);
+    if (isNew) {
+      const memo = await memoUsecase.createMemo(wannadoId, title, content);
+      if (memo) {
+        activeWannadoActions.addMemo(memo);
+        editTargetMemoIdActions.setEditTargetId(memo.id);
+      }
     } else {
+      if (!activeMemo) return;
       activeWannadoActions.updateMemoTitleAndContent(
         activeMemo.id,
         title,
@@ -34,18 +62,17 @@ export const Editor = ({initialeMemoId, px = 1}: Props) => {
 
   return (
     <View flex={1}>
-      <ScrollView flex={1} px={px}>
-        <EditorData
-          data={data}
-          title={title}
-          content={content}
-          px={px}
-          editable={editable}
-          onTouchView={setEditableTrue}
-          onChangeContent={setData}
-        />
-      </ScrollView>
-      <EditToolBar editable={editable} onPressDone={save} />
+      <EditorBody
+        data={data}
+        onChangeText={handleChangeText}
+        isEditable={isEditable}
+        onTouchText={handleTouchText}
+      />
+      <EditorToolBar
+        onBack={handleBack}
+        isEditable={isEditable}
+        onPressEdit={handlePressEdit}
+      />
     </View>
   );
 };

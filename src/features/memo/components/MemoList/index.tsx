@@ -13,10 +13,6 @@ import {MemoItem} from '../MemoItem';
 
 export const MemoList = () => {
   const memos = useRecoilValue(activeWannadoMemosState);
-  console.log(
-    'MemoList',
-    memos.map(m => m.id),
-  );
 
   return (
     <DraggableFlatList

@@ -1,6 +1,7 @@
 import {produce} from 'immer';
 import {setRecoil, getRecoil} from 'recoil-nexus';
 
+import {MemoSerialized} from '@/domain/model/entity/memo';
 import * as linkUsecase from '@/domain/usecase/link';
 import * as memoUsecase from '@/domain/usecase/memo';
 import * as todoUsecase from '@/domain/usecase/todo';
@@ -111,10 +112,9 @@ export const activeWannadoActions = {
       });
     });
   },
-  addMemo: async (title: string, content: string) => {
-    const wannadoId = getRecoil(activeWannadoState)?.id;
-    const memo = await memoUsecase.createMemo(wannadoId, title, content);
-    if (!memo) return;
+  // Note: 諸事情により、この関数ではmemoUseCaseを実行しない。
+  // usecaseに登録したmemoのidがそこで必要になるので、ここではusecaseを実行しない。
+  addMemo: async (memo: MemoSerialized) => {
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {
@@ -149,26 +149,6 @@ export const activeWannadoActions = {
       });
     });
   },
-  updateMemoTitle: (memoId: string, title: string) => {
-    setRecoil(activeWannadoState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const memo = draft.memoList.memos.find(m => m.id === memoId);
-        if (!memo) return;
-        memo.title = title;
-      });
-    });
-  },
-  updateMemoContent: (memoId: string, content: string) => {
-    setRecoil(activeWannadoState, prev => {
-      if (!prev) return prev;
-      return produce(prev, draft => {
-        const memo = draft.memoList.memos.find(m => m.id === memoId);
-        if (!memo) return;
-        memo.content = content;
-      });
-    });
-  },
   updateMemoTitleAndContent: (
     memoId: string,
     title: string,
@@ -176,8 +156,7 @@ export const activeWannadoActions = {
   ) => {
     // TODO: アップデート失敗したらどうするか考える
     const wannadoId = getRecoil(activeWannadoState)?.id;
-    memoUsecase.updateMemoTitle(wannadoId, memoId, title);
-    memoUsecase.updateMemoContent(wannadoId, memoId, content);
+    memoUsecase.updateMemoTitleAndContent(wannadoId, memoId, title, content);
     setRecoil(activeWannadoState, prev => {
       if (!prev) return prev;
       return produce(prev, draft => {

@@ -2,7 +2,20 @@ import {setRecoil} from 'recoil-nexus';
 
 import {MemoSerialized} from '@/domain/model/entity/memo';
 
-import {editMemoShowState, editTargetMemoState} from './states';
+import {
+  editMemoShowState,
+  editTargetMemoState,
+  editTargetMemoIdState,
+} from './states';
+
+export const editTargetMemoIdActions = {
+  setEditTargetId: (memoId: string) => {
+    setRecoil(editTargetMemoIdState, memoId);
+  },
+  resetTargetId: () => {
+    setRecoil(editTargetMemoIdState, '');
+  },
+};
 
 export const editTargetMemoActions = {
   setEditTarget: (memo: MemoSerialized) => {
