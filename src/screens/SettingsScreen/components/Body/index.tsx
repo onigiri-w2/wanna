@@ -7,7 +7,6 @@ import {BACKGROUND_GRAY_COLOR, BORDER_RADIUS, MAIN_COLOR} from '@/styles/const';
 
 import {Inquiry} from '../Links/Inquiry';
 import {PrivacyPolicy} from '../Links/PrivacyPolicy';
-import {Review} from '../Links/Review';
 import {TermsOfUse} from '../Links/TermsOfUse';
 
 export const Body = () => {
@@ -16,9 +15,6 @@ export const Body = () => {
       <ScrollView style={styles.body}>
         <Section title="利用に関して" mtPx={20}>
           <Inquiry />
-        </Section>
-        <Section title="評価に関して" mtPx={40}>
-          <Review />
         </Section>
         <Section title="アプリに関して" mtPx={40}>
           <PrivacyPolicy />
