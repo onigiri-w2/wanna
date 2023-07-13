@@ -19,7 +19,11 @@ export const Modal = ({isOpen, close, children}: Props) => {
       onRequestClose={close}>
       <TouchableOpacity style={{flex: 1}} onPress={close} activeOpacity={1}>
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>{children}</View>
+          <TouchableOpacity
+            onPress={e => e.stopPropagation()}
+            activeOpacity={1}>
+            <View style={styles.modalContent}>{children}</View>
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     </ModalRN>
