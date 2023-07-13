@@ -7,7 +7,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {Modal} from '@/components/Modal';
 import {useShow} from '@/hooks/useShow';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
-import {FONT_SIZE_NORMAL} from '@/styles/const';
+import {FONT_SIZE_LARGE} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
 
@@ -30,8 +30,8 @@ export const Delete = ({wannadoId, onDelete}: Props) => {
     <>
       <TouchableOpacity onPress={handleDeleteButtonPress}>
         <HStack py={1} alignItems="center">
-          <MaterialCommunityIcons name="delete" size={24} />
-          <Text ml={2} fontSize={FONT_SIZE_NORMAL} fontWeight="bold">
+          <MaterialCommunityIcons name="delete" size={28} />
+          <Text ml={2} fontSize={FONT_SIZE_LARGE - 2} fontWeight="bold">
             削除する
           </Text>
         </HStack>

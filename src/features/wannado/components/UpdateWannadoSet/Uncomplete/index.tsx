@@ -7,7 +7,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Modal} from '@/components/Modal';
 import {useShow} from '@/hooks/useShow';
 import {wannadoActions} from '@/recoil/actions/wannado';
-import {FONT_SIZE_NORMAL} from '@/styles/const';
+import {FONT_SIZE_LARGE} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
 
@@ -30,8 +30,8 @@ export const Uncomplete = ({wannadoId, onUncomplete}: Props) => {
     <>
       <TouchableOpacity onPress={handleUncompleteButtonPress}>
         <HStack py={1} alignItems="center">
-          <MaterialIcons name="done" size={24} />
-          <Text ml={2} fontSize={FONT_SIZE_NORMAL} fontWeight="bold">
+          <MaterialIcons name="done" size={28} />
+          <Text ml={2} fontSize={FONT_SIZE_LARGE - 2} fontWeight="bold">
             未完了に戻す
           </Text>
         </HStack>

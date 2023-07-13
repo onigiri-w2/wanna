@@ -30,7 +30,7 @@ export const LINK_COLOR = '#007AB7'; // NativeBase -> "blue.500"
 // ページヘッダー定義
 export const PAGE_HEADER_FONT_SIZE = FONT_SIZE_LARGE;
 export const PAGE_HEADER_FONT_WEIGHT = 'bold';
-export const PAGE_HEADER_HEIGHT = 52; // px: NativeBase -> 13
+export const PAGE_HEADER_HEIGHT = 64; // px: NativeBase -> 16
 export const PAGE_HEADER_PADDING = 16; // px: NativeBase -> 4
 export const PAGE_HEADER_COLOR = MAIN_COLOR;
 export const PAGE_HEADER_ICON_SIZE = 32; // px: NativeBase -> 8
