@@ -30,7 +30,7 @@ export const Delete = ({wannadoId, onDelete}: Props) => {
     <>
       <TouchableOpacity onPress={handleDeleteButtonPress}>
         <HStack py={1} alignItems="center">
-          <MaterialCommunityIcons name="delete" size={28} />
+          <MaterialCommunityIcons name="delete" size={28} color="black" />
           <Text ml={2} fontSize={FONT_SIZE_LARGE - 2} fontWeight="bold">
             削除する
           </Text>

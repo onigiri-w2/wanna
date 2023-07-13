@@ -30,7 +30,7 @@ export const Complete = ({wannadoId, onComplete}: Props) => {
     <>
       <TouchableOpacity onPress={handleCompleteButtonPress}>
         <HStack py={1} alignItems="center">
-          <MaterialIcons name="done" size={28} />
+          <MaterialIcons name="done" size={28} color="black" />
           <Text ml={2} fontSize={FONT_SIZE_LARGE - 2} fontWeight="bold">
             完了する
           </Text>

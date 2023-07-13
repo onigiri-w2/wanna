@@ -25,7 +25,7 @@ export const EditorToolBar = ({onBack, onPressEdit, isEditable}: Props) => {
         borderColor="gray.500"
         bg="white">
         <TouchableOpacity onPress={onBack}>
-          <Ionicons name="arrow-back-circle-sharp" size={32} />
+          <Ionicons name="arrow-back-circle-sharp" size={32} color="black" />
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressEdit}>
           <Box
