@@ -12,15 +12,17 @@ import {WannadoneModalProvider} from './providers/WannadoneModalProvider';
 
 export const WannadoListScreen = () => {
   return (
-    <SafeAreaView
-      topColorCode={MAIN_COLOR}
-      bottomColorCode={BACKGROUND_GRAY_COLOR}>
-      <WannadoneModalProvider>
-        <VStack style={commonStyles.flex1}>
-          <Header />
-          <Body />
-        </VStack>
-      </WannadoneModalProvider>
-    </SafeAreaView>
+    <>
+      <SafeAreaView
+        topColorCode={MAIN_COLOR}
+        bottomColorCode={BACKGROUND_GRAY_COLOR}>
+        <WannadoneModalProvider>
+          <VStack style={commonStyles.flex1}>
+            <Header />
+            <Body />
+          </VStack>
+        </WannadoneModalProvider>
+      </SafeAreaView>
+    </>
   );
 };
