@@ -35,7 +35,6 @@ const Content = () => {
       <AddTodoEditor />
       <TodoCompletedBottomSheet />
       <AddButton />
-      <AddTodoEditor />
       <UpdateTodoEditor />
     </View>
   );
