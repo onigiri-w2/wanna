@@ -4,3 +4,6 @@ clean_ios:
 	rm -rf ios/build && rm -rf ios/Pods && rm ios/Podfile.lock && rm -rf ~/Library/Developer/Xcode/DerivedData  &&  cd ios && pod install
 clean_android:
 	rm -rf android/app/build && cd android && ./gradlew clean
+
+release_build_android:
+	yarn android mode=release
