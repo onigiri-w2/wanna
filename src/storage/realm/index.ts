@@ -22,7 +22,7 @@ const realmConfig = {
     LinkList,
     Link,
   ],
-  schemaVersion: 4,
+  schemaVersion: 5,
   // TODO: 本番環境では必ずfalseにする
   // というかconfigで環境別に設定できるようにしたいな
   deleteRealmIfMigrationNeeded: true,

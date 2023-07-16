@@ -5,7 +5,8 @@ import {Text} from 'native-base';
 
 import {BACKGROUND_GRAY_COLOR, BORDER_RADIUS, MAIN_COLOR} from '@/styles/const';
 
-import {Inquiry} from '../Links/Inquiry';
+import {DefectReport} from '../Links/DefectReport';
+import {FeatureRequest} from '../Links/FeatureRequest';
 import {PrivacyPolicy} from '../Links/PrivacyPolicy';
 import {TermsOfUse} from '../Links/TermsOfUse';
 
@@ -13,8 +14,9 @@ export const Body = () => {
   return (
     <>
       <ScrollView style={styles.body}>
-        <Section title="利用に関して" mtPx={20}>
-          <Inquiry />
+        <Section title="お問い合わせ" mtPx={20}>
+          <DefectReport />
+          <FeatureRequest />
         </Section>
         <Section title="アプリに関して" mtPx={40}>
           <PrivacyPolicy />
