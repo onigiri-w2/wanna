@@ -34,7 +34,6 @@ export const Editor = ({onBack}: Props) => {
     setIsEditable(true);
   };
   const handleBack = () => {
-    editTargetMemoIdActions.resetTargetId();
     onBack();
   };
 

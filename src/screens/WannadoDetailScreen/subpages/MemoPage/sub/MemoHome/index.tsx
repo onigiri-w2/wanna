@@ -4,6 +4,7 @@ import {StyleSheet} from 'react-native';
 import {View} from 'native-base';
 
 import {MemoList} from '@/features/memo/components/MemoList';
+import {editTargetMemoIdActions} from '@/recoil/states/editTargetMemo';
 
 import {useNavigator} from '../../navigations/hooks/useNavigator';
 
@@ -12,6 +13,8 @@ import {Buttons} from './Buttons';
 export const MemoHome = () => {
   const {navigateToMemoEditor} = useNavigator();
   const handlePressAddButton = () => {
+    // TODO: 凝集度がやばい。散らばりすぎ。このロジックはfeaturesに置くべきな気がする...
+    editTargetMemoIdActions.resetTargetId();
     navigateToMemoEditor();
   };
   return (
