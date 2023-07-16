@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SafeAreaViewCore from 'react-native-safe-area-view';
+import {SafeAreaView as SafeAreaViewCore} from 'react-native-safe-area-context';
 
 import {commonStyles} from '@/styles/commonRNStyles';
 
@@ -25,6 +25,7 @@ export const SafeAreaView = ({
             backgroundColor: topColor,
           },
         ]}
+        edges={['right', 'bottom', 'left']}
       />
       <SafeAreaViewCore
         style={[
@@ -33,7 +34,7 @@ export const SafeAreaView = ({
             backgroundColor: bottomColor,
           },
         ]}
-        forceInset={{top: 'never'}}>
+        edges={['right', 'bottom', 'left']}>
         {children}
       </SafeAreaViewCore>
     </>
