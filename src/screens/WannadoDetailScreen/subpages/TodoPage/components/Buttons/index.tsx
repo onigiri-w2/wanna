@@ -73,6 +73,7 @@ export const AddButton = () => {
   );
 };
 
+// TODO: ボタンの位置は他の画面と同じなので、共通化してconstに抜き出した方が安全。
 const styles = StyleSheet.create({
   buttonView: {
     position: 'absolute',

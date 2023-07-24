@@ -46,6 +46,7 @@ export const AddWannadoForm = () => {
             blurOnSubmit={false}
             onSubmitEditing={handlePressAdd}
             returnKeyType="done"
+            autoFocus
           />
         </Box>
         <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />

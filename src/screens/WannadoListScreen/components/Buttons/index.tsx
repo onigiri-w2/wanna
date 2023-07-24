@@ -1,13 +1,17 @@
 import {TouchableOpacity, StyleSheet} from 'react-native';
 
 import {Box} from 'native-base';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {ACCENT_COLOR, BORDER_CIRCLE_RADIUS} from '@/styles/const';
 
+import {useAddEditorShowContext} from '../../providers/AddEditorShowProvider';
 import {useWannadoneModalContext} from '../../providers/WannadoneModalProvider';
 
 export const Buttons = () => {
+  const {showModal: openEditor} = useAddEditorShowContext();
+
   const {isModalVisible, hideModal, showModal} = useWannadoneModalContext();
   const handlePress = () => {
     if (isModalVisible) {
@@ -35,6 +39,9 @@ export const Buttons = () => {
           />
         </Box>
       </TouchableOpacity>
+      <TouchableOpacity onPress={openEditor}>
+        <AntDesign name="pluscircle" size={56} color={ACCENT_COLOR} />
+      </TouchableOpacity>
     </Box>
   );
 };
@@ -42,7 +49,7 @@ export const Buttons = () => {
 const styles = StyleSheet.create({
   buttonView: {
     position: 'absolute',
-    bottom: 100,
+    bottom: 74,
     right: 20,
     zIndex: 2,
   },

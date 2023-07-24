@@ -1,9 +1,9 @@
 import {StyleSheet, View} from 'react-native';
 
-import {KeyboardAvoidingView} from '@/components/KeyboardAvoidingView';
-import {AddWannadoForm} from '@/features/wannado/components/AddWannadoForm';
 import {WannadoUncompletedList} from '@/features/wannado/components/WannadoUncompletedList';
 import {BACKGROUND_GRAY_COLOR, PAGE_BODY_PADDING} from '@/styles/const';
+
+import {AddWannadoEditor} from '../AddWannadoEditor';
 
 export const Wannadoes = () => {
   return (
@@ -11,9 +11,7 @@ export const Wannadoes = () => {
       <View style={styles.view}>
         <WannadoUncompletedList />
       </View>
-      <KeyboardAvoidingView>
-        <AddWannadoForm />
-      </KeyboardAvoidingView>
+      <AddWannadoEditor />
     </View>
   );
 };
