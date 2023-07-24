@@ -13,7 +13,6 @@ export const TodoCompletedList = () => {
   return (
     <FlatList
       contentContainerStyle={styles.flatList}
-      // TODO: ここ完了日順に並べたい
       data={todos}
       renderItem={({item}) => <TodoListItem todo={item} />}
       keyExtractor={item => item.id}
