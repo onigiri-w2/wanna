@@ -8,6 +8,7 @@ import {BACKGROUND_GRAY_COLOR, BORDER_RADIUS, MAIN_COLOR} from '@/styles/const';
 import {DefectReport} from '../Links/DefectReport';
 import {FeatureRequest} from '../Links/FeatureRequest';
 import {PrivacyPolicy} from '../Links/PrivacyPolicy';
+import {Review} from '../Links/Review';
 import {TermsOfUse} from '../Links/TermsOfUse';
 
 export const Body = () => {
@@ -19,6 +20,7 @@ export const Body = () => {
           <FeatureRequest />
         </Section>
         <Section title="アプリに関して" mtPx={40}>
+          <Review />
           <PrivacyPolicy />
           <TermsOfUse />
         </Section>

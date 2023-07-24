@@ -1,22 +1,20 @@
 import React from 'react';
-
-import AppLink from 'react-native-app-link';
+import {Linking, Platform} from 'react-native';
 
 import {BaseLink} from './base';
 
+// Note: ハードコーディング！！！まあええわ。機密情報でもないし。
+const IOS_APP_ID = '6451151247'; // App store connectから取得できる
+const ANDROID_APP_ID = 'com.wannadoasstmobile'; // google play consoleから取得できる
+
 export const Review = () => {
+  const url =
+    Platform.OS === 'ios'
+      ? `https://apps.apple.com/app/id${IOS_APP_ID}}&action=write-review`
+      : `https://play.google.com/store/apps/details?id=${ANDROID_APP_ID}`;
+
   const onPress = () => {
-    // TODO: 実機で動作検証しつつ、後で修正する
-    AppLink.openInStore({
-      // iOS用、アプリ名
-      appName: 'LINE',
-      // iOS用、Apple Id
-      appStoreId: 443904275,
-      // iOS用、国
-      appStoreLocale: 'jp',
-      // Android用、パッケージ名
-      playStoreId: 'jp.naver.line.android',
-    }).catch(e => console.log(e));
+    Linking.openURL(url);
   };
   return <BaseLink text="レビューを書く" onPress={onPress} />;
 };
