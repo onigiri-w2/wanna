@@ -63,5 +63,6 @@ yarn-error.log
 .metro-health-check*
 
 .env
+.envrc
 
 *.keystore
