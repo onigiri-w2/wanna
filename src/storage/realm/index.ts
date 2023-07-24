@@ -1,3 +1,5 @@
+import {REALM_IF_MIGRATION_NEEDED} from '@env';
+
 import {Link} from './schema/link';
 import {LinkList} from './schema/linkList';
 import {Memo} from './schema/memo';
@@ -27,3 +29,5 @@ const realmConfig = {
   // というかconfigで環境別に設定できるようにしたいな
   deleteRealmIfMigrationNeeded: true,
 };
+
+console.log('REALM_IF_MIGRATION_NEEDED', REALM_IF_MIGRATION_NEEDED);

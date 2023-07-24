@@ -143,6 +143,21 @@ android {
             shrinkResources true
         }
     }
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationIdSuffix ".dev"
+        }
+        stg {
+            dimension "default"
+            applicationIdSuffix ".stg"
+        }
+        prod {
+            dimension "default"
+            // no suffix for production
+        }
+    }
 
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->

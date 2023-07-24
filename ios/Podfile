@@ -43,7 +43,17 @@ target 'WannadoAsstMobile' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'WannadoAsstMobileTests' do
+  # target 'WannadoAsstMobileTests' do
+  #   inherit! :complete
+  #   # Pods for testing
+  # end
+
+  target 'WannadoAsstMobile-dev' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  target 'WannadoAsstMobile-stg' do
     inherit! :complete
     # Pods for testing
   end
