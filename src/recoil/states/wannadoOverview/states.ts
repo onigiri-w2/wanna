@@ -1,7 +1,7 @@
 import {atom, selector} from 'recoil';
 
-import {WannadoSerialized} from '@/domain/model/entity/wannado';
 import {WannadoOrderSerialized} from '@/domain/model/entity/wannadoOrder';
+import {WannadoOverview} from '@/domain/types';
 import * as usecase from '@/domain/usecase/wannado';
 
 export const wannadoOrderState = atom<WannadoOrderSerialized>({
@@ -17,20 +17,32 @@ export const wannadoOrderState = atom<WannadoOrderSerialized>({
   ],
 });
 
-export const wannadoOverviewAllState = atom<WannadoSerialized[]>({
+export const wannadoOverviewAllState = atom<WannadoOverview[]>({
   key: 'wannadoOverviewAll',
   default: [],
   effects: [
     ({setSelf}) => {
       (async () => {
         const wannadoAll = await usecase.getWannadoAll();
-        setSelf(wannadoAll);
+        const data = wannadoAll.map(w => ({
+          id: w.id,
+          title: w.title,
+          isCompleted: w.isCompleted,
+          completedAt: w.completedAt,
+          completedTodoCount: w.todoList.todos.filter(t => t.isCompleted)
+            .length,
+          uncompletedTodoCount: w.todoList.todos.filter(t => !t.isCompleted)
+            .length,
+          memoCount: w.memoList.memos.length,
+          linkCount: w.linkList.links.length,
+        }));
+        setSelf(data);
       })();
     },
   ],
 });
 
-export const uncompWannadoOverviewAllState = selector({
+export const uncompWannadoOverviewAllState = selector<WannadoOverview[]>({
   key: 'uncompWannadoOverviewAll',
   get: ({get}) => {
     const wannadoOrder = get(wannadoOrderState);
@@ -46,14 +58,9 @@ export const uncompWannadoOverviewAllState = selector({
       .map(id => {
         const w = filtered.find(w => w.id === id);
         if (!w) return undefined;
-        return {
-          id: w.id,
-          title: w.title,
-          isCompleted: w.isCompleted,
-          completedAt: w.completedAt,
-        };
+        return w;
       })
-      .filter(w => w !== undefined) as WannadoSerialized[];
+      .filter(w => w !== undefined) as WannadoOverview[];
   },
 });
 
@@ -69,11 +76,6 @@ export const compWannadoOverviewAllState = selector({
         }
         return 0;
       });
-    return filtered.map(w => ({
-      id: w.id,
-      title: w.title,
-      isCompleted: w.isCompleted,
-      completedAt: w.completedAt,
-    }));
+    return filtered;
   },
 });

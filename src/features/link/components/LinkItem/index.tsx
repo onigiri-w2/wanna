@@ -10,6 +10,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {LinkSerialized} from '@/domain/model/entity/link';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   BORDER_RADIUS,
   FONT_SIZE_NORMAL,
@@ -25,6 +26,7 @@ export const LinkItem = ({
 }: RenderItemParams<LinkSerialized>) => {
   const handlePressDelete = () => {
     activeWannadoActions.deleteLink(item.id);
+    wannadoOverviewAllActions.removeLink();
   };
   const hanldePressText = () => {
     Linking.openURL(item.url);

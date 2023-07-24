@@ -10,6 +10,7 @@ import {Box, Flex, Input} from 'native-base';
 import {MainButton} from '@/components/MainButton';
 import {MAX_TODO_TITLE_LENGTH} from '@/domain/model/entity/todo/valueobject/title';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   ADD_FORM_PADDING,
   BORDER_RADIUS,
@@ -28,6 +29,7 @@ export const AddTodoForm = React.memo(() => {
     updateTitle('');
     if (title === '') return;
     activeWannadoActions.addTodo(title);
+    wannadoOverviewAllActions.addTodo();
   };
 
   const handleChange = (e: NativeSyntheticEvent<TextInputChangeEventData>) => {

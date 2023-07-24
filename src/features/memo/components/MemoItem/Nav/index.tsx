@@ -9,6 +9,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {MemoSerialized} from '@/domain/model/entity/memo';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
 import {editTargetMemoIdActions} from '@/recoil/states/editTargetMemo';
+import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {useNavigator} from '@/screens/WannadoDetailScreen/subpages/MemoPage/navigations/hooks/useNavigator';
 import {ACCENT_COLOR, BORDER_RADIUS, ICON_SIZE_NORMAL} from '@/styles/const';
 
@@ -20,6 +21,7 @@ export const Nav = ({isMemoWide, memo}: NavProps) => {
   const {navigateToMemoEditor} = useNavigator();
   const handlePressDelete = () => {
     activeWannadoActions.deleteMemo(memo.id);
+    wannadoOverviewAllActions.removeMemo();
   };
   const handlePressEdit = () => {
     editTargetMemoIdActions.setEditTargetId(memo.id);
