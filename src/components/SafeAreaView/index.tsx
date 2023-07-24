@@ -25,7 +25,7 @@ export const SafeAreaView = ({
             backgroundColor: topColor,
           },
         ]}
-        edges={['right', 'bottom', 'left']}
+        edges={['right', 'top', 'left']}
       />
       <SafeAreaViewCore
         style={[
