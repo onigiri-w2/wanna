@@ -10,7 +10,7 @@ const ANDROID_APP_ID = 'com.wannadoasstmobile'; // google play consoleから取�
 export const Review = () => {
   const url =
     Platform.OS === 'ios'
-      ? `https://apps.apple.com/app/id${IOS_APP_ID}}&action=write-review`
+      ? `https://apps.apple.com/app/id${IOS_APP_ID}}`
       : `https://play.google.com/store/apps/details?id=${ANDROID_APP_ID}`;
 
   const onPress = () => {
