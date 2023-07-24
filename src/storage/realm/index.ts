@@ -1,4 +1,4 @@
-import {REALM_IF_MIGRATION_NEEDED} from '@env';
+import {REALM_IF_MIGRATION_NEEDED, REALM_SCHEME_VERSION} from '@/utils/config';
 
 import {Link} from './schema/link';
 import {LinkList} from './schema/linkList';
@@ -24,10 +24,6 @@ const realmConfig = {
     LinkList,
     Link,
   ],
-  schemaVersion: 5,
-  // TODO: 本番環境では必ずfalseにする
-  // というかconfigで環境別に設定できるようにしたいな
-  deleteRealmIfMigrationNeeded: true,
+  schemaVersion: REALM_SCHEME_VERSION || 0,
+  deleteRealmIfMigrationNeeded: REALM_IF_MIGRATION_NEEDED,
 };
-
-console.log('REALM_IF_MIGRATION_NEEDED', REALM_IF_MIGRATION_NEEDED);
