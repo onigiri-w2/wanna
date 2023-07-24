@@ -3,6 +3,8 @@ import {Pressable, ScrollView, StyleSheet} from 'react-native';
 
 import {Input, Text, View} from 'native-base';
 
+import {MAX_MEMO_CONTENT_LENGTH} from '@/domain/model/entity/memo/valueobject/content';
+import {MAX_MEMO_TITLE_LENGTH} from '@/domain/model/entity/memo/valueobject/title';
 import {
   FONT_SIZE_NORMAL,
   ACCENT_COLOR_VERY_LIGHT,
@@ -57,6 +59,8 @@ const InputComponent = ({data, onChangeText}: InputComponentProps) => {
       bg={ACCENT_COLOR_VERY_LIGHT}
       _focus={styles.inputFocus}
       autoFocus
+      // TODO: 苦肉の策で一旦、maxLengthを足し算にしてる...これだとタイトルの文字数を制限できないので後で修正
+      maxLength={MAX_MEMO_TITLE_LENGTH + MAX_MEMO_CONTENT_LENGTH}
     />
   );
 };

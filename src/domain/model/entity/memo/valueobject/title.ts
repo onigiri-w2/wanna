@@ -1,7 +1,8 @@
 import * as zod from 'zod';
 
+export const MAX_MEMO_TITLE_LENGTH = 100;
 const E_TITLE_MIN_LENGTH = 'タイトルの最小文字数は1文字です。';
-const E_TITLE_MAX_LENGTH = 'タイトルの最大文字数は100文字です。';
+const E_TITLE_MAX_LENGTH = `タイトルの最大文字数は${MAX_MEMO_TITLE_LENGTH}文字です。`;
 
 export const TitleSchema = zod.z.object({
   title: zod.string().min(1, E_TITLE_MIN_LENGTH).max(100, E_TITLE_MAX_LENGTH),

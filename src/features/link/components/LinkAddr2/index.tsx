@@ -7,6 +7,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {MainButton} from '@/components/MainButton';
+import {MAX_LINK_TITLE_LENGTH} from '@/domain/model/entity/link/valueobject/title';
 import {getTitleFromUrl} from '@/functions/getTitleFromUrl';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
 import {FONT_SIZE_NORMAL} from '@/styles/const';
@@ -70,6 +71,7 @@ export const LinkAddr = ({onAdd}: Props) => {
             placeholder="空白の場合はURLがタイトル"
             multiline
             onChangeText={handleChangeTitle}
+            maxLength={MAX_LINK_TITLE_LENGTH}
           />
           {isLoading ? (
             <ActivityIndicator size="small" color="#000" />

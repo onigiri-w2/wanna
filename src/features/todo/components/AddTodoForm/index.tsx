@@ -8,6 +8,7 @@ import {
 import {Box, Flex, Input} from 'native-base';
 
 import {MainButton} from '@/components/MainButton';
+import {MAX_TODO_TITLE_LENGTH} from '@/domain/model/entity/todo/valueobject/title';
 import {activeWannadoActions} from '@/recoil/states/activeWannado';
 import {
   ADD_FORM_PADDING,
@@ -48,6 +49,7 @@ export const AddTodoForm = React.memo(() => {
             onSubmitEditing={handlePress}
             autoFocus
             returnKeyType="done"
+            maxLength={MAX_TODO_TITLE_LENGTH}
           />
         </Box>
         <MainButton onPress={handlePress} text="保存" disabled={!title} />

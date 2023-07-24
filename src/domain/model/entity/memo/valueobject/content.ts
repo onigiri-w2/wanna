@@ -1,6 +1,7 @@
 import * as zod from 'zod';
 
-const E_CONTENT_MAX_LENGTH = 'メモの最大文字数は5000文字です。';
+export const MAX_MEMO_CONTENT_LENGTH = 9999;
+const E_CONTENT_MAX_LENGTH = `メモの最大文字数は${MAX_MEMO_CONTENT_LENGTH}文字です。`;
 
 export const ContentScheam = zod.z.object({
   content: zod.string().max(5000, E_CONTENT_MAX_LENGTH),

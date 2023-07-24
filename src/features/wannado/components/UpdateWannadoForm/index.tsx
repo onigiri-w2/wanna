@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 
 import {Box, Flex, Input} from 'native-base';
 
+import {MAX_WANNADO_TITLE_LENGTH} from '@/domain/model/entity/wannado/valueobject/title';
 import {
   BORDER_RADIUS,
   ACCENT_COLOR_VERY_LIGHT,
@@ -31,6 +32,7 @@ export const UpdateWannadoForm = ({wannadoId, initialTitle}: Props) => {
             blurOnSubmit
             autoFocus
             style={styles.input}
+            maxLength={MAX_WANNADO_TITLE_LENGTH}
           />
         </Box>
       </Flex>

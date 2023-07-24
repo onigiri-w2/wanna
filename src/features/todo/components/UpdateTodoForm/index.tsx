@@ -5,6 +5,7 @@ import {Box, Flex, Input} from 'native-base';
 
 import {MainButton} from '@/components/MainButton';
 import {TodoSerialized} from '@/domain/model/entity/todo';
+import {MAX_TODO_TITLE_LENGTH} from '@/domain/model/entity/todo/valueobject/title';
 import {
   ADD_FORM_PADDING,
   BORDER_RADIUS,
@@ -38,6 +39,7 @@ export const UpdateTodoForm = React.memo(({todo, onClose}: Props) => {
             autoFocus
             onSubmitEditing={onClose}
             returnKeyType="done"
+            maxLength={MAX_TODO_TITLE_LENGTH}
           />
         </Box>
         <MainButton onPress={onClose} text="閉じる" />

@@ -8,6 +8,7 @@ import {
 import {Box, Flex, Input} from 'native-base';
 
 import {MainButton} from '@/components/MainButton';
+import {MAX_WANNADO_TITLE_LENGTH} from '@/domain/model/entity/wannado/valueobject/title';
 import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {
   ADD_FORM_HEIGHT,
@@ -47,6 +48,7 @@ export const AddWannadoForm = () => {
             onSubmitEditing={handlePressAdd}
             returnKeyType="done"
             autoFocus
+            maxLength={MAX_WANNADO_TITLE_LENGTH}
           />
         </Box>
         <MainButton onPress={handlePressAdd} text="追加" disabled={!title} />
