@@ -2,9 +2,8 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 
 import {Box} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {ACCENT_COLOR, BORDER_CIRCLE_RADIUS} from '@/styles/const';
+import {ACCENT_COLOR} from '@/styles/const';
 
 import {useAddEditorShowContext} from '../../providers/AddEditorShowProvider';
 import {useWannadoneModalContext} from '../../providers/WannadoneModalProvider';
@@ -23,22 +22,6 @@ export const Buttons = () => {
 
   return (
     <Box style={styles.buttonView} alignItems="center">
-      <TouchableOpacity onPress={handlePress}>
-        <Box
-          mb={4}
-          p={2}
-          background="white"
-          borderWidth={1}
-          borderColor={isModalVisible ? ACCENT_COLOR : 'black'}
-          borderRadius={BORDER_CIRCLE_RADIUS}
-          bg={isModalVisible ? ACCENT_COLOR : 'white'}>
-          <Ionicons
-            name="md-checkmark-done"
-            size={24}
-            color={isModalVisible ? 'white' : 'black'}
-          />
-        </Box>
-      </TouchableOpacity>
       <TouchableOpacity onPress={openEditor}>
         <AntDesign name="pluscircle" size={56} color={ACCENT_COLOR} />
       </TouchableOpacity>

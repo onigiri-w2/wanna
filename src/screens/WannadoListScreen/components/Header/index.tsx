@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {HStack, Text, Box} from 'native-base';
+import {HStack, Text} from 'native-base';
 
 import {
   PAGE_HEADER_FONT_SIZE,
@@ -8,11 +8,11 @@ import {
   PAGE_HEADER_COLOR,
   PAGE_HEADER_HEIGHT,
   PAGE_HEADER_PADDING,
-  PAGE_HEADER_ICON_SIZE,
 } from '@/styles/const';
 
 import {useWannadoneModalContext} from '../../providers/WannadoneModalProvider';
 
+import {DoneIcon} from './DoneIcon';
 import {SettingsIcon} from './SettingsIcon';
 
 export const Header = () => {
@@ -24,8 +24,7 @@ export const Header = () => {
       justifyContent="center"
       alignItems="center"
       bg={PAGE_HEADER_COLOR}>
-      {/* <DoneIcon /> */}
-      <Box size={`${PAGE_HEADER_ICON_SIZE}px`} />
+      <DoneIcon />
       <Text
         marginX="auto"
         fontSize={PAGE_HEADER_FONT_SIZE}
