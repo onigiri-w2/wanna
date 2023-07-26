@@ -30,11 +30,12 @@ export const wannadoAllActions = {
         },
       ];
     });
+    // TODO: domain側との直行性が無いから、いずれ変更し忘れる可能性がある
     setRecoil(wannadoOrderState, prev => {
       if (!prev) return prev;
       return {
         ...prev,
-        order: [wannado.id, ...prev.order],
+        order: [...prev.order, wannado.id],
       };
     });
   },

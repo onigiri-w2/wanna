@@ -105,11 +105,12 @@ export const activeWannadoActions = {
         target.completedAt = wannado.completedAt;
       });
     });
+    // TODO: domain側とのロジックの二重化が起きてるのが危険
     setRecoil(wannadoOrderState, prev => {
       if (!prev) return prev;
       return {
         ...prev,
-        order: [wannadoId, ...prev.order],
+        order: [...prev.order, wannadoId],
       };
     });
   },

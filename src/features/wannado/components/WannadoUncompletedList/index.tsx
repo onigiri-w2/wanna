@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {StyleSheet} from 'react-native';
 
 import DraggableFlatList from 'react-native-draggable-flatlist';
@@ -11,9 +11,19 @@ import {WannadoListItem} from './Item';
 
 export const WannadoUncompletedList = () => {
   const wannadoList = useRecoilValue(uncompWannadoOverviewAllState);
+  const ref = useRef<any>(null);
+  const [listLength, setListLength] = useState<number>(wannadoList.length);
+
+  useEffect(() => {
+    if (wannadoList && wannadoList.length > listLength) {
+      ref.current?.getScrollResponder()?.scrollToEnd({animated: true});
+    }
+    setListLength(wannadoList.length);
+  }, [wannadoList]);
 
   return (
     <DraggableFlatList
+      ref={ref}
       contentContainerStyle={styles.flatList}
       data={wannadoList}
       renderItem={WannadoListItem}
