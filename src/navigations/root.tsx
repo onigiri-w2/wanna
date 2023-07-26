@@ -5,11 +5,13 @@ import {useRecoilValue} from 'recoil';
 
 import {wannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 import {SettingsPage} from '@/screens/SettingsScreen';
+import {WannadoCompletedListScreen} from '@/screens/WannadoCompletedListScreen';
 import {WannadoDetailPage} from '@/screens/WannadoDetailScreen';
 import {WannadoListScreen} from '@/screens/WannadoListScreen';
 
 export type RootNavParamList = {
   WannadoListPage: undefined;
+  WannadoCompletedListPage: undefined;
   WannadoDetailPage: {wannadoId: string};
   SettingsPage: undefined;
 };
@@ -35,6 +37,10 @@ export const RootStacks = () => {
         component={WannadoDetailPage}
       />
       <RootStack.Screen name="SettingsPage" component={SettingsPage} />
+      <RootStack.Screen
+        name="WannadoCompletedListPage"
+        component={WannadoCompletedListScreen}
+      />
     </RootStack.Navigator>
   );
 };

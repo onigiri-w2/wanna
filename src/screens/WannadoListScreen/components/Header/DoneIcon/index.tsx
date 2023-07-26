@@ -1,24 +1,23 @@
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 
-import {Box} from 'native-base';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import {BORDER_RADIUS, PAGE_HEADER_ICON_SIZE} from '@/styles/const';
-
-import {useDoneIcon} from './hooks';
+import {useRootNavigator} from '@/navigations/hooks/useNavigator';
+import {PAGE_HEADER_ICON_SIZE} from '@/styles/const';
 
 export const DoneIcon = () => {
-  const {handlePress: handlePresDone, bgColor, color} = useDoneIcon();
+  const {navigateToWannadoCompletedList} = useRootNavigator();
+  const handlePress = () => {
+    navigateToWannadoCompletedList();
+  };
   return (
-    <TouchableOpacity activeOpacity={1} onPress={handlePresDone}>
-      <Box bg={bgColor} borderRadius={BORDER_RADIUS}>
-        <Ionicons
-          name="md-checkmark-done"
-          size={PAGE_HEADER_ICON_SIZE}
-          color={color}
-        />
-      </Box>
+    <TouchableOpacity onPress={handlePress}>
+      <Ionicons
+        name="md-checkmark-done"
+        size={PAGE_HEADER_ICON_SIZE}
+        color="black"
+      />
     </TouchableOpacity>
   );
 };

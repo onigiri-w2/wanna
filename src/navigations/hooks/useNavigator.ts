@@ -17,9 +17,14 @@ export const useRootNavigator = () => {
     navigation.navigate('WannadoListPage');
   }
 
+  function navigateToWannadoCompletedList() {
+    navigation.navigate('WannadoCompletedListPage');
+  }
+
   return {
     navigateToWannadoDetail,
     navigateToSettings,
     navigateToWannadoList,
+    navigateToWannadoCompletedList,
   };
 };

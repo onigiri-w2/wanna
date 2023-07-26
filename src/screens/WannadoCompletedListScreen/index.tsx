@@ -6,10 +6,10 @@ import {SafeAreaView} from '@/components/SafeAreaView';
 import {commonStyles} from '@/styles/commonRNStyles';
 import {BACKGROUND_GRAY_COLOR, MAIN_COLOR} from '@/styles/const';
 
-import {Body} from './components/Body';
 import {Header} from './components/Header';
+import {Wannadones} from './components/Wannadones';
 
-export const WannadoListScreen = () => {
+export const WannadoCompletedListScreen = () => {
   return (
     <>
       <SafeAreaView
@@ -17,7 +17,7 @@ export const WannadoListScreen = () => {
         bottomColorCode={BACKGROUND_GRAY_COLOR}>
         <VStack style={commonStyles.flex1}>
           <Header />
-          <Body />
+          <Wannadones />
         </VStack>
       </SafeAreaView>
     </>
