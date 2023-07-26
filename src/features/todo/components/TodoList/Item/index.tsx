@@ -49,7 +49,7 @@ export const TodoListItem = ({
   }, [item]);
 
   const handleDelete = () => {
-    activeWannadoActions.deleteTodo(item.id);
+    activeWannadoActions.deleteTodo(item.id, checked);
   };
 
   return (

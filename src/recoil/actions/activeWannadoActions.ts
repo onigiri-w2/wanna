@@ -135,7 +135,7 @@ export const activeWannadoActions = {
       });
     });
   },
-  deleteTodo: (todoId: string) => {
+  deleteTodo: (todoId: string, isCompleted: boolean) => {
     const wannadoId = getRecoil(activeWannadoIdState);
     todoUsecase.deleteTodo(wannadoId, todoId);
     setRecoil(activeWannadoState, prev => {
@@ -153,7 +153,10 @@ export const activeWannadoActions = {
       return produce(prev, draft => {
         const wannado = draft.find(w => w.id === wannadoId);
         if (!wannado) return;
-        wannado.uncompletedTodoCount = wannado.uncompletedTodoCount - 1;
+
+        if (isCompleted)
+          wannado.completedTodoCount = wannado.completedTodoCount - 1;
+        else wannado.uncompletedTodoCount = wannado.uncompletedTodoCount - 1;
       });
     });
   },
