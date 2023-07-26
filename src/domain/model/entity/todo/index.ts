@@ -28,8 +28,9 @@ export class Todo implements ITodo {
   }
 
   public updateTitle(title: string) {
-    if (this.isCompleted)
-      throw new Error('Cannot update title of completed todo');
+    // Note: 完了してるTodoのタイトルを変更しないでおこうと思ってたけど、
+    // 別にタイトル変更できても他に影響ないかなと思ったので変更できるようにした。
+    // そこまで矯正することではないかなと。
     this.title = Title.new(title);
   }
 
