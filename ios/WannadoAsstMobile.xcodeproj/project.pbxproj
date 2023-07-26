@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		4CCD642A2BAF0C77C30CAE88 /* libPods-WannadoAsstMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EB8A1D742A5A84F6E0D3F5 /* libPods-WannadoAsstMobile.a */; };
-		84F4A4E3E246A2C200DF9A46 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D58A0D2375330D226FDC6779 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */; };
+		6163C2149742C2A73B1E0DFF /* libPods-WannadoAsstMobile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6540DD3256F3092D660C6111 /* libPods-WannadoAsstMobile.a */; };
+		67B6D71572C5BBA230C706DA /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FEF47F2859C1F228DF778D39 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */; };
+		DBEAD21A0316309823CD9426 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B327C44C8525DB904C629C1D /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */; };
 		E39F4B702A6E4AC400185921 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		E39F4B712A6E4AC400185921 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		E39F4B752A6E4AC400185921 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -18,26 +19,25 @@
 		E39F4B832A6E4ACB00185921 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		E39F4B872A6E4ACB00185921 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		E3A9B5CC2A5DAEFF00B3CF28 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		E9A065E41B9BE948783FCB1D /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D5E150F063C688D3B3B524 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* WannadoAsstMobileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WannadoAsstMobileTests.m; sourceTree = "<group>"; };
-		02D5E150F063C688D3B3B524 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E13FC76803E19D767C2D47E /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* WannadoAsstMobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WannadoAsstMobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = WannadoAsstMobile/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = WannadoAsstMobile/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = WannadoAsstMobile/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = WannadoAsstMobile/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = WannadoAsstMobile/main.m; sourceTree = "<group>"; };
-		3635FCFAF4B2E118B7E9E3A1 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig"; sourceTree = "<group>"; };
+		24392FC189FB5AF8AC4C36D0 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig"; sourceTree = "<group>"; };
+		38502F450EC6A3984C44B1A6 /* Pods-WannadoAsstMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile.debug.xcconfig"; sourceTree = "<group>"; };
+		4B137F5B62B052865E2D0ADD /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		6540DD3256F3092D660C6111 /* libPods-WannadoAsstMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6798262724BC20F86464850A /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WannadoAsstMobile/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A0EB8A1D742A5A84F6E0D3F5 /* libPods-WannadoAsstMobile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE671B8F0CB5529F0542B802 /* Pods-WannadoAsstMobile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile.debug.xcconfig"; sourceTree = "<group>"; };
-		D58A0D2375330D226FDC6779 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEBBCC6F29CDBB74F91D90C5 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig"; sourceTree = "<group>"; };
-		E02D59664BDCB69FA17BEA01 /* Pods-WannadoAsstMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile.release.xcconfig"; sourceTree = "<group>"; };
+		B327C44C8525DB904C629C1D /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4B7C2A6E4AC400185921 /* WannadoAsstMobile-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WannadoAsstMobile-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39F4B7D2A6E4AC500185921 /* WannadoAsstMobile dev-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "WannadoAsstMobile dev-Info.plist"; path = "/Users/kenshiro/projects/prod/WannadoAsstMobile/ios/WannadoAsstMobile dev-Info.plist"; sourceTree = "<absolute>"; };
 		E39F4B8E2A6E4ACB00185921 /* WannadoAsstMobile-stg.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WannadoAsstMobile-stg.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,8 +59,8 @@
 		E3CA1D192A28DA3A00450A6C /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		E3CA1D1A2A28DA3A00450A6C /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		F141A886255A320334C97168 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig"; sourceTree = "<group>"; };
-		F2373E5F1F9552A203F5A50A /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig"; sourceTree = "<group>"; };
+		F4DFD7D9ED69CDD95A62CB5C /* Pods-WannadoAsstMobile.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannadoAsstMobile.release.xcconfig"; path = "Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile.release.xcconfig"; sourceTree = "<group>"; };
+		FEF47F2859C1F228DF778D39 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CCD642A2BAF0C77C30CAE88 /* libPods-WannadoAsstMobile.a in Frameworks */,
+				6163C2149742C2A73B1E0DFF /* libPods-WannadoAsstMobile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,7 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84F4A4E3E246A2C200DF9A46 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a in Frameworks */,
+				DBEAD21A0316309823CD9426 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9A065E41B9BE948783FCB1D /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a in Frameworks */,
+				67B6D71572C5BBA230C706DA /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,9 +126,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				A0EB8A1D742A5A84F6E0D3F5 /* libPods-WannadoAsstMobile.a */,
-				D58A0D2375330D226FDC6779 /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */,
-				02D5E150F063C688D3B3B524 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */,
+				6540DD3256F3092D660C6111 /* libPods-WannadoAsstMobile.a */,
+				B327C44C8525DB904C629C1D /* libPods-WannadoAsstMobile-WannadoAsstMobile-dev.a */,
+				FEF47F2859C1F228DF778D39 /* libPods-WannadoAsstMobile-WannadoAsstMobile-stg.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -170,12 +170,12 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AE671B8F0CB5529F0542B802 /* Pods-WannadoAsstMobile.debug.xcconfig */,
-				E02D59664BDCB69FA17BEA01 /* Pods-WannadoAsstMobile.release.xcconfig */,
-				F2373E5F1F9552A203F5A50A /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */,
-				F141A886255A320334C97168 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */,
-				DEBBCC6F29CDBB74F91D90C5 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */,
-				3635FCFAF4B2E118B7E9E3A1 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */,
+				38502F450EC6A3984C44B1A6 /* Pods-WannadoAsstMobile.debug.xcconfig */,
+				F4DFD7D9ED69CDD95A62CB5C /* Pods-WannadoAsstMobile.release.xcconfig */,
+				4B137F5B62B052865E2D0ADD /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */,
+				24392FC189FB5AF8AC4C36D0 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */,
+				0E13FC76803E19D767C2D47E /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */,
+				6798262724BC20F86464850A /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -210,14 +210,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "WannadoAsstMobile" */;
 			buildPhases = (
-				A642669A56FA1C20EAB5F287 /* [CP] Check Pods Manifest.lock */,
+				F341570D0B136E38C80CD963 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				7838A234CD8AF93ED88E904F /* [CP] Embed Pods Frameworks */,
-				E1C02EBDF50C68E4C001C6B1 /* [CP] Copy Pods Resources */,
+				32482F836AD5B3D3D4279305 /* [CP] Embed Pods Frameworks */,
+				600CCE1387B8DF990512E248 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -232,14 +232,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E39F4B792A6E4AC400185921 /* Build configuration list for PBXNativeTarget "WannadoAsstMobile-dev" */;
 			buildPhases = (
-				4A66B260D5C5C75374BFB498 /* [CP] Check Pods Manifest.lock */,
+				46D48960BD9095B0C505E788 /* [CP] Check Pods Manifest.lock */,
 				E39F4B6E2A6E4AC400185921 /* Start Packager */,
 				E39F4B6F2A6E4AC400185921 /* Sources */,
 				E39F4B722A6E4AC400185921 /* Frameworks */,
 				E39F4B742A6E4AC400185921 /* Resources */,
 				E39F4B762A6E4AC400185921 /* Bundle React Native code and images */,
-				6F6C78C152EE8903CE98F6AB /* [CP] Embed Pods Frameworks */,
-				5B26DD944903DBD6BB94714B /* [CP] Copy Pods Resources */,
+				9EEEBA3F2FA2642515F26202 /* [CP] Embed Pods Frameworks */,
+				2B4E3E557902AA3500858324 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,14 +254,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E39F4B8B2A6E4ACB00185921 /* Build configuration list for PBXNativeTarget "WannadoAsstMobile-stg" */;
 			buildPhases = (
-				2654D841CE1DCACD09343EBA /* [CP] Check Pods Manifest.lock */,
+				468119138576361DC8D3BA58 /* [CP] Check Pods Manifest.lock */,
 				E39F4B802A6E4ACB00185921 /* Start Packager */,
 				E39F4B812A6E4ACB00185921 /* Sources */,
 				E39F4B842A6E4ACB00185921 /* Frameworks */,
 				E39F4B862A6E4ACB00185921 /* Resources */,
 				E39F4B882A6E4ACB00185921 /* Bundle React Native code and images */,
-				3F7B79DF93F6346AD764F0AE /* [CP] Embed Pods Frameworks */,
-				87F1DADE5871946215EF359E /* [CP] Copy Pods Resources */,
+				69EF6E386D009033869CD819 /* [CP] Embed Pods Frameworks */,
+				9C6985771408D0BFAE76D052 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -349,7 +349,41 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		2654D841CE1DCACD09343EBA /* [CP] Check Pods Manifest.lock */ = {
+		2B4E3E557902AA3500858324 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32482F836AD5B3D3D4279305 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		468119138576361DC8D3BA58 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,24 +405,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3F7B79DF93F6346AD764F0AE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4A66B260D5C5C75374BFB498 /* [CP] Check Pods Manifest.lock */ = {
+		46D48960BD9095B0C505E788 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -410,58 +427,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B26DD944903DBD6BB94714B /* [CP] Copy Pods Resources */ = {
+		600CCE1387B8DF990512E248 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6F6C78C152EE8903CE98F6AB /* [CP] Embed Pods Frameworks */ = {
+		69EF6E386D009033869CD819 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7838A234CD8AF93ED88E904F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87F1DADE5871946215EF359E /* [CP] Copy Pods Resources */ = {
+		9C6985771408D0BFAE76D052 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,43 +478,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-stg/Pods-WannadoAsstMobile-WannadoAsstMobile-stg-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A642669A56FA1C20EAB5F287 /* [CP] Check Pods Manifest.lock */ = {
+		9EEEBA3F2FA2642515F26202 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WannadoAsstMobile-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1C02EBDF50C68E4C001C6B1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile/Pods-WannadoAsstMobile-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannadoAsstMobile-WannadoAsstMobile-dev/Pods-WannadoAsstMobile-WannadoAsstMobile-dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E39F4B6E2A6E4AC400185921 /* Start Packager */ = {
@@ -587,6 +565,28 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
+		F341570D0B136E38C80CD963 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WannadoAsstMobile-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -641,7 +641,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE671B8F0CB5529F0542B802 /* Pods-WannadoAsstMobile.debug.xcconfig */;
+			baseConfigurationReference = 38502F450EC6A3984C44B1A6 /* Pods-WannadoAsstMobile.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
@@ -677,7 +677,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E02D59664BDCB69FA17BEA01 /* Pods-WannadoAsstMobile.release.xcconfig */;
+			baseConfigurationReference = F4DFD7D9ED69CDD95A62CB5C /* Pods-WannadoAsstMobile.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
@@ -848,7 +848,7 @@
 		};
 		E39F4B7A2A6E4AC400185921 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2373E5F1F9552A203F5A50A /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */;
+			baseConfigurationReference = 4B137F5B62B052865E2D0ADD /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
@@ -884,7 +884,7 @@
 		};
 		E39F4B7B2A6E4AC400185921 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F141A886255A320334C97168 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */;
+			baseConfigurationReference = 24392FC189FB5AF8AC4C36D0 /* Pods-WannadoAsstMobile-WannadoAsstMobile-dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
@@ -918,7 +918,7 @@
 		};
 		E39F4B8C2A6E4ACB00185921 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEBBCC6F29CDBB74F91D90C5 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */;
+			baseConfigurationReference = 0E13FC76803E19D767C2D47E /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
@@ -954,7 +954,7 @@
 		};
 		E39F4B8D2A6E4ACB00185921 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3635FCFAF4B2E118B7E9E3A1 /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */;
+			baseConfigurationReference = 6798262724BC20F86464850A /* Pods-WannadoAsstMobile-WannadoAsstMobile-stg.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
