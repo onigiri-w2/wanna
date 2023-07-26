@@ -870,7 +870,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -905,7 +905,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp.dev";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -940,7 +940,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp.stg";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -975,7 +975,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onigiri-w2.WannadoAsstApp.stg";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
