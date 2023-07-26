@@ -23,6 +23,7 @@ export const TodoUncompletedList = React.memo(() => {
         activeWannadoActions.updateTodoOrder(data.map(d => d.id));
       }}
       keyboardShouldPersistTaps="always"
+      showsVerticalScrollIndicator={false}
     />
   );
 });

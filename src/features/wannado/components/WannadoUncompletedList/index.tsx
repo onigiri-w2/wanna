@@ -31,6 +31,7 @@ export const WannadoUncompletedList = () => {
       onDragEnd={({data}) => {
         wannadoAllActions.setOrderWannado(data.map(d => d.id));
       }}
+      showsVerticalScrollIndicator={false}
     />
   );
 };

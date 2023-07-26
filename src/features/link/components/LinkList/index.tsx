@@ -21,6 +21,7 @@ export const LinkList = () => {
       onDragEnd={({data}) => {
         activeWannadoActions.updateLinkOrder(data.map(item => item.id));
       }}
+      showsVerticalScrollIndicator={false}
     />
   );
 };

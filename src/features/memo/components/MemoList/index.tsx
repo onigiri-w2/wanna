@@ -21,6 +21,7 @@ export const MemoList = () => {
       onDragEnd={({data}) => {
         activeWannadoActions.updateMemoOrder(data.map(d => d.id));
       }}
+      showsVerticalScrollIndicator={false}
     />
   );
 };
