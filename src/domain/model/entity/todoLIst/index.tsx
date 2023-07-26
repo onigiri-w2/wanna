@@ -51,7 +51,7 @@ export class TodoList implements ITodoList {
       throw new Error('todo not found');
     }
     todo.uncomplete();
-    this.uncompletedTodoOrder.unshift(todoId); // 先頭に追加
+    this.uncompletedTodoOrder.push(todoId); // 先頭に追加
     return todo;
   }
 

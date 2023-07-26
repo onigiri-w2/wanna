@@ -207,7 +207,7 @@ export const activeWannadoActions = {
         if (!todo) return;
         todo.isCompleted = false;
         todo.completedAt = uT.completedAt;
-        draft.todoList.uncompletedTodoOrder.unshift(todoId);
+        draft.todoList.uncompletedTodoOrder.push(todoId);
       });
     });
     setRecoil(wannadoOverviewAllState, prev => {

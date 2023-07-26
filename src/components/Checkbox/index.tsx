@@ -5,6 +5,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {BORDER_CIRCLE_RADIUS} from '@/styles/const';
 
+const CHECKED_COLOR = '#ccc';
+const NON_CHECKED_COLOR = '#999';
 type Props = {
   checked: boolean;
   onPress: (checked: boolean) => void;
@@ -22,7 +24,7 @@ export const Checkbox = ({checked, onPress, size = 20}: Props) => {
         {width: size, height: size},
       ]}
       onPress={handlePress}>
-      {checked && <AntDesign name="check" size={size} color="#999" />}
+      {checked && <AntDesign name="check" size={size} color={CHECKED_COLOR} />}
     </TouchableOpacity>
   );
 };
@@ -30,7 +32,7 @@ export const Checkbox = ({checked, onPress, size = 20}: Props) => {
 const styles = StyleSheet.create({
   checkbox: {
     borderWidth: 1,
-    borderColor: '#999',
+    borderColor: NON_CHECKED_COLOR,
     borderRadius: BORDER_CIRCLE_RADIUS,
     justifyContent: 'center',
     alignItems: 'center',

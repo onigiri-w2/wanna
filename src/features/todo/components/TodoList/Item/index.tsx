@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 
 import {HStack, Text} from 'native-base';
 import {
@@ -18,6 +18,8 @@ import {
 import {commonStyles} from '@/styles/commonRNStyles';
 import {
   BORDER_GRAY_COLOR,
+  FONT_COLOR_NORMAL,
+  FONT_COLOR_VERY_LIGHT,
   FONT_SIZE_NORMAL,
   ICON_SIZE_NORMAL,
 } from '@/styles/const';
@@ -51,7 +53,7 @@ export const TodoListItem = ({
   };
 
   return (
-    <ScaleDecorator>
+    <ScaleDecoratorWrapper scalable={!item.isCompleted}>
       <HStack
         alignItems="center"
         bg="white"
@@ -71,7 +73,12 @@ export const TodoListItem = ({
           onLongPress={drag}
           onPress={handlePress}
           disabled={isActive}>
-          <Text fontSize={FONT_SIZE_NORMAL}>{item.title}</Text>
+          <Text
+            fontSize={FONT_SIZE_NORMAL}
+            strikeThrough={checked}
+            color={checked ? FONT_COLOR_VERY_LIGHT : FONT_COLOR_NORMAL}>
+            {item.title}
+          </Text>
         </TouchableOpacity>
         <AntDesign
           name="close"
@@ -80,6 +87,20 @@ export const TodoListItem = ({
           color="#ccc"
         />
       </HStack>
-    </ScaleDecorator>
+    </ScaleDecoratorWrapper>
+  );
+};
+
+const ScaleDecoratorWrapper = ({
+  scalable,
+  children,
+}: {
+  scalable: boolean;
+  children: React.ReactNode;
+}) => {
+  return (
+    <View>
+      {scalable ? <ScaleDecorator>{children}</ScaleDecorator> : <>{children}</>}
+    </View>
   );
 };

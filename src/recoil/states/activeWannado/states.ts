@@ -34,14 +34,12 @@ export const activeWannadoCompletedTodosState = selector<TodoSerialized[]>({
   key: recoilKeyHashSet.activeWannadoCompletedTodos,
   get: ({get}) => {
     const todoList = get(activeWannadoTodoListState);
-    if (!todoList) {
-      return [];
-    }
+    if (!todoList) return [];
     return todoList.todos
       .filter(todo => todo.isCompleted)
       .sort((a, b) => {
         if (a.completedAt && b.completedAt) {
-          return a.completedAt.getTime() - b.completedAt.getTime();
+          return b.completedAt.getTime() - a.completedAt.getTime();
         }
         return 0;
       });
@@ -64,6 +62,15 @@ export const activeWannadoUncompletedTodosState = selector<TodoSerialized[]>({
         return undefined;
       })
       .filter(todo => todo !== undefined) as TodoSerialized[];
+  },
+});
+
+export const activeWannadoTodoListMergedState = selector<TodoSerialized[]>({
+  key: recoilKeyHashSet.activeWannadoTodoListMerged,
+  get: ({get}) => {
+    const todoCompleted = get(activeWannadoCompletedTodosState);
+    const todoUncompleted = get(activeWannadoUncompletedTodosState);
+    return [...todoUncompleted, ...todoCompleted];
   },
 });
 

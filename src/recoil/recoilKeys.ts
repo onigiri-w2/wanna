@@ -3,6 +3,7 @@ const recoilKeys = [
   'activeWannadoId',
   'activeWannado',
   'activeWannadoTodoList',
+  'activeWannadoTodoListMerged',
   'activeWannadoCompletedTodos',
   'activeWannadoUncompletedTodos',
   'activeWannadoMemos',
