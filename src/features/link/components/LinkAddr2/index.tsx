@@ -9,8 +9,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {MainButton} from '@/components/MainButton';
 import {MAX_LINK_TITLE_LENGTH} from '@/domain/model/entity/link/valueobject/title';
 import {getTitleFromUrl} from '@/functions/getTitleFromUrl';
-import {activeWannadoActions} from '@/recoil/states/activeWannado';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {FONT_SIZE_NORMAL} from '@/styles/const';
 import {FunctionException} from '@/utils/exceptions';
 
@@ -52,7 +51,6 @@ export const LinkAddr = ({onAdd}: Props) => {
 
   const handlePressAdd = () => {
     activeWannadoActions.addLink(title === '' ? url : title, url);
-    wannadoOverviewAllActions.addLink();
     setUrl('');
     setTitle('');
     onAdd();

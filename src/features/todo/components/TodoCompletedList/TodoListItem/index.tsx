@@ -4,8 +4,7 @@ import {HStack, Text} from 'native-base';
 
 import {Checkbox} from '@/components/Checkbox';
 import {TodoSerialized} from '@/domain/model/entity/todo';
-import {activeWannadoActions} from '@/recoil/states/activeWannado';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {FONT_COLOR_NORMAL, FONT_SIZE_NORMAL} from '@/styles/const';
 
 type Props = {
@@ -24,7 +23,6 @@ export const TodoListItem = React.memo(({todo}: Props) => {
         activeWannadoActions.uncompleteTodo(todo.id);
       }
     }, 300);
-    wannadoOverviewAllActions.uncompleteTodo();
   };
 
   return (

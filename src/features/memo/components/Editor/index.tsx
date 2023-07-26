@@ -4,15 +4,12 @@ import {View} from 'native-base';
 import {useRecoilValue} from 'recoil';
 
 import * as memoUsecase from '@/domain/usecase/memo';
-import {
-  activeWannadoActions,
-  activeWannadoIdState,
-} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
+import {activeWannadoIdState} from '@/recoil/states/activeWannado';
 import {
   ediTaargetMemoState2,
   editTargetMemoIdActions,
 } from '@/recoil/states/editTargetMemo';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 
 import {EditorBody} from './EditorBody';
 import {EditorToolBar} from './EditorToolBar';
@@ -48,7 +45,6 @@ export const Editor = ({onBack}: Props) => {
       const memo = await memoUsecase.createMemo(wannadoId, title, content);
       if (memo) {
         activeWannadoActions.addMemo(memo);
-        wannadoOverviewAllActions.addMemo();
         editTargetMemoIdActions.setEditTargetId(memo.id);
       }
     } else {

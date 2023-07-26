@@ -4,10 +4,8 @@ import {StyleSheet} from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import {useRecoilValue} from 'recoil';
 
-import {
-  uncompWannadoOverviewAllState,
-  wannadoOverviewAllActions,
-} from '@/recoil/states/wannadoOverview';
+import {wannadoAllActions} from '@/recoil/actions/wannadoAllActions';
+import {uncompWannadoOverviewAllState} from '@/recoil/states/wannadoOverview';
 
 import {WannadoListItem} from './Item';
 
@@ -21,7 +19,7 @@ export const WannadoUncompletedList = () => {
       renderItem={WannadoListItem}
       keyExtractor={item => item.id}
       onDragEnd={({data}) => {
-        wannadoOverviewAllActions.setOrderWannado(data.map(d => d.id));
+        wannadoAllActions.setOrderWannado(data.map(d => d.id));
       }}
     />
   );

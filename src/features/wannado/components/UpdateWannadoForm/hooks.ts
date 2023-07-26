@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {NativeSyntheticEvent, TextInputChangeEventData} from 'react-native';
 
-import {wannadoActions} from '@/recoil/actions/wannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 
 export const useInput = (initialTtile: string, wannadoId: string) => {
   const [title, setTitle] = useState(initialTtile);
@@ -12,7 +12,7 @@ export const useInput = (initialTtile: string, wannadoId: string) => {
     const text = e.nativeEvent.text;
     setTitle(text);
     if (text === '') return;
-    wannadoActions.updateTitle(wannadoId, text);
+    activeWannadoActions.updateWannadoTitle(text);
   };
 
   return {

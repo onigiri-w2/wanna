@@ -9,7 +9,7 @@ import {Box, Flex, Input} from 'native-base';
 
 import {MainButton} from '@/components/MainButton';
 import {MAX_WANNADO_TITLE_LENGTH} from '@/domain/model/entity/wannado/valueobject/title';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
+import {wannadoAllActions} from '@/recoil/actions/wannadoAllActions';
 import {
   ADD_FORM_HEIGHT,
   ADD_FORM_PADDING,
@@ -24,7 +24,7 @@ export const AddWannadoForm = () => {
 
   const handlePressAdd = async () => {
     if (!title) return;
-    wannadoOverviewAllActions.addWannado(title);
+    wannadoAllActions.addWannado(title);
     setTitle('');
   };
 

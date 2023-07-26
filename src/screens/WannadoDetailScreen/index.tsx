@@ -5,7 +5,7 @@ import {VStack} from 'native-base';
 
 import {SafeAreaView} from '@/components/SafeAreaView';
 import {RootNavParamList} from '@/navigations/root';
-import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {editTodoShowActions} from '@/recoil/states/editTargetTodo';
 import {commonStyles} from '@/styles/commonRNStyles';
 import {MAIN_COLOR} from '@/styles/const';

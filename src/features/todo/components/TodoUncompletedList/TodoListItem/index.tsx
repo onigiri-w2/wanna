@@ -10,12 +10,11 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {Checkbox} from '@/components/Checkbox';
 import {TodoSerialized} from '@/domain/model/entity/todo';
-import {activeWannadoActions} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {
   editTargetTodoActions,
   editTodoShowActions,
 } from '@/recoil/states/editTargetTodo';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
 import {commonStyles} from '@/styles/commonRNStyles';
 import {
   BORDER_GRAY_COLOR,
@@ -41,7 +40,6 @@ export const TodoListItem = ({
         activeWannadoActions.uncompleteTodo(item.id);
       }
     }, 300);
-    wannadoOverviewAllActions.completeTodo();
   };
   const handlePress = useCallback(() => {
     editTargetTodoActions.setEditTarget(item);
@@ -50,7 +48,6 @@ export const TodoListItem = ({
 
   const handleDelete = () => {
     activeWannadoActions.deleteTodo(item.id);
-    wannadoOverviewAllActions.removeTodo();
   };
 
   return (

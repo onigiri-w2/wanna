@@ -6,7 +6,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {Modal} from '@/components/Modal';
 import {useShow} from '@/hooks/useShow';
-import {wannadoOverviewAllActions} from '@/recoil/states/wannadoOverview';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {FONT_SIZE_LARGE} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
@@ -21,7 +21,7 @@ export const Delete = ({wannadoId, onDelete}: Props) => {
     show();
   };
   const handleDelete = async () => {
-    wannadoOverviewAllActions.deleteWannado(wannadoId);
+    activeWannadoActions.deleteWannado();
     onDelete();
     hide();
   };

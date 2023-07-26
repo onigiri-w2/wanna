@@ -6,7 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {Modal} from '@/components/Modal';
 import {useShow} from '@/hooks/useShow';
-import {wannadoActions} from '@/recoil/actions/wannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {FONT_SIZE_LARGE} from '@/styles/const';
 
 import {ModalContent} from '../ModalContent';
@@ -21,7 +21,7 @@ export const Uncomplete = ({wannadoId, onUncomplete}: Props) => {
     show();
   };
   const handleUncomplete = async () => {
-    wannadoActions.uncomplete(wannadoId);
+    activeWannadoActions.uncompleteWannado();
     onUncomplete();
     hide();
   };

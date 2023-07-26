@@ -4,10 +4,8 @@ import {StyleSheet} from 'react-native';
 import DraggableFlatList from 'react-native-draggable-flatlist';
 import {useRecoilValue} from 'recoil';
 
-import {
-  activeWannadoActions,
-  activeWannadoLinksState,
-} from '@/recoil/states/activeWannado';
+import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
+import {activeWannadoLinksState} from '@/recoil/states/activeWannado';
 import {BORDER_RADIUS} from '@/styles/const';
 
 import {LinkItem} from '../LinkItem';

@@ -9,15 +9,6 @@ import {TodoListSerialized} from '@/domain/model/entity/todoLIst';
 import {WannadoSerialized} from '@/domain/model/entity/wannado';
 import {recoilKeyHashSet} from '@/recoil/recoilKeys';
 
-// export const activeWannadoState = selector<WannadoSerialized | undefined>({
-//   key: recoilKeyHashSet.activeWannado,
-//   get: ({get}) => {
-//     const activeWannadoId = get(activeWannadoIdState);
-//     const wannado = getWannado(activeWannadoId);
-//     return wannado;
-//   },
-// });
-
 export const activeWannadoState = atom<WannadoSerialized>({
   key: recoilKeyHashSet.activeWannado,
   default: undefined,
