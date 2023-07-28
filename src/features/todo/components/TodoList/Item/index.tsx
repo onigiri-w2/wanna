@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
 import {HStack, Text} from 'native-base';
 import {
@@ -10,6 +10,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 import {Checkbox} from '@/components/Checkbox';
 import {TodoSerialized} from '@/domain/model/entity/todo';
+import {showFlashMessage} from '@/functions/flashMessageController';
 import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {
   editTargetTodoActions,
@@ -51,9 +52,16 @@ export const TodoListItem = ({
   const handleDelete = () => {
     activeWannadoActions.deleteTodo(item.id, checked);
   };
+  const handleLongPress = () => {
+    if (checked) {
+      showFlashMessage('完了済みのTODOは並び替えできません。', 'default');
+      return;
+    }
+    drag();
+  };
 
   return (
-    <ScaleDecoratorWrapper scalable={!item.isCompleted}>
+    <ScaleDecorator>
       <HStack
         alignItems="center"
         bg="white"
@@ -70,7 +78,7 @@ export const TodoListItem = ({
             },
           ]}
           delayLongPress={200}
-          onLongPress={drag}
+          onLongPress={handleLongPress}
           onPress={handlePress}
           disabled={isActive}>
           <Text
@@ -87,20 +95,6 @@ export const TodoListItem = ({
           color="#ccc"
         />
       </HStack>
-    </ScaleDecoratorWrapper>
-  );
-};
-
-const ScaleDecoratorWrapper = ({
-  scalable,
-  children,
-}: {
-  scalable: boolean;
-  children: React.ReactNode;
-}) => {
-  return (
-    <View>
-      {scalable ? <ScaleDecorator>{children}</ScaleDecorator> : <>{children}</>}
-    </View>
+    </ScaleDecorator>
   );
 };
