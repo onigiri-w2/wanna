@@ -9,18 +9,25 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {MainButton} from '@/components/MainButton';
 import {MAX_LINK_TITLE_LENGTH} from '@/domain/model/entity/link/valueobject/title';
 import {getTitleFromUrl} from '@/functions/getTitleFromUrl';
-import {activeWannadoActions} from '@/recoil/actions/activeWannadoActions';
 import {FONT_SIZE_NORMAL} from '@/styles/const';
 import {FunctionException} from '@/utils/exceptions';
 
 const FONT_SIZE = FONT_SIZE_NORMAL;
 
 type Props = {
-  onAdd: () => void;
+  onAdd: (title: string, url: string) => void;
+  initialTitle?: string;
+  initialUrl?: string;
+  addMessage?: string;
 };
-export const LinkAddr = ({onAdd}: Props) => {
-  const [title, setTitle] = React.useState('');
-  const [url, setUrl] = React.useState('');
+export const LinkAddr = ({
+  onAdd,
+  initialTitle = '',
+  initialUrl = '',
+  addMessage = '追加',
+}: Props) => {
+  const [title, setTitle] = React.useState(initialTitle);
+  const [url, setUrl] = React.useState(initialUrl);
   const [errorMsg, setErrorMsg] = React.useState<string | undefined>();
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -50,10 +57,9 @@ export const LinkAddr = ({onAdd}: Props) => {
   };
 
   const handlePressAdd = () => {
-    activeWannadoActions.addLink(title === '' ? url : title, url);
     setUrl('');
     setTitle('');
-    onAdd();
+    onAdd(title, url);
   };
 
   return (
@@ -109,7 +115,11 @@ export const LinkAddr = ({onAdd}: Props) => {
           />
         </HStack>
       </View>
-      <MainButton onPress={handlePressAdd} text="追加" disabled={url === ''} />
+      <MainButton
+        onPress={handlePressAdd}
+        text={addMessage}
+        disabled={url === ''}
+      />
     </View>
   );
 };

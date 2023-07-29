@@ -1,4 +1,5 @@
 import {repoWannado, repoWannadoOrder} from '../config';
+import {Link} from '../model/entity/link';
 import {Wannado, WannadoSerialized} from '../model/entity/wannado';
 import {WannadoOrderSerialized} from '../model/entity/wannadoOrder';
 import {CharId} from '../model/valueobjects/charId';
@@ -18,12 +19,17 @@ export async function getWannado(
   return data.serialize();
 }
 
-export async function createWannado(title: string): Promise<WannadoSerialized> {
+export async function createWannado(
+  title: string,
+  link?: {title: string; url: string},
+): Promise<WannadoSerialized> {
   const wannado = Wannado.new(title);
   const wannadoOrder = await repoWannadoOrder.one();
   if (!wannadoOrder) throw new Error('wannadoOrder is undefined');
 
   wannadoOrder?.addWannadoId(wannado.id);
+
+  if (link) wannado.linkList.addLink(Link.new(link.title, link.url));
 
   repoWannado.create(wannado);
   repoWannadoOrder.update(wannadoOrder);

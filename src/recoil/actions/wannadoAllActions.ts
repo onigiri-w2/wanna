@@ -8,8 +8,11 @@ import {
 } from '../states/wannadoOverview';
 
 export const wannadoAllActions = {
-  addWannado: async (title: string) => {
-    const wannado = await usecase.createWannado(title);
+  addWannado: async (title: string, link?: {title: string; url: string}) => {
+    const wannado = await usecase.createWannado(
+      title,
+      link?.url ? link : undefined,
+    );
     if (!wannado) return;
     setRecoil(wannadoOverviewAllState, prev => {
       if (!prev) return prev;

@@ -23,6 +23,7 @@ export class Link implements ILink {
 
   static new(title: string, url: string) {
     const id = CharId.new();
+    if (title.length === 0) title = url;
     return new Link(id, Title.new(title), HttpUrl.new(url), new Date());
   }
 
