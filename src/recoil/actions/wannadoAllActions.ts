@@ -38,7 +38,7 @@ export const wannadoAllActions = {
       if (!prev) return prev;
       return {
         ...prev,
-        order: [...prev.order, wannado.id],
+        order: [wannado.id, ...prev.order],
       };
     });
   },

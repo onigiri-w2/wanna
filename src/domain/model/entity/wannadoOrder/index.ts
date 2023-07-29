@@ -19,7 +19,7 @@ export class WannadoOrder implements IWannadoOrder {
   }
 
   public addWannadoId(wannadoId: CharId) {
-    this.order.push(wannadoId);
+    this.order.unshift(wannadoId);
   }
   public removeWannadoId(wannadoId: CharId) {
     this.order = this.order.filter(id => id.id !== wannadoId.id);

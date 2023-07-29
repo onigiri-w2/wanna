@@ -19,7 +19,6 @@ export class WannadoOrderRealmRepository {
   }
 
   private async create(wannadoOrder: WannadoOrder): Promise<void> {
-    console.log('create');
     this.realm.write(() => {
       this.realm.create('WannadoOrder', wannadoOrder.serialize());
     });
