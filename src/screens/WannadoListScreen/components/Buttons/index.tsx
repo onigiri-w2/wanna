@@ -8,14 +8,18 @@ import {ACCENT_COLOR} from '@/styles/const';
 import {useAddEditorShowContext} from '../../providers/AddEditorShowProvider';
 
 export const Buttons = () => {
-  const {showModal: openEditor} = useAddEditorShowContext();
+  const {isModalVisible, showModal: openEditor} = useAddEditorShowContext();
 
   return (
-    <Box style={styles.buttonView} alignItems="center">
-      <TouchableOpacity onPress={openEditor}>
-        <AntDesign name="pluscircle" size={56} color={ACCENT_COLOR} />
-      </TouchableOpacity>
-    </Box>
+    <>
+      {!isModalVisible && (
+        <Box style={styles.buttonView} alignItems="center">
+          <TouchableOpacity onPress={openEditor}>
+            <AntDesign name="pluscircle" size={56} color={ACCENT_COLOR} />
+          </TouchableOpacity>
+        </Box>
+      )}
+    </>
   );
 };
 
