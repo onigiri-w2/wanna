@@ -10,7 +10,7 @@ type Props = {
 };
 export const Modal = ({isOpen, close, children, wPer = '90%'}: Props) => {
   return (
-    <ModalNB isOpen={isOpen} onClose={close}>
+    <ModalNB isOpen={isOpen} onClose={close} avoidKeyboard>
       <Box w={wPer} p={4} bg="white" borderRadius={BORDER_RADIUS}>
         {children}
       </Box>
