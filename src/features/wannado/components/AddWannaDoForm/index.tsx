@@ -30,6 +30,7 @@ export const AddWannadoForm = () => {
   const [title, setTitle] = React.useState('');
   const [linkTitle, setLinkTitle] = React.useState('');
   const [linkUrl, setLinkUrl] = React.useState('');
+  const inputRef = React.useRef<any>(null);
 
   const handlePressAdd = async () => {
     if (!title) return;
@@ -41,16 +42,20 @@ export const AddWannadoForm = () => {
     setTitle(e.nativeEvent.text);
   };
 
-  const handlePressLink = (title: string, url: string) => {
+  const handleAddLink = (title: string, url: string) => {
     setLinkTitle(title);
     setLinkUrl(url);
+  };
+  const handlePressLinkSwitch = () => {
+    inputRef.current?.blur();
   };
 
   return (
     <Box p={`${ADD_FORM_PADDING}px`} justifyContent="center">
       <HStack mb={4}>
         <LinkAddrSwitcher
-          onAdd={handlePressLink}
+          onPressSwitch={handlePressLinkSwitch}
+          onAdd={handleAddLink}
           initialTitle={linkTitle}
           initialUrl={linkUrl}
         />
@@ -58,6 +63,7 @@ export const AddWannadoForm = () => {
       <Flex direction="row" alignItems="center">
         <Box flex={1} mr={4}>
           <Input
+            ref={inputRef}
             bg="white"
             value={title}
             onChange={handleChange}
@@ -86,11 +92,13 @@ const styles = StyleSheet.create({
 });
 
 type LinkAddrSwitcherProps = {
+  onPressSwitch?: () => void;
   onAdd: (title: string, url: string) => void;
   initialTitle?: string;
   initialUrl?: string;
 };
 const LinkAddrSwitcher = ({
+  onPressSwitch,
   onAdd,
   initialTitle,
   initialUrl,
@@ -103,10 +111,15 @@ const LinkAddrSwitcher = ({
     hide();
   };
 
+  const handlePressSwitch = () => {
+    onPressSwitch?.();
+    show();
+  };
+
   return (
     <Box>
       <Box>
-        <TouchableOpacity onPress={show}>
+        <TouchableOpacity onPress={handlePressSwitch}>
           <Fontisto
             name="link"
             size={FONT_SIZE_LARGE}
