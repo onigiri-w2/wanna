@@ -80,6 +80,7 @@ export const LinkAddr = ({
             numberOfLines={1}
             multiline
             blurOnSubmit
+            returnKeyType="done"
           />
           {isLoading ? (
             <ActivityIndicator size="small" color="#000" />
@@ -108,6 +109,7 @@ export const LinkAddr = ({
             fontSize={FONT_SIZE}
             placeholder="URLを入力"
             onChangeText={setUrl}
+            returnKeyType="done"
           />
           <FontAwesome5
             onPress={handlePressPaste}
