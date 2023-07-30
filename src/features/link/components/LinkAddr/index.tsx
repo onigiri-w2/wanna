@@ -2,12 +2,13 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 
 import Clipboard from '@react-native-clipboard/clipboard';
-import {View, Text, Input, HStack} from 'native-base';
+import {Box, HStack, Input, Text} from 'native-base';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import {MainButton} from '@/components/MainButton';
 import {MAX_LINK_TITLE_LENGTH} from '@/domain/model/entity/link/valueobject/title';
+import {showFlashMessage} from '@/functions/flashMessageController';
 import {getTitleFromUrl} from '@/functions/getTitleFromUrl';
 import {FONT_SIZE_NORMAL} from '@/styles/const';
 import {FunctionException} from '@/utils/exceptions';
@@ -28,23 +29,20 @@ export const LinkAddr = ({
 }: Props) => {
   const [title, setTitle] = React.useState(initialTitle);
   const [url, setUrl] = React.useState(initialUrl);
-  const [errorMsg, setErrorMsg] = React.useState<string | undefined>();
   const [isLoading, setIsLoading] = React.useState(false);
 
   const handleChangeTitle = (text: string) => {
     setTitle(text);
-    setErrorMsg(undefined);
   };
 
   const handlePressDownload = async () => {
     setIsLoading(true);
-    setErrorMsg(undefined);
     try {
       const title = await getTitleFromUrl(url);
       setTitle(title);
     } catch (error) {
       if (error instanceof FunctionException) {
-        setErrorMsg(error.message);
+        showFlashMessage(error.message, 'danger');
       }
     } finally {
       setIsLoading(false);
@@ -63,12 +61,12 @@ export const LinkAddr = ({
   };
 
   return (
-    <View minW="90%">
-      <View mb={6}>
+    <Box w="100%">
+      <Box mb={8} w="100%">
         <Text mb={2} fontSize={FONT_SIZE}>
           タイトル
         </Text>
-        <HStack alignItems="center">
+        <HStack alignItems="center" w="100%">
           <Input
             value={title}
             flex={1}
@@ -93,11 +91,8 @@ export const LinkAddr = ({
             />
           )}
         </HStack>
-        <Text fontSize={FONT_SIZE} color="red.500">
-          {errorMsg}
-        </Text>
-      </View>
-      <View mb={12}>
+      </Box>
+      <Box mb={12}>
         <Text mb={2} fontSize={FONT_SIZE}>
           URL
         </Text>
@@ -118,12 +113,12 @@ export const LinkAddr = ({
             color="#000"
           />
         </HStack>
-      </View>
+      </Box>
       <MainButton
         onPress={handlePressAdd}
         text={addMessage}
         disabled={url === ''}
       />
-    </View>
+    </Box>
   );
 };

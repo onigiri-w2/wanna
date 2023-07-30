@@ -1,55 +1,19 @@
-import {
-  Modal as ModalRN,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {Modal as ModalNB, Box} from 'native-base';
+
+import {BORDER_RADIUS} from '@/styles/const';
 
 type Props = {
   isOpen: boolean;
   close: () => void;
+  wPer?: string;
   children: React.ReactNode;
 };
-export const Modal = ({isOpen, close, children}: Props) => {
+export const Modal = ({isOpen, close, children, wPer = '90%'}: Props) => {
   return (
-    <ModalRN
-      animationType="fade"
-      transparent
-      visible={isOpen}
-      onRequestClose={close}>
-      <TouchableOpacity style={{flex: 1}} onPress={close} activeOpacity={1}>
-        <View style={styles.modalContainer}>
-          <TouchableOpacity
-            onPress={e => e.stopPropagation()}
-            activeOpacity={1}>
-            <View style={styles.modalContent}>{children}</View>
-          </TouchableOpacity>
-        </View>
-      </TouchableOpacity>
-    </ModalRN>
+    <ModalNB isOpen={isOpen} onClose={close}>
+      <Box w={wPer} p={4} bg="white" borderRadius={BORDER_RADIUS}>
+        {children}
+      </Box>
+    </ModalNB>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  button: {
-    fontSize: 16,
-    color: 'blue',
-    marginBottom: 20,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-  modalContent: {
-    backgroundColor: 'white',
-    padding: 20,
-    borderRadius: 8,
-  },
-});
