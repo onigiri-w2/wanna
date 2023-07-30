@@ -75,9 +75,11 @@ export const LinkAddr = ({
             mr={4}
             fontSize={FONT_SIZE}
             placeholder="空白の場合はURLがタイトル"
-            multiline
             onChangeText={handleChangeTitle}
             maxLength={MAX_LINK_TITLE_LENGTH}
+            numberOfLines={1}
+            multiline
+            blurOnSubmit
           />
           {isLoading ? (
             <ActivityIndicator size="small" color="#000" />
